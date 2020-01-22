@@ -31,16 +31,16 @@ export type ChatiumAction = ApiCallAction | ResetSearchAction | ShowToastAction
 type Color = string
 
 interface ApiCallAction<P = unknown> {
-  type: "apiCall"
+  type: 'apiCall'
   url: string
   apiParams: P
 }
 
 interface ResetSearchAction {
-  type: "resetSearch"
+  type: 'resetSearch'
 }
 
 interface ShowToastAction {
-  type: "showToast"
+  type: 'showToast'
   toast: string
 }
