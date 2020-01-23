@@ -2,10 +2,10 @@ import { Color, CommonBlockProps } from './commonTypes'
 
 export interface SearchProps extends CommonBlockProps {
   borderColor?: Color
-  delayMs: number
-  inputPlaceholder: string
-  leftIcon: null | string
-  minLength: number
+  delayMs?: number
+  inputPlaceholder?: string
+  leftIcon?: string
+  minLength?: number
   placeholderTextColor?: Color
   queryParamKey: string
   spinnerColor?: Color

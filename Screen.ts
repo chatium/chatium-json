@@ -70,6 +70,6 @@ function isSearchBlock(b: ChatiumBlock): b is SearchBlock {
   return b.type === 'search'
 }
 
-type ChatiumChildNode = SyncNode | Promise<SyncNode>
+export type ChatiumChildNode = SyncNode | Promise<SyncNode>
 type SyncNode = SingleNode | SingleNode[]
 type SingleNode = ChatiumBlock | null | undefined | false | 0 | ''
