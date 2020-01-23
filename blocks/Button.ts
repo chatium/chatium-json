@@ -10,9 +10,9 @@ export interface ButtonBlock extends CommonBlockProps {
   title?: string
 }
 
-type Props = Omit<ButtonBlock, 'type'>
+export type ButtonProps = Omit<ButtonBlock, 'type'>
 
-export function Button(props: Props): ButtonBlock {
+export function Button(props: ButtonProps): ButtonBlock {
   return {
     type: 'button',
     ...props,

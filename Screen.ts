@@ -9,14 +9,14 @@ export interface ChatiumScreen {
   search?: SearchProps
 }
 
-type Props = Omit<ChatiumScreen, 'blocks' | 'search'>
+export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search'>
 
 /**
  * Chatium-json screen constructor.
  * Supports Promises and arrays recursive flattening of the given children
  *  and special handling of search block
  */
-export async function Screen(props: Props, ...children: ChatiumChildNode[]): Promise<ChatiumScreen> {
+export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]): Promise<ChatiumScreen> {
   const flatBlocks: ChatiumBlock[] = []
   await flattenChildrenRec(children, flatBlocks)
 
