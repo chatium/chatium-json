@@ -22,7 +22,7 @@ export function jsx<P, K extends keyof JSX.IntrinsicElements>(
       return intrinsicBlocks[block](props as any, ...children)
     } else {
       throw new Error(
-        `JSX error: unknown intrinsic element '${block}. ` +
+        `JSX error: unknown intrinsic block '${block}'. ` +
           `List of known intrinsic block types: ${Object.keys(intrinsicBlocks)}'`,
       )
     }
@@ -35,4 +35,4 @@ interface BlockFactory<P = {}> {
   (props: P, ...children: ChatiumChildNode[]): JsxNode
 }
 
-type JsxNode = ChatiumChildNode | Promise<ChatiumScreen>
+type JsxNode = ChatiumChildNode | ChatiumChildNode[] | Promise<ChatiumScreen>
