@@ -4,6 +4,7 @@ import { ChatiumChildNode, flattenChildren } from './utils/children'
 
 export interface ChatiumScreen {
   title: string
+  description?: string
   blocks: ChatiumBlock[]
   search?: SearchProps
 }
