@@ -5,6 +5,7 @@ export interface CommonBlockProps {
 
 export type Color = string
 export type FontSize = 'mini' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge'
+export type FontStyle = FontSize | 'bold' | 'semibold' | 'italic' | 'underlined' | 'link' | 'muted' | 'warning'
 
 export interface Icon {
   appIcon?: string

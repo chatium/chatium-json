@@ -2,6 +2,7 @@
 import { Button, ButtonProps } from './blocks/Button'
 import { Fragment } from './blocks/Fragment'
 import { Search, SearchProps } from './blocks/Search'
+import { Text, TextProps } from './blocks/Text'
 import { Screen, ScreenProps } from './Screen'
 
 /**
@@ -16,6 +17,7 @@ declare global {
       f: {} // analog of React.Fragment, just container of children blocks
       screen: ScreenProps
       search: SearchProps
+      text: TextProps
     }
   }
 }
@@ -25,4 +27,5 @@ export const intrinsicBlocks = {
   f: Fragment,
   screen: Screen,
   search: Search,
+  text: Text,
 }
