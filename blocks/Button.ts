@@ -1,8 +1,10 @@
 import { ChatiumActions } from '../actions'
-import { CommonBlockProps, FontSize, Icon } from './commonTypes'
+import { Color, CommonBlockProps, FontSize, Icon } from './commonTypes'
 
 export interface ButtonBlock extends CommonBlockProps {
   type: 'button'
+  bgColor?: Color
+  fontColor?: Color
   fontSize?: FontSize
   icon?: Icon
   iconPosition?: 'left' | 'right'

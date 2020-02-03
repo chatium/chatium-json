@@ -1,6 +1,6 @@
 import { ChatiumActions } from '../actions'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
-import { Color, FontSize, FontStyle } from './commonTypes'
+import { Color, CommonBlockProps, FontSize, FontStyle } from './commonTypes'
 import { ChatiumBlock } from './index'
 
 export type TextBlock = TextProps & {
@@ -13,7 +13,8 @@ export type TextProps = {
   fontSize?: FontSize
   isBold?: boolean
   onClick?: ChatiumActions
-} & TextContent
+} & TextContent &
+  CommonBlockProps
 
 // if tokens is defined text is ignored, so they shouldn't be defined together
 type TextContent = { text: string; tokens?: never } | { tokens: TextToken[]; text?: never }
