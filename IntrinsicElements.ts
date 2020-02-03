@@ -3,6 +3,7 @@ import { Audio, AudioProps } from './blocks/Audio'
 import { Button, ButtonProps } from './blocks/Button'
 import { Fragment } from './blocks/Fragment'
 import { Image, ImageProps } from './blocks/Image'
+import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
 import { Text, TextProps } from './blocks/Text'
 import { Screen, ScreenProps } from './Screen'
@@ -20,6 +21,7 @@ declare global {
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
       image: ImageProps
+      'list-item': ListItemProps
       screen: ScreenProps
       search: SearchProps
       text: TextProps
@@ -33,6 +35,7 @@ export const intrinsicBlocks = {
   button: Button,
   f: Fragment,
   image: Image,
+  'list-item': ListItem,
   screen: Screen,
   search: Search,
   text: Text,

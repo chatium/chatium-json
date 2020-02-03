@@ -1,5 +1,8 @@
+import { ChatiumBlock } from './index'
+
 export interface CommonBlockProps {
   containerStyle?: ContainerStyle
+  fallback?: ChatiumBlock
 }
 
 export type Color = string
