@@ -1,4 +1,4 @@
-import { Color, CommonBlockProps } from './commonTypes'
+import { Color, CommonBlockProps, Icon } from './commonTypes'
 
 export interface SearchProps extends CommonBlockProps {
   bgColor?: Color
@@ -6,7 +6,7 @@ export interface SearchProps extends CommonBlockProps {
   delayMs?: number
   fontColor?: Color
   inputPlaceholder?: string
-  leftIcon?: string
+  leftIcon?: Icon
   minLength?: number
   placeholderTextColor?: Color
   queryParamKey: string
@@ -22,6 +22,13 @@ type Props = SearchProps
 export function Search(props: Props): SearchBlock {
   return {
     type: 'search',
+    bgColor: '#ffffff',
+    borderColor: '#9a9a9a',
+    delayMs: 500,
+    fontColor: '#000000',
+    minLength: 3,
+    placeholderTextColor: '#9a9a9a',
+    spinnerColor: '#9a9a9a',
     ...props,
   }
 }

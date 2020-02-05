@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-namespace */
 import { Audio, AudioProps } from './blocks/Audio'
 import { Button, ButtonProps } from './blocks/Button'
-import { Fragment } from './blocks/Fragment'
+import { Footer, FooterProps } from './blocks/Footer'
 import { Image, ImageProps } from './blocks/Image'
 import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
 import { Text, TextProps } from './blocks/Text'
 import { Screen, ScreenProps } from './Screen'
 import { Video, VideoProps } from './blocks/Video'
+import { Fragment } from './utils/Fragment'
 
 /**
  * JSX Intrinsic elements support.
@@ -20,6 +21,7 @@ declare global {
       audio: AudioProps
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
+      footer: FooterProps
       image: ImageProps
       'list-item': ListItemProps
       screen: ScreenProps
@@ -34,6 +36,7 @@ export const intrinsicBlocks = {
   audio: Audio,
   button: Button,
   f: Fragment,
+  footer: Footer,
   image: Image,
   'list-item': ListItem,
   screen: Screen,

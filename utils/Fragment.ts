@@ -1,4 +1,4 @@
-import { ChatiumChildNode } from '../utils/children'
+import { ChatiumChildNode } from './children'
 
 /**
  * Special JSX fragment block,

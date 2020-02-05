@@ -3,6 +3,7 @@ import { Color, CommonBlockProps, Icon, ImageSize } from './commonTypes'
 
 export interface ListItemBlock extends CommonBlockProps {
   type: 'screen'
+  description?: string
   image?: string
   imageSize?: ImageSize
   logo?: Icon
