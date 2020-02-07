@@ -22,7 +22,7 @@ export interface Icon {
 export type ImageSize = ImageSizePreset | number
 export type ImageSizePreset = 'xxlarge' | 'xlarge' | 'large' | 'medium' | 'small'
 
-interface ContainerStyle {
+export interface ContainerStyle {
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'space-between' | 'space-around'
   alignItems?: FlexAlignType
   alignSelf?: 'auto' | FlexAlignType

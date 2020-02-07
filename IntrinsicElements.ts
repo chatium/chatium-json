@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-namespace */
 import { Audio, AudioProps } from './blocks/Audio'
+import { Box, BoxProps } from './blocks/Box'
 import { Button, ButtonProps } from './blocks/Button'
 import { Footer, FooterProps } from './blocks/Footer'
 import { Image, ImageProps } from './blocks/Image'
@@ -19,6 +20,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       audio: AudioProps
+      box: BoxProps
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
       footer: FooterProps
@@ -34,6 +36,7 @@ declare global {
 
 export const intrinsicBlocks = {
   audio: Audio,
+  box: Box,
   button: Button,
   f: Fragment,
   footer: Footer,
