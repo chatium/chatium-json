@@ -19,7 +19,7 @@ export function jsx<P, K extends keyof JSX.IntrinsicElements>(
   if (typeof block === 'string') {
     if (intrinsicBlocks[block]) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return intrinsicBlocks[block](props as any, ...children)
+      return intrinsicBlocks[block]((props ?? {}) as any, ...children)
     } else {
       throw new Error(
         `JSX error: unknown intrinsic block '${block}'. ` +
