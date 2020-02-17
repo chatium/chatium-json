@@ -3,6 +3,7 @@ import { Color, CommonBlockProps, Icon } from './commonTypes'
 export interface SearchProps extends CommonBlockProps {
   bgColor?: Color
   borderColor?: Color
+  defaultValue?: string
   delayMs?: number
   fontColor?: Color
   inputPlaceholder?: string
