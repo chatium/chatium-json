@@ -19,6 +19,13 @@ export interface Icon {
   text?: string | number
 }
 
+export interface Author {
+  id: string
+  url?: string
+  name: string
+  avatar: Icon
+}
+
 export type ImageSize = ImageSizePreset | number
 export type ImageSizePreset = 'xxlarge' | 'xlarge' | 'large' | 'medium' | 'small'
 

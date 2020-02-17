@@ -1,9 +1,9 @@
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
+import { Author } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
 import { SearchBlock, SearchProps } from './blocks/Search'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
-import { Icon } from './blocks/commonTypes'
 
 interface ChatProps {
   messages_get_url: string
@@ -15,8 +15,8 @@ interface ChatProps {
   support_paging: boolean
   files_put_url: string
   reply_quotes_enabled: boolean
-  current_author: ChatUser
-  group_author: ChatUser | null
+  current_author: Author
+  group_author: Author | null
   messages_socket_id: string
   last_read_at: number | null
   last_read_socket_id: string
@@ -25,13 +25,9 @@ interface ChatProps {
     name: string
     uid: string
   }
-}
-
-interface ChatUser {
-  id: string
-  url: string
-  name: string
-  avatar: Icon
+  appearance?: {
+    background_color: string | null
+  }
 }
 
 export interface ChatiumScreen {
