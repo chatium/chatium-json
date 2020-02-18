@@ -1,9 +1,15 @@
 import { ChatiumBlock } from './index'
 
-export interface CommonBlockProps {
+export interface CommonBlockProps extends WithKey {
   containerStyle?: ContainerStyle
   fallback?: ChatiumBlock
 }
+
+export interface WithKey {
+  key?: ChatiumJsonKey
+}
+
+export type ChatiumJsonKey = string | number
 
 export type Color = string
 export type FontSize = 'mini' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge'
