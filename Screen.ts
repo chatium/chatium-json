@@ -1,3 +1,4 @@
+import { Message } from 'modules/feed/types/messageType'
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
 import { Author } from './blocks/commonTypes'
@@ -10,8 +11,11 @@ interface ChatProps {
   messages_add_url: string
   messages_edit_url: string
   messages_delete_url: string
+  messages_changes_url: string
   mark_as_read_url: string
   last_read_get_url: string
+  last_message_id: string | null
+  last_read_message_id: string | null
   support_paging: boolean
   files_put_url: string
   reply_quotes_enabled: boolean
@@ -25,8 +29,12 @@ interface ChatProps {
     name: string
     uid: string
   }
-  appearance?: {
+  appearance: {
     background_color: string | null
+  }
+  pinned: {
+    message?: Message
+    update_url?: string
   }
 }
 
