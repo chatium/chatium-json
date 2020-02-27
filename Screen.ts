@@ -38,12 +38,18 @@ interface ChatProps {
   }
 }
 
+export interface EditorProps {
+  component: string
+  properties: object
+}
+
 export interface ChatiumScreen {
   title: string
   description?: string
   headerButton?: Pick<ButtonProps, 'icon' | 'onClick'>
   blocks?: ChatiumBlock[]
   chat?: ChatProps
+  editor?: EditorProps
   footer?: FooterProps
   search?: SearchProps
 }
