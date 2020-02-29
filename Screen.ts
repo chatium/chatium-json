@@ -38,9 +38,17 @@ interface ChatProps {
   }
 }
 
+export type RoutePath = Array<RoutePathItem>
+
+export interface RoutePathItem {
+  label: string
+  url: string
+}
+
 export interface EditorProps {
   component: string
-  properties: object
+  path?: RoutePath
+  properties?: object
 }
 
 export interface ChatiumScreen {
