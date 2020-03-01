@@ -5,6 +5,7 @@ import { Author } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
 import { SearchBlock, SearchProps } from './blocks/Search'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
+import { RoutePath } from '../../modules/logic/types/EditorScreen'
 
 interface ChatProps {
   messages_get_url: string
@@ -36,13 +37,6 @@ interface ChatProps {
     message?: Message
     update_url?: string
   }
-}
-
-export type RoutePath = Array<RoutePathItem>
-
-export interface RoutePathItem {
-  label: string
-  url: string
 }
 
 export interface EditorProps {
