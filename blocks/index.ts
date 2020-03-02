@@ -6,9 +6,10 @@ import { Image, ImageBlock } from './Image'
 import { ListItem, ListItemBlock } from './ListItem'
 import { Search, SearchBlock } from './Search'
 import { Text, TextBlock } from './Text'
+import { Slot, SlotBlock } from './Slot'
 import { Video, VideoBlock } from './Video'
 
-export { Audio, Box, Button, Footer, Image, ListItem, Search, Text, Video }
+export { Audio, Box, Button, Footer, Image, ListItem, Search, Slot, Text, Video }
 
 export type ChatiumBlock =
   | AudioBlock
