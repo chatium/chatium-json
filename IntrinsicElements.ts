@@ -6,6 +6,7 @@ import { Footer, FooterProps } from './blocks/Footer'
 import { Image, ImageProps } from './blocks/Image'
 import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
+import { Slot, SlotProps } from './blocks/Slot'
 import { Text, TextProps } from './blocks/Text'
 import { Screen, ScreenProps } from './Screen'
 import { Video, VideoProps } from './blocks/Video'
@@ -28,6 +29,7 @@ declare global {
       'list-item': ListItemProps
       screen: ScreenProps
       search: SearchProps
+      slot: SlotProps
       text: TextProps
       video: VideoProps
     }
@@ -44,6 +46,7 @@ export const intrinsicBlocks = {
   'list-item': ListItem,
   screen: Screen,
   search: Search,
+  slot: Slot,
   text: Text,
   video: Video,
 }

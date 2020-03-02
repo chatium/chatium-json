@@ -17,5 +17,6 @@ export type ChatiumBlock =
   | ImageBlock
   | ListItemBlock
   | SearchBlock
+  | SlotBlock
   | TextBlock
   | VideoBlock
