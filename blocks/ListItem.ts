@@ -15,6 +15,7 @@ export interface ListItemBlock extends CommonBlockProps {
   titleColor?: Color
   updatedAtTimestamp?: number
   unreadBullet?: boolean
+  active?: boolean
   upTitle?: string
   upTitleColor?: Color
   url?: string
