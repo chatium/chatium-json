@@ -1,8 +1,9 @@
 import { CommonBlockProps } from 'lib/chatium-json/blocks/commonTypes'
 
-type SlotTarget = 'left' | 'right'
+import { ChatiumScreen } from '../Screen'
 
-export type SlotsProps = Record<SlotTarget, SlotBlock>
+type SlotTarget = 'left' | 'right'
+export type SlotsProps = Record<SlotTarget, Omit<SlotBlock, 'type' | 'target'>>
 
 export interface SlotProps extends CommonBlockProps {
   target: SlotTarget
@@ -21,5 +22,15 @@ export async function Slot(props: SlotProps): Promise<SlotBlock> {
     type: 'slot',
     ...props,
     screen,
+  }
+}
+
+export async function injectSlots(
+  screen: Promise<ChatiumScreen>,
+  slots: Record<string, Omit<SlotBlock, 'type' | 'target'>>,
+): Promise<ChatiumScreen> {
+  return {
+    ...(await screen),
+    slots,
   }
 }

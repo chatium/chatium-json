@@ -1,12 +1,13 @@
 import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
 import { Message } from 'modules/feed/types/messageType'
+import { RoutePath } from 'modules/logic/types/EditorScreen'
+
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
 import { Author } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
 import { SearchBlock, SearchProps } from './blocks/Search'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
-import { RoutePath } from '../../modules/logic/types/EditorScreen'
 
 interface ChatProps {
   messages_get_url: string
