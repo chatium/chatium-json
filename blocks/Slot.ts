@@ -1,6 +1,6 @@
 import { CommonBlockProps } from 'lib/chatium-json/blocks/commonTypes'
 
-import { ChatiumScreen } from '../Screen'
+import { ChatiumScreen, ScreenProps } from '../Screen'
 
 type SlotTarget = 'left' | 'right'
 export type SlotsProps = Record<SlotTarget, Omit<SlotBlock, 'type' | 'target'>>
@@ -8,7 +8,7 @@ export type SlotsProps = Record<SlotTarget, Omit<SlotBlock, 'type' | 'target'>>
 export interface SlotProps extends CommonBlockProps {
   target: SlotTarget
   url?: string
-  screen?: Screen
+  screen?: ScreenProps
 }
 
 export interface SlotBlock extends SlotProps {
