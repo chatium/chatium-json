@@ -17,7 +17,7 @@ export type TextProps = {
   CommonBlockProps
 
 // if tokens is defined text is ignored, so they shouldn't be defined together
-type TextContent = { text: string; tokens?: never } | { tokens: TextToken[]; text?: never }
+export type TextContent = { text: string; tokens?: never } | { tokens: TextToken[]; text?: never }
 
 type TextToken = string | CustomToken
 interface CustomToken {

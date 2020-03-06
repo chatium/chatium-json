@@ -32,9 +32,6 @@ interface ChatProps {
     name: string
     uid: string
   }
-  appearance: {
-    background_color: string | null
-  }
   pinned: {
     message?: Message
     update_url?: string
