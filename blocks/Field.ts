@@ -18,3 +18,7 @@ export function Field(props: FieldProps): FieldBlock {
     ...props,
   }
 }
+
+export interface ConfigProps {
+  fields: Array<FieldBlock>
+}

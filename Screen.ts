@@ -1,6 +1,5 @@
 import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
 import { Message } from 'modules/feed/types/messageType'
-import { RoutePath } from 'modules/logic/types/EditorScreen'
 
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
@@ -38,12 +37,6 @@ interface ChatProps {
   }
 }
 
-export interface EditorProps {
-  component: string
-  path?: RoutePath
-  properties?: object
-}
-
 export interface ChatiumScreen {
   title: string
   description?: string
@@ -51,7 +44,7 @@ export interface ChatiumScreen {
   socketId?: string
   blocks?: ChatiumBlock[]
   chat?: ChatProps
-  editor?: EditorProps
+  editor?: any
   footer?: FooterProps
   search?: SearchProps
   slots?: SlotsProps
