@@ -48,6 +48,7 @@ export interface ChatiumScreen {
   title: string
   description?: string
   headerButton?: Pick<ButtonProps, 'icon' | 'onClick'>
+  socketId?: string
   blocks?: ChatiumBlock[]
   chat?: ChatProps
   editor?: EditorProps
