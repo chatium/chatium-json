@@ -48,6 +48,7 @@ export interface ChatiumScreen {
   footer?: FooterProps
   search?: SearchProps
   slots?: SlotsProps
+  needPhoneCheck?: boolean
 }
 
 export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search'>
