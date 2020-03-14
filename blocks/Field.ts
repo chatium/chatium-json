@@ -4,10 +4,10 @@ export interface FieldBlock extends CommonBlockProps {
   type: 'field'
   input: InputType
   inputProps?: object
-  field?: string
   value?: any
   name?: string
   label: string
+  help?: string
 }
 
 export type FieldProps = Omit<FieldBlock, 'type'>
