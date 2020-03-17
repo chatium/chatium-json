@@ -38,14 +38,18 @@ export interface ScreenResponse {
  * Standard error shape
  * Can be extended depending on request type, see below
  */
-export interface ChatiumErrorResponse {
+export interface ChatiumErrorResponse extends ChatiumErrorFields {
   success: false
+}
+
+export interface ChatiumErrorFields {
   // error class name
   errorType?: string
   // http status code
   statusCode: number
   // usually - error message
   reason: string
+  [key: string]: unknown
 }
 
 export interface ScreenErrorResponse extends ChatiumErrorResponse, Partial<ScreenResponse> {}
