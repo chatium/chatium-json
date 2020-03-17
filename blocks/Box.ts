@@ -1,20 +1,35 @@
-import { ContainerStyle } from './commonTypes'
-import { Text } from './Text'
-import { ChatiumChildNode } from '../utils/children'
+import { ChatiumActions } from '../actions'
+import { ChatiumChildNode, flattenChildren } from '../utils/children'
+import { Color, CommonBlockProps, FontSize, FontStyle } from './commonTypes'
+import { ChatiumBlock } from './index'
 
-export type BoxProps = Pick<ContainerStyle, 'bgColor' | 'paddingBottom' | 'paddingTop'>
+export type BoxBlock = BoxProps & {
+  type: 'box'
+  blocks?: ChatiumBlock[]
+}
 
-/**
- * Container block allowing just box layout properties
- * Now emulated via text block, but should be separate block supported on all clients
- */
-export function Box(
-  { bgColor, paddingBottom, paddingTop }: BoxProps,
-  ...children: ChatiumChildNode[]
-): ChatiumChildNode[] {
-  return [
-    paddingTop && Text({ containerStyle: { bgColor, paddingTop, marginBottom: 0 }, text: '' }),
-    children as ChatiumChildNode,
-    paddingBottom && Text({ containerStyle: { bgColor, paddingBottom, marginBottom: 0 }, text: '' }),
-  ]
+export type BoxProps = {
+  color?: Color
+  fontSize?: FontSize
+  isBold?: boolean
+  onClick?: ChatiumActions
+} & BoxContent &
+  CommonBlockProps
+
+// if tokens is defined box is ignored, so they shouldn't be defined together
+export type BoxContent = { box: string; tokens?: never } | { tokens: BoxToken[]; box?: never }
+
+type BoxToken = string | CustomToken
+interface CustomToken {
+  v: string
+  s?: FontStyle[]
+  onClick?: ChatiumActions
+}
+
+export async function Box(props: BoxProps, ...children: ChatiumChildNode[]): Promise<BoxBlock> {
+  return {
+    type: 'box',
+    ...props,
+    blocks: await flattenChildren(children),
+  }
 }

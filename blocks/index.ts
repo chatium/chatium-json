@@ -1,5 +1,6 @@
 import { Audio, AudioBlock } from './Audio'
-import { Box } from './Box'
+import { Box,BoxBlock } from './Box'
+import { BoxAsText } from './BoxAsText'
 import { Button, ButtonBlock } from './Button'
 import { Field, FieldBlock } from './Field'
 import { Footer, FooterBlock } from './Footer'
@@ -10,12 +11,14 @@ import { Search, SearchBlock } from './Search'
 import { Slot, SlotBlock } from './Slot'
 import { Text, TextBlock } from './Text'
 import { Video, VideoBlock } from './Video'
+import { VueTemplate, VueTemplateBlock } from './VueTemplate'
 
-export { Audio, Box, Button, Footer, Image, ListItem, Search, Slot, Text, Video, Form, Field }
+export { Audio, BoxAsText, Box, Button, Footer, Image, ListItem, Search, Slot, Text, Video, Form, Field, VueTemplate }
 
 export type ChatiumBlock =
   | AudioBlock
   | ButtonBlock
+  | BoxBlock
   | FooterBlock
   | ImageBlock
   | ListItemBlock
@@ -25,3 +28,4 @@ export type ChatiumBlock =
   | VideoBlock
   | FormBlock
   | FieldBlock
+  | VueTemplateBlock

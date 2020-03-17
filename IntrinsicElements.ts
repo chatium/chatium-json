@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-namespace */
 import { Audio, AudioProps } from './blocks/Audio'
 import { Box, BoxProps } from './blocks/Box'
+import { BoxAsText, BoxAsTextProps } from './blocks/BoxAsText'
 import { Button, ButtonProps } from './blocks/Button'
 import { Footer, FooterProps } from './blocks/Footer'
 import { Image, ImageProps } from './blocks/Image'
@@ -8,8 +9,9 @@ import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
 import { Slot, SlotProps } from './blocks/Slot'
 import { Text, TextProps } from './blocks/Text'
-import { Screen, ScreenProps } from './Screen'
 import { Video, VideoProps } from './blocks/Video'
+import { VueTemplate, VueTemplateProps } from './blocks/VueTemplate'
+import { Screen, ScreenProps } from './Screen'
 import { Fragment } from './utils/Fragment'
 
 /**
@@ -22,6 +24,7 @@ declare global {
     interface IntrinsicElements {
       audio: AudioProps
       box: BoxProps
+      'box-as-text': BoxAsTextProps
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
       footer: FooterProps
@@ -32,6 +35,7 @@ declare global {
       slot: SlotProps
       text: TextProps
       video: VideoProps
+      'vue-template': VueTemplateProps
     }
   }
 }
@@ -39,6 +43,7 @@ declare global {
 export const intrinsicBlocks = {
   audio: Audio,
   box: Box,
+  'box-as-text': BoxAsText,
   button: Button,
   f: Fragment,
   footer: Footer,
@@ -49,4 +54,5 @@ export const intrinsicBlocks = {
   slot: Slot,
   text: Text,
   video: Video,
+  'vue-template': VueTemplate,
 }
