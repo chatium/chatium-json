@@ -37,7 +37,7 @@ export async function Slot(props: AsyncSlotInfo & { target: SlotTarget }): Promi
  * @param slots
  */
 export async function injectSlots(
-  screen: Promise<ChatiumScreen>,
+  screen: ChatiumScreen | Promise<ChatiumScreen>,
   slots: Record<string, SlotContent | Promise<SlotContent>>,
 ): Promise<ChatiumScreen> {
   const resolvedScreen = await screen
