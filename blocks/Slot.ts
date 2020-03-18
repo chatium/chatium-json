@@ -37,8 +37,8 @@ export async function Slot(props: AsyncSlotInfo & { target: SlotTarget }): Promi
  * @param slots
  */
 export async function injectSlots(
-  screen: Promise<ChatiumScreen>,
-  slots: Record<string, SlotContent | Promise<SlotContent>>,
+  screen: ChatiumScreen | Promise<ChatiumScreen>,
+  slots: InjectedSlots,
 ): Promise<ChatiumScreen> {
   const resolvedScreen = await screen
   const resolvedSlots = await normalizeSlots(slots)
@@ -51,6 +51,7 @@ export async function injectSlots(
   }
 }
 
+export type InjectedSlots = Record<string, SlotContent | Promise<SlotContent>>
 type SlotContent = SlotInfo | ChatiumScreen | string
 
 async function normalizeSlots(slots: Record<string, SlotContent | Promise<SlotContent>>): Promise<SlotsProps> {
