@@ -5,7 +5,7 @@ export interface CommonBlockProps extends WithKey {
   fallback?: ChatiumBlock
 }
 
-export type InputType = 'String' | 'Integer' | 'Text' | 'Color' | 'Money' | 'Entity' | 'Checkbox' | 'Select'
+export type InputType = 'String' | 'Integer' | 'Text' | 'Color' | 'Money' | 'Entity' | 'Checkbox' | 'Select' | 'Image'
 
 export interface WithKey {
   key?: ChatiumJsonKey
