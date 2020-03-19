@@ -5,10 +5,10 @@ export interface NavigateAction {
   openInExternalApp?: boolean
 }
 
-export function navigate(url: string, replace = false): NavigateAction {
+export function navigate(url: string, options?: Omit<NavigateAction, 'type' | 'url'>): NavigateAction {
   return {
     type: 'navigate',
     url,
-    replace,
+    ...options,
   }
 }
