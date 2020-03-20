@@ -35,7 +35,6 @@ interface ChatProps {
     message?: Message
     update_url?: string
   }
-  scrollTo: string
 }
 
 export interface ChatiumScreen {
@@ -50,6 +49,7 @@ export interface ChatiumScreen {
   search?: SearchProps
   slots?: SlotsProps
   needPhoneCheck?: boolean
+  scrollTo?: string
 }
 
 export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search'>
