@@ -2,9 +2,8 @@ import { CommonBlockProps } from './commonTypes'
 
 export interface VideoBlock extends CommonBlockProps {
   type: 'video'
-  downloadUrl: string
+  videoHash: string
   imageUrl?: string
-  videoHash?: string
 }
 
 export type VideoProps = Omit<VideoBlock, 'type'>
