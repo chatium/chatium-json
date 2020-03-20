@@ -35,6 +35,7 @@ interface ChatProps {
     message?: Message
     update_url?: string
   }
+  scrollTo: string
 }
 
 export interface ChatiumScreen {
