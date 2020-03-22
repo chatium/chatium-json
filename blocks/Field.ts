@@ -25,6 +25,7 @@ export enum BlockFactory {
 }
 
 export interface ConfigProps {
+  horizontal?: boolean
   blocksFactory?: BlockFactory
   fields: Array<FieldBlock>
 }
