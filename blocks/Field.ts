@@ -19,6 +19,12 @@ export function Field(props: FieldProps): FieldBlock {
   }
 }
 
+export enum BlockFactory {
+  Chatium = 'Chatium',
+  Svg = 'Svg',
+}
+
 export interface ConfigProps {
+  blocksFactory?: BlockFactory
   fields: Array<FieldBlock>
 }
