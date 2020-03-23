@@ -4,6 +4,8 @@ export {
   BoxAsText,
   Button,
   ChatiumBlock,
+  Slider,
+  Embed,
   Image,
   ListItem,
   Search,

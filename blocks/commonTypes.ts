@@ -5,6 +5,13 @@ export interface CommonBlockProps extends WithKey {
   fallback?: ChatiumBlock
 }
 
+export const emptyContainerStyle = {
+  paddingTop: 0,
+  paddingBottom: 0,
+  paddingLeft: 0,
+  paddingRight: 0,
+}
+
 export type InputType = 'String' | 'Integer' | 'Text' | 'Color' | 'Money' | 'Entity' | 'Checkbox' | 'Select' | 'Image'
 
 export interface WithKey {
