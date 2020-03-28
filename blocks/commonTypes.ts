@@ -1,3 +1,4 @@
+import { ChatiumActions } from '../actions'
 import { ChatiumBlock } from './index'
 
 export interface CommonBlockProps extends WithKey {
@@ -44,9 +45,9 @@ export interface Icon {
 
 export interface Author {
   id: string
-  url?: string
   name: string
   avatar: Icon
+  onClick?: ChatiumActions
 }
 
 export type ImageSize = ImageSizePreset | number
