@@ -24,6 +24,14 @@ export type Color = string
 export type FontSize = 'mini' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge'
 export type FontStyle = FontSize | 'bold' | 'semibold' | 'italic' | 'underlined' | 'link' | 'muted' | 'warning'
 
+export enum ColorPallete {
+  Primary = 'dodgerblue',
+  Secondary = '#F0F0F0',
+  Gray = '#999999',
+  Waiting = '#999900',
+  White = '#FFFFFF',
+}
+
 export interface Icon {
   appIcon?: string
   bgColor?: Color
