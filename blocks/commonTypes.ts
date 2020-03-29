@@ -35,6 +35,15 @@ export enum ColorPallete {
   White = '#FFFFFF',
 }
 
+export enum LightColorPallete {
+  Primary = '#F0F0F7',
+  Secondary = '#F5F5F5',
+  Waiting = '#FFFFEE',
+  Success = '#EEFFEE',
+  Danger = '#FFEEEE',
+  White = '#FFFFFF',
+}
+
 export interface Icon {
   appIcon?: string
   bgColor?: Color
