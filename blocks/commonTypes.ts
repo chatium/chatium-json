@@ -30,6 +30,8 @@ export enum ColorPallete {
   Secondary = '#F0F0F0',
   Gray = '#999999',
   Waiting = '#999900',
+  Success = '#339933',
+  Danger = '#ea4955',
   White = '#FFFFFF',
 }
 
