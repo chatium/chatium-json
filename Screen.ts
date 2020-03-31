@@ -35,6 +35,7 @@ interface ChatProps {
     message?: Message
     update_url?: string
   }
+  render_inverted?: boolean
 }
 
 export interface ChatiumScreen {
