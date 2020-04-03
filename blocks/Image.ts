@@ -4,6 +4,7 @@ export interface ImageBlock extends CommonBlockProps {
   type: 'image'
   downloadUrl: string
   width?: number
+  image?: any
 }
 
 export type ImageProps = Omit<ImageBlock, 'type'>
