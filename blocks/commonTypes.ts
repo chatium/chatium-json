@@ -13,7 +13,17 @@ export const emptyContainerStyle = {
   paddingRight: 0,
 }
 
-export type InputType = 'String' | 'Integer' | 'Text' | 'Color' | 'Money' | 'Entity' | 'Checkbox' | 'Select' | 'Image'
+export type InputType =
+  | 'String'
+  | 'Integer'
+  | 'Text'
+  | 'Color'
+  | 'Money'
+  | 'Entity'
+  | 'Checkbox'
+  | 'Select'
+  | 'Image'
+  | 'ItemList'
 
 export interface WithKey {
   key?: ChatiumJsonKey
@@ -39,6 +49,7 @@ export enum LightColorPallete {
   Primary = '#F0F0F7',
   Secondary = '#F5F5F5',
   Waiting = '#FFFFEE',
+  Gray = '#CCCCCC',
   Success = '#EEFFEE',
   Danger = '#FFEEEE',
   White = '#FFFFFF',
