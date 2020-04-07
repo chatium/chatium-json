@@ -10,6 +10,7 @@ export interface ButtonBlock extends CommonBlockProps {
   iconPosition?: 'left' | 'right'
   onClick?: ChatiumActions
   title?: string
+  buttonType?: 'primary' | 'transparent' | 'headerRight' | 'headerLeft' | 'warning' | 'warningTransparent' | 'flat'
 }
 
 export type ButtonProps = Omit<ButtonBlock, 'type'>
