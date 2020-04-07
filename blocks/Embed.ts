@@ -4,9 +4,9 @@ import { CommonBlockProps } from './commonTypes'
 
 export interface EmbedBlock extends CommonBlockProps {
   type: 'embed'
-  link: HeapId
+  link: HeapId | null
   entityType: string
-  requiredFeatures: Array<string>
+  preset: string
 }
 
 export type EmbedProps = Omit<EmbedBlock, 'type'>
