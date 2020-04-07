@@ -24,6 +24,8 @@ export type InputType =
   | 'Select'
   | 'Image'
   | 'ItemList'
+  | 'Config'
+  | 'Enum'
 
 export interface WithKey {
   key?: ChatiumJsonKey

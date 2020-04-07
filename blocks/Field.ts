@@ -3,10 +3,12 @@ import { CommonBlockProps, InputType } from './commonTypes'
 export interface FieldBlock extends CommonBlockProps {
   type: 'field'
   input: InputType
+  isContainer?: boolean
   inputProps?: object
   value?: any
   name?: string
   label: string
+  part?: string
   help?: string
 }
 
@@ -19,13 +21,9 @@ export function Field(props: FieldProps): FieldBlock {
   }
 }
 
-export enum BlockFactory {
-  Chatium = 'Chatium',
-  Svg = 'Svg',
-}
-
 export interface ConfigProps {
+  title?: string
+  fields: Array<FieldProps>
   horizontal?: boolean
-  blocksFactory?: BlockFactory
-  fields: Array<FieldBlock>
+  default?: object
 }
