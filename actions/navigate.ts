@@ -3,6 +3,7 @@ export interface NavigateAction {
   url: string
   replace?: boolean
   openInExternalApp?: boolean
+  resetStack?: true
 }
 
 export function navigate(url: string, options?: Omit<NavigateAction, 'type' | 'url'>): NavigateAction {
