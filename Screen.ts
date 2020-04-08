@@ -14,6 +14,7 @@ interface ChatProps {
   messages_edit_url: string
   messages_delete_url: string
   messages_changes_url: string
+  messages_react_url: string
   mark_as_read_url: string
   last_read_get_url: string
   last_message_id: string | null
