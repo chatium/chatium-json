@@ -25,6 +25,7 @@ interface ChatProps {
   current_author: Author
   group_author: Author | null
   messages_socket_id: string
+  reactions_socket_id: string
   last_read_at: number | null
   last_read_socket_id: string
   typing_socket_data: {
