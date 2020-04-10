@@ -6,6 +6,7 @@ import { ButtonProps } from './blocks/Button'
 import { Author } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
 import { SearchBlock, SearchProps } from './blocks/Search'
+import { ContextLink } from './ContextLink'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
 
 interface ChatProps {
@@ -48,6 +49,7 @@ export interface ChatiumScreen {
     compact: boolean
   }
   headerButton?: Pick<ButtonProps, 'icon' | 'onClick'>
+  contextLinks?: ContextLink[]
   socketId?: string
   blocks?: ChatiumBlock[]
   chat?: ChatProps
