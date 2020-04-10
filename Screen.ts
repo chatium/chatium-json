@@ -1,5 +1,5 @@
 import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
-import { Message } from 'modules/feed/types/messageType'
+import { MessageJson } from 'modules/feed/types/messageType'
 
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
@@ -35,7 +35,7 @@ interface ChatProps {
     uid: string
   }
   pinned: {
-    message?: Message
+    message?: MessageJson
     update_url?: string
   }
   render_inverted?: boolean
