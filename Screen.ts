@@ -52,6 +52,8 @@ export interface ChatiumScreen {
   contextLinks?: ContextLink[]
   socketId?: string
   blocks?: ChatiumBlock[]
+  dropdownMenuBlocks?: ChatiumBlock[]
+  pinnedBlocks?: ChatiumBlock[]
   chat?: ChatProps
   editor?: any
   footer?: FooterProps
