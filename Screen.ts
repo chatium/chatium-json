@@ -11,7 +11,7 @@ import { ChatiumChildNode, flattenChildren } from './utils/children'
 
 interface ChatProps {
   messages_get_url: string
-  messages_add_url: string
+  messages_add_url?: string
   messages_edit_url: string
   messages_delete_url: string
   messages_changes_url: string
