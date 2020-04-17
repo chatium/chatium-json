@@ -7,6 +7,7 @@ import { goBack, GoBackAction } from './goBack'
 import { navigate, NavigateAction } from './navigate'
 import { refresh, RefreshAction } from './refresh'
 import { resetSearch, ResetSearchAction } from './resetSearch'
+import { SelectContactsAction } from './selectContacts'
 import { showToast, ShowToastAction } from './showToast'
 
 export { apiCall, goBack, navigate, refresh, resetSearch, showToast, submit }
@@ -21,4 +22,5 @@ export type ChatiumAction =
   | SubmitAction
   | ConfirmPhoneAction
   | ConfirmEmailAction
+  | SelectContactsAction
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
