@@ -55,7 +55,6 @@ export interface ChatiumScreen {
   dropdownMenuBlocks?: ChatiumBlock[]
   pinnedBlocks?: ChatiumBlock[]
   chat?: ChatProps
-  editor?: any
   footer?: FooterProps
   search?: SearchProps
   slots?: SlotsProps
