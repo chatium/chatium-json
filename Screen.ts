@@ -53,6 +53,7 @@ export interface ChatiumScreen {
   socketId?: string
   blocks?: ChatiumBlock[]
   dropdownMenuBlocks?: ChatiumBlock[]
+  dropdownMenuInitiallyVisible?: boolean
   pinnedBlocks?: ChatiumBlock[]
   chat?: ChatProps
   footer?: FooterProps
