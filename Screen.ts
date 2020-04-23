@@ -29,12 +29,12 @@ export interface ChatProps {
   reactions_socket_id: string
   last_read_at: number | null
   last_read_socket_id: string
-  typing_socket_data: {
+  typing_socket_data?: {
     id: string
     name: string
     uid: string
   }
-  pinned: {
+  pinned?: {
     message?: MessageJson
     update_url?: string
   }

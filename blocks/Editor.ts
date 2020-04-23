@@ -7,7 +7,6 @@ import { ConfigProps } from './Field'
 export interface EditorBlock extends CommonBlockProps {
   type: 'editor'
   mode: EditMode
-  availableModes: EditMode[]
   model: any
   subject: any
   blocksFactory: any
