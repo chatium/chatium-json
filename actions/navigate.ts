@@ -3,6 +3,7 @@ export interface NavigateAction {
   url: string
   replace?: boolean
   openInExternalApp?: boolean
+  openInModalScreen?: boolean
   resetStack?: true
 }
 
