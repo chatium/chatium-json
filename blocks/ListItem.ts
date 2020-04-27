@@ -19,6 +19,7 @@ export interface ListItemBlock extends CommonBlockProps {
   upTitle?: string
   upTitleColor?: Color
   url?: string
+  contextActions?: ContextAction[]
 }
 
 export type ListItemProps = Omit<ListItemBlock, 'type'>
@@ -28,4 +29,9 @@ export function ListItem(props: ListItemProps): ListItemBlock {
     type: 'screen',
     ...props,
   }
+}
+
+export interface ContextAction {
+  name: string
+  onClick: ChatiumActions
 }
