@@ -4,6 +4,7 @@ import { ChatiumBlock } from './index'
 export interface CommonBlockProps extends WithKey {
   containerStyle?: ContainerStyle
   fallback?: ChatiumBlock
+  onContext?: ChatiumActions
 }
 
 export const emptyContainerStyle = {
