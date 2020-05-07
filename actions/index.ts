@@ -9,10 +9,12 @@ import { navigate, NavigateAction } from './navigate'
 import { refresh, RefreshAction } from './refresh'
 import { resetSearch, ResetSearchAction } from './resetSearch'
 import { SelectContactsAction } from './selectContacts'
+import { ShowDialogAction } from './showDialog'
 import { showToast, ShowToastAction } from './showToast'
 
 export interface ShowContextMenuAction {
   type: 'showContextMenu'
+  title?: string
   menu: ContextMenuItem[]
 }
 
@@ -43,4 +45,5 @@ export type ChatiumAction =
   | SelectContactsAction
   | CopyToClipboardAction
   | ShowContextMenuAction
+  | ShowDialogAction
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
