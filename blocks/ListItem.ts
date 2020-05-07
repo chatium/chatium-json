@@ -25,6 +25,12 @@ export interface ListItemBlock extends CommonBlockProps {
 export type ListItemProps = Omit<ListItemBlock, 'type'>
 
 export function ListItem(props: ListItemProps): ListItemBlock {
+  // Приложение Артура отображает даты в секундах. На бекенде они передаются в миллисекундах.
+  // Тут я нормализую их.
+  if (props.updatedAtTimestamp && props.updatedAtTimestamp > 1000000000000) {
+    props.updatedAtTimestamp = Math.round(props.updatedAtTimestamp / 1000)
+  }
+
   return {
     type: 'screen',
     ...props,
