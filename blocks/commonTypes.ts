@@ -60,6 +60,7 @@ export enum LightColorPallete {
 
 export interface Icon {
   appIcon?: string
+  iconCssClass?: string
   bgColor?: Color
   color?: Color
   image?: string
