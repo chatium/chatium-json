@@ -1,4 +1,15 @@
-export { ChatiumActions, apiCall, goBack, navigate, refresh, resetSearch, showToast, copyToClipboard } from './actions'
+export {
+  ChatiumActions,
+  apiCall,
+  goBack,
+  navigate,
+  refresh,
+  resetSearch,
+  showToast,
+  copyToClipboard,
+  showContextMenu,
+  attachMedia,
+} from './actions'
 export {
   Audio,
   BoxAsText,

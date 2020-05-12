@@ -15,3 +15,11 @@ interface ShowDialogInputTypeText extends ShowDialogCommon {
 }
 
 export type ShowDialogAction = ShowDialogInputTypeText
+
+export function showTextDialog(options: Omit<ShowDialogInputTypeText, 'type' | 'inputType'>): ShowDialogInputTypeText {
+  return {
+    type: 'showDialog',
+    inputType: 'text',
+    ...options,
+  }
+}

@@ -1,0 +1,28 @@
+import { Account } from 'core/account'
+import { fileServiceUrl } from 'core/account/accountUtils'
+
+type MediaType = 'any' | 'image' | 'video' | 'audio'
+
+interface AttachMedia {
+  type: 'attachMedia'
+  menuTitle: string
+  progressTitle: string
+  multiple: boolean
+  mediaType?: MediaType
+  filePutUrl: string
+  hashPutUrl: string
+}
+
+export type AttachMediaAction = AttachMedia
+
+export function attachMedia(
+  account: Account,
+  props: { multiple: boolean; hashPutUrl: string; menuTitle: string; mediaType?: MediaType },
+): AttachMediaAction {
+  return {
+    type: 'attachMedia',
+    progressTitle: 'Загрузка файлов',
+    filePutUrl: fileServiceUrl(account),
+    ...props,
+  }
+}

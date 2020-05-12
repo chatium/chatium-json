@@ -1,6 +1,7 @@
 import { submit, SubmitAction } from 'lib/chatium-json/actions/submit'
 
 import { apiCall, ApiCallAction } from './apiCall'
+import { attachMedia, AttachMediaAction } from './attachMedia'
 import { ConfirmEmailAction } from './confirmEmail'
 import { ConfirmPhoneAction } from './confirmPhone'
 import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
@@ -30,7 +31,18 @@ function showContextMenu(menu: ContextMenuItem[]): ShowContextMenuAction {
   }
 }
 
-export { apiCall, goBack, navigate, refresh, resetSearch, showToast, submit, copyToClipboard, showContextMenu }
+export {
+  apiCall,
+  goBack,
+  navigate,
+  refresh,
+  resetSearch,
+  showToast,
+  submit,
+  copyToClipboard,
+  showContextMenu,
+  attachMedia,
+}
 
 export type ChatiumAction =
   | ApiCallAction
@@ -46,4 +58,5 @@ export type ChatiumAction =
   | CopyToClipboardAction
   | ShowContextMenuAction
   | ShowDialogAction
+  | AttachMediaAction
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
