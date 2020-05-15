@@ -1,7 +1,7 @@
 import { Account } from 'core/account'
 import { fileServiceUrl } from 'core/account/accountUtils'
 
-type MediaType = 'any' | 'image' | 'video' | 'audio'
+export type MediaType = 'any' | 'image' | 'video' | 'audio'
 
 interface AttachMedia {
   type: 'attachMedia'
