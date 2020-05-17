@@ -3,6 +3,8 @@ import { CommonBlockProps } from './commonTypes'
 export interface VideoBlock extends CommonBlockProps {
   type: 'video'
   file?: object
+  videoSize?: object
+  url?: string
   imageUrl?: string
 }
 
