@@ -1,4 +1,5 @@
 import { Account } from 'core/account'
+import { fileServiceUploadEndpoint } from 'core/account/accountUtils'
 
 export type MediaType = 'any' | 'image' | 'video' | 'file'
 
