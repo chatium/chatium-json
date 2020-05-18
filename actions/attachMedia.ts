@@ -1,7 +1,7 @@
 import { Account } from 'core/account'
 import { fileServiceUploadEndpoint } from 'core/account/accountUtils'
 
-export type MediaType = 'any' | 'image' | 'video' | 'file'
+export type MediaType = 'any' | 'photo' | 'video' | 'none'
 
 interface AttachMedia {
   type: 'attachMedia'
@@ -11,13 +11,14 @@ interface AttachMedia {
   mediaType?: MediaType
   filePutUrl: string
   hashPutUrl: string
+  file?: { type: string }
 }
 
 export type AttachMediaAction = AttachMedia
 
 export function attachMedia(
   account: Account,
-  props: { multiple: boolean; hashPutUrl: string; menuTitle: string; mediaType?: MediaType },
+  props: { multiple: boolean; hashPutUrl: string; menuTitle: string; mediaType?: MediaType; file?: { type: string } },
 ): AttachMediaAction {
   return {
     type: 'attachMedia',
