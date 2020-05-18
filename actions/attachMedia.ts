@@ -22,7 +22,7 @@ export function attachMedia(
   return {
     type: 'attachMedia',
     progressTitle: 'Загрузка файлов',
-    filePutUrl: fileServiceUrl(account),
+    filePutUrl: fileServiceUploadEndpoint(account),
     ...props,
   }
 }
