@@ -10,7 +10,7 @@ interface AttachMedia {
   multiple: boolean
   mediaType?: MediaType
   filePutUrl: string
-  hashPutUrl: string
+  submitUrl: string
   file?: { type: string }
 }
 
@@ -18,7 +18,7 @@ export type AttachMediaAction = AttachMedia
 
 export function attachMedia(
   account: Account,
-  props: { multiple: boolean; hashPutUrl: string; menuTitle: string; mediaType?: MediaType; file?: { type: string } },
+  props: { multiple: boolean; submitUrl: string; menuTitle: string; mediaType?: MediaType; file?: { type: string } },
 ): AttachMediaAction {
   return {
     type: 'attachMedia',
