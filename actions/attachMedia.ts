@@ -16,13 +16,9 @@ interface AttachMedia {
 
 export type AttachMediaAction = AttachMedia
 
-export function attachMedia(
-  account: Account,
-  props: { multiple: boolean; submitUrl: string; menuTitle: string; mediaType?: MediaType; file?: { type: string } },
-): AttachMediaAction {
+export function attachMedia(account: Account, props: Omit<AttachMedia, 'type' | 'filePutUrl'>): AttachMediaAction {
   return {
     type: 'attachMedia',
-    progressTitle: 'Загрузка файлов',
     filePutUrl: fileServiceUniversalUploadEndpoint(account),
     ...props,
   }
