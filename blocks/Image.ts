@@ -6,6 +6,10 @@ export interface ImageBlock extends CommonBlockProps {
   width?: number
   height?: number
   image?: any
+  imageSize?: {
+    width: number
+    height: number
+  }
 }
 
 export type ImageProps = Omit<ImageBlock, 'type'>
