@@ -1,5 +1,5 @@
 import { Account } from 'core/account'
-import { fileServiceUploadEndpoint } from 'core/account/accountUtils'
+import { fileServiceUniversalUploadEndpoint } from 'core/account/accountUtils'
 
 export type MediaType = 'any' | 'photo' | 'video' | 'none'
 
@@ -23,7 +23,7 @@ export function attachMedia(
   return {
     type: 'attachMedia',
     progressTitle: 'Загрузка файлов',
-    filePutUrl: fileServiceUploadEndpoint(account),
+    filePutUrl: fileServiceUniversalUploadEndpoint(account),
     ...props,
   }
 }
