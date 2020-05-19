@@ -69,6 +69,10 @@ export interface Icon {
   text?: string | number
 }
 
+export interface StatusIcon extends Icon {
+  isAvailable: boolean
+}
+
 export interface Author {
   id: string
   name: string
