@@ -5,6 +5,7 @@ import { attachMedia, AttachMediaAction } from './attachMedia'
 import { ConfirmEmailAction } from './confirmEmail'
 import { ConfirmPhoneAction } from './confirmPhone'
 import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
+import { feedMessage, FeedMessageAction } from './feedMessage'
 import { goBack, GoBackAction } from './goBack'
 import { navigate, NavigateAction } from './navigate'
 import { refresh, RefreshAction } from './refresh'
@@ -42,6 +43,7 @@ export {
   copyToClipboard,
   showContextMenu,
   attachMedia,
+  feedMessage,
 }
 
 export type ChatiumAction =
@@ -59,4 +61,5 @@ export type ChatiumAction =
   | ShowContextMenuAction
   | ShowDialogAction
   | AttachMediaAction
+  | FeedMessageAction
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
