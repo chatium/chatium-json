@@ -4,6 +4,7 @@ export interface ImageBlock extends CommonBlockProps {
   type: 'image'
   downloadUrl: string
   width?: number
+  height?: number
   image?: any
 }
 
