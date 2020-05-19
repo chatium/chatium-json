@@ -2,6 +2,8 @@ import { CommonBlockProps } from './commonTypes'
 
 export interface AudioBlock extends CommonBlockProps {
   type: 'audio'
+  title?: string
+  description?: string
   downloadUrl: string
   fileHash: string | null
 }
