@@ -21,3 +21,16 @@ export function Button(props: ButtonProps): ButtonBlock {
     ...props,
   }
 }
+
+export function StandardButton(props: ButtonProps): ButtonBlock {
+  return {
+    type: 'button',
+    containerStyle: {
+      paddingTop: 5,
+      paddingLeft: 10,
+      paddingBottom: 5,
+      paddingRight: 10,
+    },
+    ...props,
+  }
+}

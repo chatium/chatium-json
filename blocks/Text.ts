@@ -33,3 +33,20 @@ export async function Text(props: TextProps, ...children: ChatiumChildNode[]): P
     blocks: await flattenChildren(children),
   }
 }
+
+export async function EmptyTextBlock(): Promise<TextBlock> {
+  return {
+    type: 'text',
+    text: '',
+    containerStyle: {
+      paddingLeft: 0,
+      paddingBottom: 0,
+      paddingTop: 0,
+      paddingRight: 0,
+      marginBottom: 0,
+      marginTop: 0,
+      marginLeft: 0,
+      marginRight: 0,
+    },
+  }
+}
