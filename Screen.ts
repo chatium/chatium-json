@@ -39,7 +39,7 @@ export interface ChatProps {
     update_url?: string
   }
   render_inverted?: boolean
-  get_context_action_url: string
+  on_context_api_call_url: string
 }
 
 export interface ChatiumScreen {
