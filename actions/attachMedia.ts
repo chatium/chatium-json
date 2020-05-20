@@ -1,7 +1,12 @@
 import { Account } from 'core/account'
 import { fileServiceUniversalUploadEndpoint } from 'core/account/accountUtils'
 
-export type MediaType = 'any' | 'photo' | 'video' | 'none'
+export enum MediaType {
+  Any = 'any',
+  Photo = 'photo',
+  Video = 'video',
+  None = 'none',
+}
 
 interface AttachMedia {
   type: 'attachMedia'
