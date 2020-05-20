@@ -6,6 +6,7 @@ export interface AudioBlock extends CommonBlockProps {
   description?: string
   downloadUrl: string
   fileHash: string | null
+  durationSeconds?: number
 }
 
 export type AudioProps = Omit<AudioBlock, 'type'>
