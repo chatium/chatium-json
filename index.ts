@@ -15,7 +15,7 @@ export {
   BoxAsText,
   Button,
   ChatiumBlock,
-  Slider,
+  Gallery,
   Embed,
   Image,
   ListItem,

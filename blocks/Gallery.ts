@@ -3,18 +3,18 @@ import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { CommonBlockProps } from './commonTypes'
 import { ChatiumBlock } from './index'
 
-export type SliderBlock = SliderProps & {
-  type: 'slider'
+export type GalleryBlock = GalleryProps & {
+  type: 'gallery'
   blocks?: ChatiumBlock[]
 }
 
-export type SliderProps = {
+export type GalleryProps = {
   onClick?: ChatiumActions
 } & CommonBlockProps
 
-export async function Slider(props: SliderProps, ...children: ChatiumChildNode[]): Promise<SliderBlock> {
+export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode[]): Promise<GalleryBlock> {
   return {
-    type: 'slider',
+    type: 'gallery',
     ...props,
     blocks: await flattenChildren(children),
   }

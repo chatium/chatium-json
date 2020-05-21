@@ -35,7 +35,7 @@ export function StandardButton(props: ButtonProps): ButtonBlock {
   }
 }
 
-export function ControlButton(title: string, onClick: ChatiumAction): ButtonBlock {
+export function ControlButton(title: string, onClick: ChatiumAction, props?: ButtonProps): ButtonBlock {
   return {
     type: 'button',
     buttonType: 'flat',
@@ -48,5 +48,6 @@ export function ControlButton(title: string, onClick: ChatiumAction): ButtonBloc
     },
     title: title,
     onClick: onClick,
+    ...props,
   }
 }

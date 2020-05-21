@@ -5,10 +5,10 @@ import { BoxAsText, BoxAsTextProps } from './blocks/BoxAsText'
 import { Button, ButtonProps } from './blocks/Button'
 import { Embed, EmbedProps } from './blocks/Embed'
 import { Footer, FooterProps } from './blocks/Footer'
+import { Gallery, GalleryProps } from './blocks/Gallery'
 import { Image, ImageProps } from './blocks/Image'
 import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
-import { Slider, SliderProps } from './blocks/Slider'
 import { Slot, SlotProps } from './blocks/Slot'
 import { Text, TextProps } from './blocks/Text'
 import { Video, VideoProps } from './blocks/Video'
@@ -34,7 +34,7 @@ declare global {
       image: ImageProps
       'list-item': ListItemProps
       screen: ScreenProps
-      slider: SliderProps
+      gallery: GalleryProps
       search: SearchProps
       slot: SlotProps
       text: TextProps
@@ -55,7 +55,7 @@ export const intrinsicBlocks = {
   'list-item': ListItem,
   screen: Screen,
   search: Search,
-  slider: Slider,
+  gallery: Gallery,
   embed: Embed,
   slot: Slot,
   text: Text,
