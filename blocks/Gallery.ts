@@ -5,7 +5,7 @@ import { ChatiumBlock } from './index'
 
 export type GalleryBlock = GalleryProps & {
   type: 'gallery'
-  blocks?: ChatiumBlock[]
+  slides?: ChatiumBlock[]
 }
 
 export type GalleryProps = {
@@ -16,6 +16,6 @@ export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode
   return {
     type: 'gallery',
     ...props,
-    blocks: await flattenChildren(children),
+    slides: await flattenChildren(children),
   }
 }
