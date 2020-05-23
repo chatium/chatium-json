@@ -9,6 +9,7 @@ import { feedMessage, FeedMessageAction } from './feedMessage'
 import { goBack, GoBackAction } from './goBack'
 import { navigate, NavigateAction } from './navigate'
 import { refresh, RefreshAction } from './refresh'
+import { requestPayment, RequestPaymentAction } from './requestPayment'
 import { resetSearch, ResetSearchAction } from './resetSearch'
 import { SelectContactsAction } from './selectContacts'
 import { ShowDialogAction } from './showDialog'
@@ -44,6 +45,7 @@ export {
   showContextMenu,
   attachMedia,
   feedMessage,
+  requestPayment,
 }
 
 export type ChatiumAction =
@@ -62,4 +64,5 @@ export type ChatiumAction =
   | ShowDialogAction
   | AttachMediaAction
   | FeedMessageAction
+  | RequestPaymentAction
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
