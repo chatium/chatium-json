@@ -3,7 +3,7 @@ import { MessageJson } from 'modules/feed/types/messageType'
 
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
-import { Author } from './blocks/commonTypes'
+import { Author, Icon } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
 import { SearchBlock, SearchProps } from './blocks/Search'
 import { ContextLink } from './ContextLink'
@@ -62,6 +62,7 @@ export interface ChatiumScreen {
   slots?: SlotsProps
   needPhoneCheck?: boolean
   scrollTo?: string
+  logo?: Icon
 }
 
 export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search'>
