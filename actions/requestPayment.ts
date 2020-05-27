@@ -14,7 +14,7 @@ export function requestPayment(
   amount: number,
   description: string,
   integration: PaymentIntegration,
-  payload: object,
+  payload: object = {},
 ): RequestPaymentAction {
   return {
     type: 'requestPayment',
