@@ -1,5 +1,5 @@
 import { Account } from 'core/account'
-import { fileServiceUniversalUploadEndpoint } from 'core/account/accountUtils'
+import { fileServiceUniversalUploadEndpoint } from 'core/utils/fileService'
 
 export enum MediaType {
   Any = 'any',
