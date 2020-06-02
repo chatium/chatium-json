@@ -3,7 +3,6 @@ import { Audio, AudioProps } from './blocks/Audio'
 import { Box, BoxProps } from './blocks/Box'
 import { BoxAsText, BoxAsTextProps } from './blocks/BoxAsText'
 import { Button, ButtonProps } from './blocks/Button'
-import { Embed, EmbedProps } from './blocks/Embed'
 import { Footer, FooterProps } from './blocks/Footer'
 import { Gallery, GalleryProps } from './blocks/Gallery'
 import { Image, ImageProps } from './blocks/Image'
@@ -12,7 +11,6 @@ import { Search, SearchProps } from './blocks/Search'
 import { Slot, SlotProps } from './blocks/Slot'
 import { Text, TextProps } from './blocks/Text'
 import { Video, VideoProps } from './blocks/Video'
-import { VueTemplate, VueTemplateProps } from './blocks/VueTemplate'
 import { Screen, ScreenProps } from './Screen'
 import { Fragment } from './utils/Fragment'
 
@@ -30,7 +28,6 @@ declare global {
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
       footer: FooterProps
-      embed: EmbedProps
       image: ImageProps
       'list-item': ListItemProps
       screen: ScreenProps
@@ -39,7 +36,6 @@ declare global {
       slot: SlotProps
       text: TextProps
       video: VideoProps
-      'vue-template': VueTemplateProps
     }
   }
 }
@@ -56,9 +52,7 @@ export const intrinsicBlocks = {
   screen: Screen,
   search: Search,
   gallery: Gallery,
-  embed: Embed,
   slot: Slot,
   text: Text,
   video: Video,
-  'vue-template': VueTemplate,
 }
