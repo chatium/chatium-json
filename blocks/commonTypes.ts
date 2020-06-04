@@ -41,6 +41,7 @@ export type FontStyle = FontSize | 'bold' | 'semibold' | 'italic' | 'underlined'
 export enum ColorPallete {
   Primary = 'dodgerblue',
   Secondary = '#F0F0F0',
+  Dark = '#333333',
   Gray = '#999999',
   Waiting = '#999900',
   Success = '#339933',
