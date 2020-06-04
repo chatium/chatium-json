@@ -3,6 +3,7 @@ import { types } from 'util'
 import { ChatiumScreen } from '../Screen'
 import { WithKey } from './commonTypes'
 
+//Что есть slot в целом? Можно ли сейчас добавлять в рендер такой тип?
 type SlotTarget = 'left' | 'right'
 export type SlotsProps = Record<string, SlotInfo>
 
