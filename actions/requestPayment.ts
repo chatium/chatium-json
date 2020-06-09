@@ -24,38 +24,39 @@ export function requestPayment(
   integration: PaymentIntegration,
   payload: object = {},
 ): RequestPaymentAction | ApiCallAction | NavigateAction {
-  if (!ctx.env.web) {
-    if (integration === PaymentIntegration.CloudPayments) {
-      const params = [
-        `publicid=${encodeURIComponent(get<string>('payments.cloudpayment.publicId'))}`,
-        `description=${encodeURIComponent(description)}`,
-        `amount=${encodeURIComponent(amount)}`,
-        `token=${encodeURIComponent(token)}`,
-      ]
-      return navigate(`https://chatium.com/pay/cloudpayment.html?${params.join('&')}`, {
-        openInBrowser: true,
-      })
-    } else {
-      return {
-        type: 'apiCall',
-        url: ctx.account.url('/payment/request'),
-        apiParams: {
-          token,
-          amount,
-          description,
-          integration,
-          payload,
-        },
-      }
-    }
+  // if (true) {
+  //!ctx.env.web) {
+  if (integration === PaymentIntegration.CloudPayments) {
+    const params = [
+      `publicid=${encodeURIComponent(get<string>('payments.cloudpayment.publicId'))}`,
+      `description=${encodeURIComponent(description)}`,
+      `amount=${encodeURIComponent(amount)}`,
+      `token=${encodeURIComponent(token)}`,
+    ]
+    return navigate(`https://chatium.com/pay/cloudpayment.html?${params.join('&')}`, {
+      openInBrowser: true,
+    })
   } else {
     return {
-      type: 'requestPayment',
-      token,
-      amount,
-      description,
-      integration,
-      payload,
+      type: 'apiCall',
+      url: ctx.account.url('/payment/request'),
+      apiParams: {
+        token,
+        amount,
+        description,
+        integration,
+        payload,
+      },
     }
   }
+  // } else {
+  //   return {
+  //     type: 'requestPayment',
+  //     token,
+  //     amount,
+  //     description,
+  //     integration,
+  //     payload,
+  //   }
+  // }
 }
