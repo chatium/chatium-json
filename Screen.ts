@@ -1,11 +1,13 @@
 import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
 import { MessageJson } from 'modules/feed/types/messageType'
 
+import { ChatiumAction } from './actions'
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
 import { Author, Icon } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
 import { SearchBlock, SearchProps } from './blocks/Search'
+import { TextBlock } from './blocks/Text'
 import { ContextLink } from './ContextLink'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
 
@@ -42,13 +44,24 @@ export interface ChatProps {
   on_context_api_call_url: string
 }
 
+export interface ChatiumScreenHeader {
+  compact: boolean
+  logo?: { icon: Icon; onClick?: ChatiumAction; onContext?: ChatiumAction }
+  title?: TextBlock
+  description?: TextBlock
+  bottomGradientColors?: string[]
+  topGradientColors?: string[]
+  image?: {
+    downloadUrl: string
+    imageSize: { width: number; height: number }
+  }
+}
+
 export interface ChatiumScreen {
   title: string
   description?: string
   backUrl?: string
-  header?: {
-    compact: boolean
-  }
+  header?: ChatiumScreenHeader
   headerButton?: Pick<ButtonProps, 'icon' | 'onClick'>
   contextLinks?: ContextLink[]
   socketId?: string
