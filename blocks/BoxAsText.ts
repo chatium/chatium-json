@@ -1,3 +1,5 @@
+//Про семантику блоков вопрос: В чем концептуально разница между Text и BoxAsText?
+//В каких случаях какой из них надо использовать? И также хочется понять назначение блока Box
 import { ChatiumChildNode } from '../utils/children'
 import { ContainerStyle } from './commonTypes'
 import { Text } from './Text'
