@@ -83,6 +83,9 @@ export interface Author {
 export type ImageSize = ImageSizePreset | number
 export type ImageSizePreset = 'xxlarge' | 'xlarge' | 'large' | 'medium' | 'small'
 
+//точно нужен еще border сюда - необходимо задавать толщину, цвет, стиль.
+//пока не для конструктора-редактора, а именно для возможности использовать в своей верстке через json
+//если делать еще и в конструкторе, то атрибутами конкретных блоков уже
 export interface ContainerStyle {
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'space-between' | 'space-around'
   alignItems?: FlexAlignType

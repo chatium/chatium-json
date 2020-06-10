@@ -8,6 +8,8 @@ export type TextBlock = TextProps & {
   blocks?: ChatiumBlock[]
 }
 
+//думаю вот этот атрибут еще надо поддержать - https://reactnative.dev/docs/text#selectable
+//то есть в конечном итоге чтобы была возможность что-то скопипастить, если json разрешил это по данному тексту
 export type TextProps = {
   color?: Color
   fontSize?: FontSize

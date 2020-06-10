@@ -1,3 +1,7 @@
+//Не пробовал пока пользоваться этим полем, но видимо оно как раз предназначено для того чтобы делать формы в конечном итоге?
+//из того что есть уже в react native очень нужен еще вот такой контрол: https://reactnative.dev/docs/switch или его аналог
+//ну и для закрытия темы с формами какой-то аналог select (любой контрол с выбором одной опции из нескольких)
+
 import { CommonBlockProps, InputType } from './commonTypes'
 
 export interface FieldBlock extends CommonBlockProps {
