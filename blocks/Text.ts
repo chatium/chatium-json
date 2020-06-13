@@ -8,13 +8,18 @@ export type TextBlock = TextProps & {
   blocks?: ChatiumBlock[]
 }
 
-export type TextProps = {
+export type TextStyle = {
   color?: Color
   fontSize?: FontSize
   isBold?: boolean
+  lineHeight?: number
+}
+
+export type TextProps = {
   onClick?: ChatiumActions
 } & TextContent &
-  CommonBlockProps
+  CommonBlockProps &
+  TextStyle
 
 // if tokens is defined text is ignored, so they shouldn't be defined together
 export type TextContent = { text: string; tokens?: never } | { tokens: TextToken[]; text?: never }
@@ -37,6 +42,7 @@ export async function Text(props: TextProps, ...children: ChatiumChildNode[]): P
 export async function EmptyTextBlock(): Promise<TextBlock> {
   return {
     type: 'text',
+    lineHeight: 1.2,
     text: '',
     containerStyle: {
       paddingLeft: 0,
