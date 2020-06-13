@@ -3,6 +3,10 @@ import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { Color, CommonBlockProps, FontSize, FontStyle } from './commonTypes'
 import { ChatiumBlock } from './index'
 
+//насколько я понимаю html-теги в тексте не работают
+//думали на эту тему в целом? может псевдокод ввести или ограниченный набор обычных тегов?
+//кейс такой - абзац в котором только часть текста идет подчеркнутой или ссылка идет только с фрагмента текста
+//причем необязательно этим юзер в редактировании сразу может пользоваться, просто обработка того что прилетает с бека
 export type TextBlock = TextProps & {
   type: 'text'
   blocks?: ChatiumBlock[]

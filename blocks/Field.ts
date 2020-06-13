@@ -1,5 +1,7 @@
 import { CommonBlockProps, InputType } from './commonTypes'
 
+//это ведь в целом поле формы получается? а как можно его добавить на экран?
+//или это инпут только для всплывашек типа 'поменять ссылку'?
 export interface FieldBlock extends CommonBlockProps {
   type: 'field'
   input: InputType

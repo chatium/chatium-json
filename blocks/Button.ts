@@ -9,8 +9,11 @@ export interface ButtonBlock extends CommonBlockProps {
   icon?: Icon
   iconPosition?: 'left' | 'right'
   onClick?: ChatiumActions
+  //а где например долгий тап, по которому появляется возможность редактировать текст на кнопке?
   title?: string
+  //тип кнопки - это больше про оформление или назначение? или все сразу и считаем что первое вытекает из второго?
   buttonType?: 'primary' | 'transparent' | 'headerRight' | 'headerLeft' | 'warning' | 'warningTransparent' | 'flat'
+
 }
 
 export type ButtonProps = Omit<ButtonBlock, 'type'>
@@ -22,6 +25,8 @@ export function Button(props: ButtonProps): ButtonBlock {
   }
 }
 
+//правильно я понимаю что если в my funnels app нужны будут другие кнопки (другой паддинг к примеру), придется добавлять их здесь?
+//или свой json такие случаи покрывает?
 export function StandardButton(props: ButtonProps): ButtonBlock {
   return {
     type: 'button',
