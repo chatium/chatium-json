@@ -76,7 +76,7 @@ export interface ChatiumScreen {
   needPhoneCheck?: boolean
   scrollTo?: string
   logo?: Icon
-  appearance?: 'normal' | 'mobile'
+  layout?: 'stack' | 'fixed'
 }
 
 export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search'>
