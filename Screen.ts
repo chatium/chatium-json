@@ -1,13 +1,12 @@
 import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
 import { MessageJson } from 'modules/feed/types/messageType'
 
-import { ChatiumAction } from './actions'
 import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
 import { Author, Icon } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
+import { HeaderBlock, HeaderProps } from './blocks/Header'
 import { SearchBlock, SearchProps } from './blocks/Search'
-import { TextBlock } from './blocks/Text'
 import { ContextLink } from './ContextLink'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
 
@@ -44,25 +43,12 @@ export interface ChatProps {
   on_context_api_call_url: string
 }
 
-export interface ChatiumScreenHeader {
-  compact: boolean
-  logo?: { icon: Icon; onClick?: ChatiumAction; onContext?: ChatiumAction }
-  title?: TextBlock
-  description?: TextBlock
-  bottomGradientColors?: string[]
-  topGradientColors?: string[]
-  image?: {
-    downloadUrl: string
-    imageSize: { width: number; height: number }
-  }
-}
-
 export interface ChatiumScreen {
   title: string
   description?: string
   backUrl?: string
-  header?: ChatiumScreenHeader
-  headerButton?: Pick<ButtonProps, 'icon' | 'onClick'>
+  header?: HeaderProps
+  headerButton?: HeaderButton
   contextLinks?: ContextLink[]
   socketId?: string
   blocks?: ChatiumBlock[]
@@ -79,7 +65,12 @@ export interface ChatiumScreen {
   layout?: 'stack' | 'fixed'
 }
 
-export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search'>
+type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
+
+export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks'> & {
+  headerButton?: HeaderButton | Promise<HeaderButton>
+  pinnedBlocks?: ChatiumBlock[] | Promise<ChatiumBlock[]>
+}
 
 /**
  * Chatium-json screen constructor.
@@ -90,12 +81,15 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
   const flatBlocks = await flattenChildren(children)
 
   // extract search and footer blocks
+  let header: HeaderBlock | undefined
   let search: SearchBlock | undefined
   let footer: FooterBlock | undefined
   const slots: Record<string, SlotBlock> = {}
   const blocks: ChatiumBlock[] = []
   for (const b of flatBlocks) {
-    if (isSearchBlock(b)) {
+    if (isHeaderBlock(b)) {
+      header = b
+    } else if (isSearchBlock(b)) {
       search = b
     } else if (isFooterBlock(b)) {
       footer = b
@@ -108,13 +102,17 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
 
   return {
     ...props,
+    headerButton: await props.headerButton,
+    pinnedBlocks: await props.pinnedBlocks,
     blocks,
     footer,
+    header,
     search,
     slots,
   }
 }
 
 const isSearchBlock = (b: ChatiumBlock): b is SearchBlock => b.type === 'search'
+const isHeaderBlock = (b: ChatiumBlock): b is HeaderBlock => b.type === 'header'
 const isFooterBlock = (b: ChatiumBlock): b is FooterBlock => b.type === 'footer'
 const isSlotBlock = (b: ChatiumBlock): b is SlotBlock => b.type === 'slot'

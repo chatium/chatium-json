@@ -5,6 +5,7 @@ import { BoxAsText, BoxAsTextProps } from './blocks/BoxAsText'
 import { Button, ButtonProps } from './blocks/Button'
 import { Footer, FooterProps } from './blocks/Footer'
 import { Gallery, GalleryProps } from './blocks/Gallery'
+import { Header, HeaderProps } from './blocks/Header'
 import { Image, ImageProps } from './blocks/Image'
 import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
@@ -28,10 +29,11 @@ declare global {
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
       footer: FooterProps
+      gallery: GalleryProps
+      header: HeaderProps
       image: ImageProps
       'list-item': ListItemProps
       screen: ScreenProps
-      gallery: GalleryProps
       search: SearchProps
       slot: SlotProps
       text: TextProps
@@ -47,11 +49,12 @@ export const intrinsicBlocks = {
   button: Button,
   f: Fragment,
   footer: Footer,
+  gallery: Gallery,
+  header: Header,
   image: Image,
   'list-item': ListItem,
   screen: Screen,
   search: Search,
-  gallery: Gallery,
   slot: Slot,
   text: Text,
   video: Video,

@@ -1,5 +1,5 @@
-import { CommonBlockProps } from './commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
+import { CommonBlockProps } from './commonTypes'
 import { ChatiumBlock } from './index'
 
 export interface FooterProps extends CommonBlockProps {
