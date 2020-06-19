@@ -17,14 +17,14 @@ export interface ChatProps {
   messages_delete_url: string
   messages_changes_url: string
   messages_react_url: string
-  mark_as_read_url: string
-  last_read_get_url: string
+  mark_as_read_url?: string
+  last_read_get_url?: string
   last_message_id: string | null
   last_read_message_id: string | null
   support_paging: boolean
   files_put_url: string
   reply_quotes_enabled: boolean
-  current_author: Author
+  current_author: Author | null
   group_author: Author | null
   messages_socket_id: string
   reactions_socket_id: string
@@ -40,7 +40,7 @@ export interface ChatProps {
     update_url?: string
   }
   render_inverted?: boolean
-  on_context_api_call_url: string
+  on_context_api_call_url?: string
 }
 
 export interface ChatiumScreen {
