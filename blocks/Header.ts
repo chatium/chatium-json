@@ -28,10 +28,11 @@ type Props = Omit<HeaderProps, 'blocks' | 'title' | 'description'> & {
 }
 
 export async function Header(props: Props, ...children: ChatiumChildNode[]): Promise<HeaderBlock> {
+  const blocks = await flattenChildren(children)
   return {
     type: 'header',
     ...props,
-    blocks: await flattenChildren(children),
+    blocks: blocks.length ? blocks : undefined,
     title: await props.title,
     description: await props.description,
   }
