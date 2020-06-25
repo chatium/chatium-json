@@ -1,11 +1,14 @@
-import { get } from 'config'
-
 import { AccountCtx } from 'core/account'
 import { EnvCtx } from 'core/env/EnvCtx'
+import { ReadHeapCtx } from 'core/heap'
+import { LangCtx } from 'core/i18n'
 import { PaymentIntegration } from 'modules/payment/Payment'
+import { PaymentMethods } from 'modules/payment/PaymentMethod'
 
 import { ApiCallAction } from './apiCall'
+import { showToast } from './index'
 import { navigate, NavigateAction } from './navigate'
+import { ShowToastAction } from './showToast'
 
 export interface RequestPaymentAction {
   type: 'requestPayment'
@@ -16,19 +19,22 @@ export interface RequestPaymentAction {
   payload: object
 }
 
-export function requestPayment(
-  ctx: EnvCtx & AccountCtx,
+export async function requestPayment(
+  ctx: LangCtx & EnvCtx & AccountCtx & ReadHeapCtx,
   token: string,
   amount: number,
   description: string,
-  integration: PaymentIntegration,
-  payload: object = {},
-): RequestPaymentAction | ApiCallAction | NavigateAction {
-  // if (true) {
-  //!ctx.env.web) {
-  if (integration === PaymentIntegration.CloudPayments) {
+): Promise<RequestPaymentAction | ApiCallAction | NavigateAction | ShowToastAction> {
+  const paymentMethods = await PaymentMethods.findAll(ctx)
+  const defaultPaymentMethod = paymentMethods.find(paymentMethod => paymentMethod.default === 1)
+
+  if (!defaultPaymentMethod) {
+    return showToast(ctx.tt('Не настроена платежная система. Обратитесь к администратору.'))
+  }
+
+  if (defaultPaymentMethod.integration === PaymentIntegration.CloudPayments) {
     const params = [
-      `publicid=${encodeURIComponent(get<string>('payments.cloudpayment.publicId'))}`,
+      `publicid=${encodeURIComponent((defaultPaymentMethod.settings as { public: string }).public)}`,
       `description=${encodeURIComponent(description)}`,
       `amount=${encodeURIComponent(amount)}`,
       `token=${encodeURIComponent(token)}`,
@@ -36,7 +42,7 @@ export function requestPayment(
     return navigate(`https://chatium.com/pay/cloudpayment.html?${params.join('&')}`, {
       openInBrowser: true,
     })
-  } else {
+  } else if (defaultPaymentMethod.integration === PaymentIntegration.YandexKassa) {
     return {
       type: 'apiCall',
       url: ctx.account.url('/payment/request'),
@@ -44,19 +50,11 @@ export function requestPayment(
         token,
         amount,
         description,
-        integration,
-        payload,
+        integration: defaultPaymentMethod.integration,
+        paymentMethod: defaultPaymentMethod.id,
       },
     }
   }
-  // } else {
-  //   return {
-  //     type: 'requestPayment',
-  //     token,
-  //     amount,
-  //     description,
-  //     integration,
-  //     payload,
-  //   }
-  // }
+
+  return showToast(ctx.tt('Неизвестная платежная система. Обратитесь к администратору.'))
 }

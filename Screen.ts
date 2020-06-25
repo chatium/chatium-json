@@ -65,7 +65,7 @@ export interface ChatiumScreen {
   layout?: 'stack' | 'fixed'
 }
 
-type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
+export type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
 
 export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks'> & {
   headerButton?: HeaderButton | Promise<HeaderButton>
