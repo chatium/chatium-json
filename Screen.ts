@@ -108,7 +108,7 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
     pinnedBlocks: await props.pinnedBlocks,
     blocks,
     footer,
-    header,
+    header: header || props.header,
     search,
     slots,
   }
