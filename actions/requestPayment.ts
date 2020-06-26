@@ -42,7 +42,10 @@ export async function requestPayment(
     return navigate(`https://chatium.com/pay/cloudpayment.html?${params.join('&')}`, {
       openInBrowser: true,
     })
-  } else if (defaultPaymentMethod.integration === PaymentIntegration.YandexKassa) {
+  } else if (
+    defaultPaymentMethod.integration === PaymentIntegration.YandexKassa ||
+    defaultPaymentMethod.integration === PaymentIntegration.QiwiP2P
+  ) {
     return {
       type: 'apiCall',
       url: ctx.account.url('/payment/request'),
