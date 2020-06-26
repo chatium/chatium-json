@@ -65,11 +65,12 @@ export interface ChatiumScreen {
   layout?: 'stack' | 'fixed'
 }
 
-type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
+export type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
 
-export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks'> & {
+export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'> & {
   headerButton?: HeaderButton | Promise<HeaderButton>
   pinnedBlocks?: ChatiumBlock[] | Promise<ChatiumBlock[]>
+  backUrl?: string | Promise<string>
 }
 
 /**
@@ -102,11 +103,12 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
 
   return {
     ...props,
+    backUrl: await props.backUrl,
     headerButton: await props.headerButton,
     pinnedBlocks: await props.pinnedBlocks,
     blocks,
     footer,
-    header,
+    header: header || props.header,
     search,
     slots,
   }
