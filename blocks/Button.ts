@@ -28,6 +28,7 @@ export function StandardButton(props: ButtonProps): ButtonBlock {
     containerStyle: {
       paddingTop: 5,
       paddingBottom: 5,
+      marginBottom: 5,
     },
     ...props,
   }

@@ -2,6 +2,7 @@ import { AccountCtx } from 'core/account'
 import { EnvCtx } from 'core/env/EnvCtx'
 import { ReadHeapCtx } from 'core/heap'
 import { LangCtx } from 'core/i18n'
+import { OptionalUserCtx, UserRole } from 'core/user'
 import { PaymentIntegration } from 'modules/payment/Payment'
 import { PaymentMethods } from 'modules/payment/PaymentMethod'
 
@@ -20,7 +21,7 @@ export interface RequestPaymentAction {
 }
 
 export async function requestPayment(
-  ctx: LangCtx & EnvCtx & AccountCtx & ReadHeapCtx,
+  ctx: LangCtx & EnvCtx & AccountCtx & ReadHeapCtx & OptionalUserCtx,
   token: string,
   amount: number,
   description: string,
@@ -29,6 +30,9 @@ export async function requestPayment(
   const defaultPaymentMethod = paymentMethods.find(paymentMethod => paymentMethod.default === 1)
 
   if (!defaultPaymentMethod) {
+    if (ctx.user?.roles.includes(UserRole.Admin)) {
+      return ctx.account.navigate('/account/paymentmethod')
+    }
     return showToast(ctx.tt('Не настроена платежная система. Обратитесь к администратору.'))
   }
 
