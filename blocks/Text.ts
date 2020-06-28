@@ -61,7 +61,7 @@ export async function EmptyTextBlock(): Promise<TextBlock> {
 export async function ControlText(props: TextProps): Promise<TextBlock> {
   return {
     type: 'text',
-    fontSize: 'mini',
+    fontSize: 'small',
     color: '#999999',
     containerStyle: {
       paddingLeft: 10,
