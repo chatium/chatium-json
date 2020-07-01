@@ -25,3 +25,7 @@ export async function requestPayment(
     payload,
   }
 }
+
+export function humanizePaymentIntegration(integration: RequestPaymentIntegration): string {
+  return integration === 'cloudpayments' ? 'CloudPayments' : integration === 'yandexkassa' ? 'Yandex.Kassa' : 'Qiwi P2P'
+}
