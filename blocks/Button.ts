@@ -45,7 +45,7 @@ export function ControlButton(title: string, onClick: ChatiumAction, props?: But
       paddingBottom: 5,
       paddingRight: 10,
     },
-    title: title,
+    title,
     onClick: onClick,
     ...props,
   }
