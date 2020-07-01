@@ -4,6 +4,7 @@ export interface VideoBlock extends CommonBlockProps {
   type: 'video'
   file?: object
   videoSize?: object
+  videoAspectRatio?: object
   url?: string
   imageUrl?: string
 }
