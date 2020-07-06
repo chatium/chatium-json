@@ -1,8 +1,10 @@
+import { ChatiumActions } from '../actions'
 import { CommonBlockProps } from './commonTypes'
 
 export interface ImageBlock extends CommonBlockProps {
   type: 'image'
   downloadUrl: string
+  onClick?: ChatiumActions
   width?: number
   height?: number
   image?: any

@@ -5,6 +5,7 @@ import { attachMedia, AttachMediaAction } from './attachMedia'
 import { ConfirmEmailAction } from './confirmEmail'
 import { ConfirmPhoneAction } from './confirmPhone'
 import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
+import { EmptyAction,emptyAction } from './emptyAction'
 import { feedMessage, FeedMessageAction } from './feedMessage'
 import { goBack, GoBackAction } from './goBack'
 import { navigate, NavigateAction } from './navigate'
@@ -46,6 +47,7 @@ export {
   attachMedia,
   feedMessage,
   requestPayment,
+  emptyAction,
 }
 
 export type ChatiumAction =
@@ -65,4 +67,5 @@ export type ChatiumAction =
   | AttachMediaAction
   | FeedMessageAction
   | RequestPaymentAction
+  | EmptyAction
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
