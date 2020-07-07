@@ -47,6 +47,7 @@ export enum ColorPallete {
   Success = '#339933',
   Danger = '#ea4955',
   White = '#FFFFFF',
+  Black = '#000000',
 }
 
 export enum LightColorPallete {
