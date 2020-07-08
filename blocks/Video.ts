@@ -24,7 +24,6 @@ export function Video(props: VideoProps): VideoBlock {
 export function InlineVideo(props: VideoProps): VideoBlock {
   return {
     type: 'inlineVideo',
-    ignoreSilentSwitch: true,
     ...props,
   }
 }
