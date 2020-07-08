@@ -15,16 +15,16 @@ export type GalleryProps = {
 export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode[]): Promise<GalleryBlock> {
   const slides: { blocks: ChatiumBlock[] }[] = []
 
-  for (const child of children) {
+  for (const child of await flattenChildren(children)) {
     slides.push({
-      blocks: await flattenChildren([child]),
+      blocks: [child],
     })
   }
 
   return {
     type: 'gallery',
     ...props,
-    slides: slides,
+    slides,
   }
 }
 
