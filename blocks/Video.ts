@@ -5,7 +5,7 @@ export interface VideoBlock extends CommonBlockProps {
   file?: object
   videoSize?: object
   videoAspectRatio?: object
-  ignoreSilentSwitch?: boolean
+  ignoreSilentSwitch?: string
   url?: string
   mp4Url?: string
   hlsUrl?: string
@@ -24,6 +24,7 @@ export function Video(props: VideoProps): VideoBlock {
 export function InlineVideo(props: VideoProps): VideoBlock {
   return {
     type: 'inlineVideo',
+    ignoreSilentSwitch: 'ignore',
     ...props,
   }
 }
