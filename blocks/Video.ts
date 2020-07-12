@@ -1,3 +1,4 @@
+import { ChatiumActions } from '../actions'
 import { CommonBlockProps } from './commonTypes'
 
 export interface VideoBlock extends CommonBlockProps {
@@ -10,6 +11,7 @@ export interface VideoBlock extends CommonBlockProps {
   mp4Url?: string
   hlsUrl?: string
   imageUrl?: string
+  onVideoEnd?: ChatiumActions
 }
 
 export type VideoProps = Omit<VideoBlock, 'type'>
