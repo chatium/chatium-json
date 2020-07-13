@@ -25,7 +25,7 @@ export type TextProps = {
 // if tokens is defined text is ignored, so they shouldn't be defined together
 export type TextContent = { text: string; tokens?: never } | { tokens: TextToken[]; text?: never }
 
-type TextToken = string | CustomToken
+export type TextToken = string | CustomToken
 interface CustomToken {
   v: string
   s?: FontStyle[]
