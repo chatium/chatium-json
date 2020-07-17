@@ -5,11 +5,12 @@ import { attachMedia, AttachMediaAction } from './attachMedia'
 import { ConfirmEmailAction } from './confirmEmail'
 import { ConfirmPhoneAction } from './confirmPhone'
 import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
+import { CustomAction,customAction } from './customAction'
 import { EmptyAction, emptyAction } from './emptyAction'
 import { feedMessage, FeedMessageAction } from './feedMessage'
 import { goBack, GoBackAction } from './goBack'
 import { navigate, NavigateAction } from './navigate'
-import { nextSlide,NextSlideAction } from './nextSlide'
+import { nextSlide, NextSlideAction } from './nextSlide'
 import { refresh, RefreshAction } from './refresh'
 import { requestPayment, RequestPaymentAction } from './requestPayment'
 import { resetSearch, ResetSearchAction } from './resetSearch'
@@ -50,6 +51,7 @@ export {
   requestPayment,
   emptyAction,
   nextSlide,
+  customAction,
 }
 
 export type ChatiumAction =
@@ -71,5 +73,6 @@ export type ChatiumAction =
   | RequestPaymentAction
   | EmptyAction
   | NextSlideAction
+  | CustomAction
 
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
