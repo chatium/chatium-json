@@ -8,7 +8,7 @@ interface ShowDialogCommon {
 }
 
 interface ShowDialogInputTypeText extends ShowDialogCommon {
-  inputType: 'text'
+  inputType: 'text' | 'code'
   placeholder?: string
   multiline?: boolean
   value?: string
@@ -20,6 +20,14 @@ export function showTextDialog(options: Omit<ShowDialogInputTypeText, 'type' | '
   return {
     type: 'showDialog',
     inputType: 'text',
+    ...options,
+  }
+}
+
+export function showCodeDialog(options: Omit<ShowDialogInputTypeText, 'type' | 'inputType'>): ShowDialogInputTypeText {
+  return {
+    type: 'showDialog',
+    inputType: 'code',
     ...options,
   }
 }
