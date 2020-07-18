@@ -27,7 +27,7 @@ export function showTextDialog(options: Omit<ShowDialogInputTypeText, 'type' | '
 export function showCodeDialog(options: Omit<ShowDialogInputTypeText, 'type' | 'inputType'>): ShowDialogInputTypeText {
   return {
     type: 'showDialog',
-    inputType: 'code',
+    inputType: 'text',
     ...options,
   }
 }
