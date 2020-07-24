@@ -13,8 +13,8 @@ export function BoxAsText(
   ...children: ChatiumChildNode[]
 ): ChatiumChildNode[] {
   return [
-    paddingTop && Text({ containerStyle: { bgColor, paddingTop, marginBottom: 0 }, text: '' }),
+    paddingTop && Text({ containerStyle: { bgColor, paddingTop, marginTop: 0, marginBottom: 0 }, text: '' }),
     children as ChatiumChildNode,
-    paddingBottom && Text({ containerStyle: { bgColor, paddingBottom, marginBottom: 0 }, text: '' }),
+    paddingBottom && Text({ containerStyle: { bgColor, paddingBottom, marginTop: 0, marginBottom: 0 }, text: '' }),
   ]
 }
