@@ -32,6 +32,7 @@ export interface ScreenResponse {
   data: ChatiumScreen
   // screens to be cached by their url, can be used to quick navigation prediction user behaviour
   appScreens?: Record<string, ChatiumScreen>
+  preloadMedia?: string[]
 }
 
 /**
