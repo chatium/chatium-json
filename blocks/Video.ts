@@ -7,6 +7,11 @@ export interface VideoBlock extends CommonBlockProps {
   videoSize?: object
   videoAspectRatio?: object
   ignoreSilentSwitch?: string
+  playInBackground?: boolean
+  playWhenInactive?: boolean
+  repeat?: boolean
+  muted?: boolean
+  paused?: boolean
   url?: string
   mp4Url?: string
   hlsUrl?: string
