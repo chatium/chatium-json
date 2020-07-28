@@ -59,6 +59,7 @@ export interface ChatiumScreen {
   footer?: FooterProps
   search?: SearchProps
   slots?: SlotsProps
+  needEmailCheck?: boolean
   needPhoneCheck?: boolean
   scrollTo?: string
   logo?: Icon
