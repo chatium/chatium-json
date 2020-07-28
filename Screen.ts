@@ -64,6 +64,7 @@ export interface ChatiumScreen {
   scrollTo?: string
   logo?: Icon
   layout?: 'stack' | 'fixed'
+  bgColor?: string
 }
 
 export type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
