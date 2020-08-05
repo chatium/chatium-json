@@ -5,7 +5,7 @@ import { ChatiumBlock } from './index'
 
 export type GalleryBlock = GalleryProps & {
   type: 'gallery'
-  slides: Array<{ blocks: ChatiumBlock[] }>
+  slides: Array<{ content?: ChatiumBlock } | { blocks?: ChatiumBlock[] }>
 }
 
 export type GalleryProps = {
@@ -29,7 +29,8 @@ export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode
 }
 
 export interface Slide {
-  blocks: ChatiumBlock[]
+  blocks?: ChatiumBlock[]
+  content?: ChatiumBlock
 }
 
 export async function SimpleGallery(props: GalleryProps, children: ChatiumChildNode[]): Promise<GalleryBlock> {
