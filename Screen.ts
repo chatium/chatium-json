@@ -5,6 +5,7 @@ import { ChatiumBlock } from './blocks'
 import { ButtonProps } from './blocks/Button'
 import { Author, Icon } from './blocks/commonTypes'
 import { FooterBlock, FooterProps } from './blocks/Footer'
+import { GalleryProps } from './blocks/Gallery'
 import { HeaderBlock, HeaderProps } from './blocks/Header'
 import { SearchBlock, SearchProps } from './blocks/Search'
 import { ContextLink } from './ContextLink'
@@ -56,6 +57,7 @@ export interface ChatiumScreen {
   dropdownMenuInitiallyVisible?: boolean
   pinnedBlocks?: ChatiumBlock[]
   chat?: ChatProps
+  fullScreenGallery?: GalleryProps
   footer?: FooterProps
   search?: SearchProps
   slots?: SlotsProps
