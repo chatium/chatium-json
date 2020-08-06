@@ -1,7 +1,7 @@
 import { ChatiumActions } from '../actions'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { OverlayProps } from '../utils/Overlay'
-import { CommonBlockProps } from './commonTypes'
+import { CommonBlockProps, ContainerStyle } from './commonTypes'
 import { ChatiumBlock } from './index'
 
 export type GalleryBlock = GalleryProps & {
@@ -34,6 +34,8 @@ export interface Slide {
   blocks?: ChatiumBlock[]
   content?: ChatiumBlock
   overlay?: OverlayProps
+  containerStyle?: ContainerStyle
+  stretchContent?: boolean
 }
 
 export async function SimpleGallery(props: GalleryProps, children: ChatiumChildNode[]): Promise<GalleryBlock> {
