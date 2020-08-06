@@ -4,6 +4,7 @@ export interface NavigateAction {
   replace?: boolean
   openInExternalApp?: boolean
   openInModalScreen?: boolean
+  fullScreenModal?: boolean
   openInCurrentScreen?: boolean
   openInBrowser?: boolean
   resetStack?: true
