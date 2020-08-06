@@ -11,6 +11,7 @@ export type GalleryBlock = GalleryProps & {
 
 export type GalleryProps = {
   onClick?: ChatiumActions
+  initialSlideIndex?: number
 } & CommonBlockProps
 
 export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode[]): Promise<GalleryBlock> {
