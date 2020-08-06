@@ -117,6 +117,7 @@ export interface ContainerStyle {
   paddingRight?: number | string
   paddingTop?: number | string
   opacity?: number | string
+  bottom?: number | string
 }
 
 type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
