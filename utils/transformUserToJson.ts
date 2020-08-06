@@ -9,6 +9,6 @@ export function transformUserToJson(ctx: AccountCtx & LangCtx, user: User): Auth
     id: user.id,
     name: getUserDisplayName(ctx, user),
     avatar: prepareIcon(ctx.account, user.avatar),
-    onClick: [ctx.account.navigate(`user/${user.username ? user.username : user.id}`)],
+    onClick: [ctx.account.navigate(`user/${user.id}`)],
   }
 }
