@@ -45,9 +45,25 @@ export interface WithKey {
 
 export type ChatiumJsonKey = string | number
 
+export interface TextStyleInterface {
+  color?: Color
+  fontSize?: FontSize
+  isBold?: boolean
+  lineHeight?: number
+}
+
 export type Color = string
 export type FontSize = 'mini' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge'
-export type FontStyle = FontSize | 'bold' | 'semibold' | 'italic' | 'underlined' | 'link' | 'muted' | 'warning'
+export type FontStyle =
+  | FontSize
+  | 'bold'
+  | 'semibold'
+  | 'italic'
+  | 'underlined'
+  | 'link'
+  | 'muted'
+  | 'warning'
+  | TextStyleInterface
 
 export enum ColorPallete {
   Primary = 'dodgerblue',
