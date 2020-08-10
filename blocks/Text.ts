@@ -11,7 +11,7 @@ export type TextBlock = TextProps & {
 export type TextStyle = {
   color?: Color
   fontSize?: FontSize
-  styles?: FontStyle[]
+  styles?: FontStyle | FontStyle[]
   isBold?: boolean
   lineHeight?: number
 }

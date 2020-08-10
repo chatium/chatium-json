@@ -47,8 +47,7 @@ export type ChatiumJsonKey = string | number
 
 export interface TextStyleInterface {
   color?: Color
-  fontSize?: FontSize
-  isBold?: boolean
+  fontSize?: number
   lineHeight?: number
 }
 
@@ -134,6 +133,9 @@ export interface ContainerStyle {
   paddingTop?: number | string
   opacity?: number | string
   bottom?: number | string
+  borderRadius?: number
+  borderColor?: Color
+  borderWidth?: 'hairline' | number
 }
 
 type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
