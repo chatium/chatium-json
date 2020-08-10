@@ -52,6 +52,7 @@ export interface ChatiumScreen {
   headerButton?: HeaderButton
   contextLinks?: ContextLink[]
   socketId?: string
+  socketIds?: string[]
   blocks?: ChatiumBlock[]
   dropdownMenuBlocks?: ChatiumBlock[]
   dropdownMenuInitiallyVisible?: boolean
