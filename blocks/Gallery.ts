@@ -37,6 +37,7 @@ export interface Slide {
   overlay?: OverlayProps
   containerStyle?: ContainerStyle
   stretchContent?: boolean
+  onBecomeVisible?: ChatiumActions
 }
 
 export async function SimpleGallery(props: GalleryProps, children: ChatiumChildNode[]): Promise<GalleryBlock> {
