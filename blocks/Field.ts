@@ -20,10 +20,3 @@ export function Field(props: FieldProps): FieldBlock {
     ...props,
   }
 }
-
-export interface ConfigProps {
-  title?: string
-  fields: Array<FieldProps>
-  horizontal?: boolean
-  default?: object
-}
