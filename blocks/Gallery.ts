@@ -40,6 +40,7 @@ export interface Slide {
   stretchContent?: boolean
   onBecomeVisible?: ChatiumActions
   onVideoEnd?: ChatiumActions
+  onContext?: ChatiumActions
 }
 
 export async function SimpleGallery(props: GalleryProps, children: ChatiumChildNode[]): Promise<GalleryBlock> {
