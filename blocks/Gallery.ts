@@ -9,6 +9,7 @@ export type GalleryBlock = GalleryProps & {
 }
 
 export type GalleryProps = {
+  id: string
   onClick?: ChatiumActions
   initialSlideIndex?: number
   slides?: Array<{ content?: ChatiumBlock } | { blocks?: ChatiumBlock[] }>
@@ -38,6 +39,7 @@ export interface Slide {
   containerStyle?: ContainerStyle
   stretchContent?: boolean
   onBecomeVisible?: ChatiumActions
+  onVideoEnd?: ChatiumActions
 }
 
 export async function SimpleGallery(props: GalleryProps, children: ChatiumChildNode[]): Promise<GalleryBlock> {
