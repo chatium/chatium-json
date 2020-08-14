@@ -41,7 +41,7 @@ export function showColorSelector(ctx: LangCtx, props: { submitUrl: string; valu
   const colors = [
     { label: ctx.t('Синий'), value: ColorPallete.Primary },
     { label: ctx.t('Черный'), value: ColorPallete.Black },
-    { label: ctx.t('Белый'), value: ColorPallete.White },
+    //    { label: ctx.t('Белый'), value: ColorPallete.White },
     { label: ctx.t('Зеленый'), value: ColorPallete.Success },
     { label: ctx.t('Красный'), value: ColorPallete.Danger },
     { label: ctx.t('Оранжевый'), value: ColorPallete.RedOrange },
