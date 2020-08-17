@@ -2,7 +2,7 @@ import { ChatiumActions } from '../actions'
 import { ChatiumBlock } from './index'
 
 export interface CommonBlockProps extends WithKey {
-  containerStyle?: ContainerStyle
+  containerStyle?: ContainerStyle | null
   fallback?: ChatiumBlock
   onContext?: ChatiumActions
 }
