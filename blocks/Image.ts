@@ -8,6 +8,7 @@ export interface ImageBlock extends CommonBlockProps {
   width?: number
   height?: number
   image?: any
+  resizeMode?: string
   imageSize?: {
     width: number
     height: number
