@@ -3,6 +3,10 @@ export interface ApiCallAction<P = unknown> {
   url: string
   apiParams: P
   confirm?: string
+  sendPlayerState?: {
+    playerId: string
+    apiParamsKey: string
+  }
 }
 
 export function apiCall<P>(url: string, apiParams: P, confirm?: string): ApiCallAction<P> {

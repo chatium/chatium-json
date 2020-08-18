@@ -5,7 +5,7 @@ import { attachMedia, AttachMediaAction } from './attachMedia'
 import { ConfirmEmailAction } from './confirmEmail'
 import { ConfirmPhoneAction } from './confirmPhone'
 import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
-import { CustomAction,customAction } from './customAction'
+import { CustomAction, customAction } from './customAction'
 import { EmptyAction, emptyAction } from './emptyAction'
 import { feedMessage, FeedMessageAction } from './feedMessage'
 import { goBack, GoBackAction } from './goBack'
@@ -17,6 +17,7 @@ import { resetSearch, ResetSearchAction } from './resetSearch'
 import { SelectContactsAction } from './selectContacts'
 import { ShowDialogAction } from './showDialog'
 import { showToast, ShowToastAction } from './showToast'
+import { UpdateCurrentScreenBlock,updateCurrentScreenBlock } from './updateCurrentScreenBlock'
 
 export interface ShowContextMenuAction {
   type: 'showContextMenu'
@@ -52,6 +53,7 @@ export {
   emptyAction,
   nextSlide,
   customAction,
+  updateCurrentScreenBlock,
 }
 
 export type ChatiumAction =
@@ -74,5 +76,6 @@ export type ChatiumAction =
   | EmptyAction
   | NextSlideAction
   | CustomAction
+  | UpdateCurrentScreenBlock
 
 export type ChatiumActions = ChatiumAction | ChatiumAction[]
