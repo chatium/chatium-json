@@ -32,6 +32,7 @@ export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode
 }
 
 export interface Slide {
+  id?: string
   entityId?: string
   blocks?: ChatiumBlock[]
   content?: ChatiumBlock
