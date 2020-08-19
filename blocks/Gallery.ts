@@ -31,7 +31,7 @@ export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode
   }
 }
 
-export interface Slide {
+export interface GallerySlide {
   id?: string
   entityId?: string
   blocks?: ChatiumBlock[]
@@ -45,7 +45,7 @@ export interface Slide {
 }
 
 export async function SimpleGallery(props: GalleryProps, children: ChatiumChildNode[]): Promise<GalleryBlock> {
-  const slides: Slide[] = []
+  const slides: GallerySlide[] = []
 
   for (const child of children) {
     slides.push({
@@ -60,7 +60,7 @@ export async function SimpleGallery(props: GalleryProps, children: ChatiumChildN
   }
 }
 
-export async function SlidesGallery(props: GalleryProps, slides: Slide[]): Promise<GalleryBlock> {
+export async function SlidesGallery(props: GalleryProps, slides: GallerySlide[]): Promise<GalleryBlock> {
   return {
     type: 'gallery',
     ...props,
