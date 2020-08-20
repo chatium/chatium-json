@@ -7,6 +7,7 @@ import { Field, FieldBlock } from './Field'
 import { Footer, FooterBlock } from './Footer'
 import { Gallery, GalleryBlock } from './Gallery'
 import { Header, HeaderBlock } from './Header'
+import { HorizontalCards, HorizontalCardsBlock } from './HorizontalCards'
 import { Image, ImageBlock } from './Image'
 import { ListItem, ListItemBlock } from './ListItem'
 import { Search, SearchBlock } from './Search'
@@ -30,6 +31,7 @@ export {
   Video,
   Field,
   GetCustomBlock,
+  HorizontalCards,
 }
 
 export type ChatiumBlock =
@@ -47,3 +49,4 @@ export type ChatiumBlock =
   | FieldBlock
   | VideoBlock
   | CustomBlock
+  | HorizontalCardsBlock
