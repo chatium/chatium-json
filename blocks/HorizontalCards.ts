@@ -10,7 +10,7 @@ export interface HorizontalCardsBlock extends CommonBlockProps {
   cards: Array<{
     id?: string
     text?: string
-    imageUrl: string
+    imageUrl?: string
     onClick?: ChatiumActions
     borderColor?: string
     bgColor?: string

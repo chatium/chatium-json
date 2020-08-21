@@ -6,6 +6,7 @@ import { Button, ButtonProps } from './blocks/Button'
 import { Footer, FooterProps } from './blocks/Footer'
 import { Gallery, GalleryProps } from './blocks/Gallery'
 import { Header, HeaderProps } from './blocks/Header'
+import { HorizontalCards, HorizontalCardsProps } from './blocks/HorizontalCards'
 import { Image, ImageProps } from './blocks/Image'
 import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
@@ -33,6 +34,7 @@ declare global {
       header: HeaderProps
       image: ImageProps
       'list-item': ListItemProps
+      'horizontal-cards': HorizontalCardsProps
       screen: ScreenProps
       search: SearchProps
       slot: SlotProps
@@ -46,6 +48,7 @@ export const intrinsicBlocks = {
   audio: Audio,
   box: Box,
   'box-as-text': BoxAsText,
+  'horizontal-cards': HorizontalCards,
   button: Button,
   f: Fragment,
   footer: Footer,
