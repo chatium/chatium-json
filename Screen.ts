@@ -50,6 +50,7 @@ export interface ChatiumScreen {
   backUrl?: string
   header?: HeaderProps
   headerButton?: HeaderButton
+  headerLeftButton?: HeaderButton
   contextLinks?: ContextLink[]
   socketId?: string
   socketIds?: string[]
