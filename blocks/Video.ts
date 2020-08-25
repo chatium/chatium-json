@@ -1,7 +1,5 @@
-import { VideoSize } from 'core/utils/fileService'
-
 import { ChatiumAction, ChatiumActions } from '../actions'
-import { CommonBlockProps } from './commonTypes'
+import { CommonBlockProps } from '../commonTypes'
 
 export interface ProgressChangeProps {
   cond: string
@@ -29,6 +27,11 @@ export interface VideoBlock extends CommonBlockProps {
 }
 
 export type VideoProps = Omit<VideoBlock, 'type'>
+
+export interface VideoSize {
+  width: number
+  height: number
+}
 
 export function Video(props: VideoProps): VideoBlock {
   return {

@@ -1,7 +1,7 @@
 import { types } from 'util'
 
+import { WithKey } from '../commonTypes'
 import { ChatiumScreen } from '../Screen'
-import { WithKey } from './commonTypes'
 
 type SlotTarget = 'left' | 'right'
 export type SlotsProps = Record<string, SlotInfo>

@@ -1,5 +1,5 @@
+import { ContainerStyle } from '../commonTypes'
 import { ChatiumChildNode } from '../utils/children'
-import { ContainerStyle } from './commonTypes'
 import { Text } from './Text'
 
 export type BoxAsTextProps = Pick<ContainerStyle, 'bgColor' | 'paddingBottom' | 'paddingTop'>

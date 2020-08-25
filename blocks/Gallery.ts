@@ -1,7 +1,7 @@
 import { ChatiumActions } from '../actions'
+import { CommonBlockProps, ContainerStyle } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { OverlayProps } from '../utils/Overlay'
-import { CommonBlockProps, ContainerStyle } from './commonTypes'
 import { ChatiumBlock } from './index'
 
 export type GalleryBlock = GalleryProps & {

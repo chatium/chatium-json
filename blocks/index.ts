@@ -2,8 +2,6 @@ import { Audio, AudioBlock } from './Audio'
 import { Box, BoxBlock } from './Box'
 import { BoxAsText } from './BoxAsText'
 import { Button, ButtonBlock } from './Button'
-import { CustomBlock, GetCustomBlock } from './CustomBlock'
-import { Field, FieldBlock } from './Field'
 import { Footer, FooterBlock } from './Footer'
 import { Gallery, GalleryBlock } from './Gallery'
 import { Header, HeaderBlock } from './Header'
@@ -23,15 +21,13 @@ export {
   Footer,
   Gallery,
   Header,
+  HorizontalCards,
   Image,
   ListItem,
   Search,
   Slot,
   Text,
   Video,
-  Field,
-  GetCustomBlock,
-  HorizontalCards,
 }
 
 export type ChatiumBlock =
@@ -41,12 +37,10 @@ export type ChatiumBlock =
   | FooterBlock
   | GalleryBlock
   | HeaderBlock
+  | HorizontalCardsBlock
   | ImageBlock
   | ListItemBlock
   | SearchBlock
   | SlotBlock
   | TextBlock
-  | FieldBlock
   | VideoBlock
-  | CustomBlock
-  | HorizontalCardsBlock

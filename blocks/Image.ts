@@ -1,5 +1,5 @@
 import { ChatiumActions } from '../actions'
-import { CommonBlockProps } from './commonTypes'
+import { CommonBlockProps } from '../commonTypes'
 
 export interface ImageBlock extends CommonBlockProps {
   type: 'image'

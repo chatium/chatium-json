@@ -1,5 +1,5 @@
 import { ChatiumActions } from '../actions'
-import { CommonBlockProps } from './commonTypes'
+import { CommonBlockProps } from '../commonTypes'
 
 export interface CardProps {
   id?: string
@@ -30,8 +30,6 @@ export function HorizontalCards(props: HorizontalCardsProps): HorizontalCardsBlo
   }
 }
 
-export function Card(props: CardProps) {
-  return {
-    ...props,
-  }
+export function Card(props: CardProps): CardProps {
+  return props
 }

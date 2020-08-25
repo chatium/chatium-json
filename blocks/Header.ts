@@ -1,6 +1,6 @@
 import { ChatiumAction } from '../actions'
+import { Icon, WithKey } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
-import { Icon, WithKey } from './commonTypes'
 import { ChatiumBlock } from './index'
 import { TextBlock } from './Text'
 

@@ -1,5 +1,5 @@
-import { ChatiumActions } from './actions'
-import { Icon } from './blocks/commonTypes'
+import type { ChatiumActions } from './actions'
+import type { Icon } from './commonTypes'
 
 export interface ContextLink {
   title: string

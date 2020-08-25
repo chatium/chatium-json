@@ -1,48 +1,15 @@
 import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
-import { MessageJson } from 'modules/feed/types/messageType'
 
-import { ChatiumBlock } from './blocks'
-import { ButtonProps } from './blocks/Button'
-import { Author, Icon } from './blocks/commonTypes'
-import { FooterBlock, FooterProps } from './blocks/Footer'
-import { GalleryProps } from './blocks/Gallery'
-import { HeaderBlock, HeaderProps } from './blocks/Header'
-import { SearchBlock, SearchProps } from './blocks/Search'
-import { ContextLink } from './ContextLink'
+import type { ChatiumBlock } from './blocks'
+import type { ButtonProps } from './blocks/Button'
+import type { FooterBlock, FooterProps } from './blocks/Footer'
+import type { GalleryProps } from './blocks/Gallery'
+import type { HeaderBlock, HeaderProps } from './blocks/Header'
+import type { SearchBlock, SearchProps } from './blocks/Search'
+import type { ChatProps } from './Chat'
+import type { Icon } from './commonTypes'
+import type { ContextLink } from './ContextLink'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
-
-export interface ChatProps {
-  messages_get_url: string
-  messages_add_url?: string
-  messages_edit_url: string
-  messages_delete_url: string
-  messages_changes_url: string
-  messages_react_url: string
-  mark_as_read_url?: string
-  last_read_get_url?: string
-  last_message_id: string | null
-  last_read_message_id: string | null
-  support_paging: boolean
-  files_put_url: string
-  reply_quotes_enabled: boolean
-  current_author: Author | null
-  group_author: Author | null
-  messages_socket_id: string
-  reactions_socket_id: string
-  last_read_at: number | null
-  last_read_socket_id: string
-  typing_socket_data?: {
-    id: string
-    name: string
-    uid: string
-  }
-  pinned?: {
-    message?: MessageJson
-    update_url?: string
-  }
-  render_inverted?: boolean
-  on_context_api_call_url?: string
-}
 
 export interface ChatiumScreen {
   title: string

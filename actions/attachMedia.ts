@@ -1,6 +1,3 @@
-import { Account } from 'core/account'
-import { fileServiceUniversalUploadEndpoint } from 'core/utils/fileService'
-
 export enum MediaType {
   Any = 'any',
   Photo = 'photo',
@@ -21,10 +18,10 @@ interface AttachMedia {
 
 export type AttachMediaAction = AttachMedia
 
-export function attachMedia(account: Account, props: Omit<AttachMedia, 'type' | 'filePutUrl'>): AttachMediaAction {
+export function attachMedia(filePutUrl: string, props: Omit<AttachMedia, 'type' | 'filePutUrl'>): AttachMediaAction {
   return {
     type: 'attachMedia',
-    filePutUrl: fileServiceUniversalUploadEndpoint(account),
+    filePutUrl,
     ...props,
   }
 }

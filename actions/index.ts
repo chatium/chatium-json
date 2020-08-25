@@ -1,5 +1,3 @@
-import { submit, SubmitAction } from 'lib/chatium-json/actions/submit'
-
 import { apiCall, ApiCallAction } from './apiCall'
 import { attachMedia, AttachMediaAction } from './attachMedia'
 import { ConfirmEmailAction } from './confirmEmail'
@@ -15,67 +13,52 @@ import { refresh, RefreshAction } from './refresh'
 import { requestPayment, RequestPaymentAction } from './requestPayment'
 import { resetSearch, ResetSearchAction } from './resetSearch'
 import { SelectContactsAction } from './selectContacts'
-import { ShowDialogAction } from './showDialog'
+import { showContextMenu, ShowContextMenuAction } from './showContextMenu'
+import { ShowDialogAction,showTextDialog } from './showDialog'
 import { showToast, ShowToastAction } from './showToast'
-import { UpdateCurrentScreenBlock,updateCurrentScreenBlock } from './updateCurrentScreenBlock'
-
-export interface ShowContextMenuAction {
-  type: 'showContextMenu'
-  title?: string
-  menu: ContextMenuItem[]
-}
-
-export interface ContextMenuItem {
-  title: string
-  onClick: ChatiumActions
-}
-
-function showContextMenu(menu: ContextMenuItem[]): ShowContextMenuAction {
-  return {
-    type: 'showContextMenu',
-    menu: menu,
-  }
-}
+import { submit, SubmitAction } from './submit'
+import { UpdateCurrentScreenBlock, updateCurrentScreenBlock } from './updateCurrentScreenBlock'
 
 export {
   apiCall,
+  attachMedia,
+  copyToClipboard,
+  customAction,
+  emptyAction,
+  feedMessage,
   goBack,
   navigate,
-  refresh,
+  nextSlide,
   resetSearch,
+  refresh,
+  requestPayment,
+  showContextMenu,
+  showTextDialog,
   showToast,
   submit,
-  copyToClipboard,
-  showContextMenu,
-  attachMedia,
-  feedMessage,
-  requestPayment,
-  emptyAction,
-  nextSlide,
-  customAction,
   updateCurrentScreenBlock,
 }
 
 export type ChatiumAction =
   | ApiCallAction
-  | GoBackAction
-  | NavigateAction
-  | RefreshAction
-  | ResetSearchAction
-  | ShowToastAction
-  | SubmitAction
+  | AttachMediaAction
   | ConfirmPhoneAction
   | ConfirmEmailAction
-  | SelectContactsAction
   | CopyToClipboardAction
+  | CustomAction
+  | EmptyAction
+  | FeedMessageAction
+  | GoBackAction
+  | NavigateAction
+  | NextSlideAction
+  | RefreshAction
+  | RequestPaymentAction
+  | ResetSearchAction
+  | SelectContactsAction
   | ShowContextMenuAction
   | ShowDialogAction
-  | AttachMediaAction
-  | FeedMessageAction
-  | RequestPaymentAction
-  | EmptyAction
-  | NextSlideAction
-  | CustomAction
+  | ShowToastAction
+  | SubmitAction
   | UpdateCurrentScreenBlock
 
 export type ChatiumActions = ChatiumAction | ChatiumAction[]

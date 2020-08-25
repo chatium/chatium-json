@@ -1,5 +1,5 @@
-import { ChatiumAction, ChatiumActions } from '../actions'
-import { Color, CommonBlockProps, FontSize, Icon } from './commonTypes'
+import { ChatiumActions } from '../actions'
+import { Color, CommonBlockProps, FontSize, Icon } from '../commonTypes'
 
 export interface ButtonBlock extends CommonBlockProps {
   type: 'button'
@@ -18,35 +18,6 @@ export type ButtonProps = Omit<ButtonBlock, 'type'>
 export function Button(props: ButtonProps): ButtonBlock {
   return {
     type: 'button',
-    ...props,
-  }
-}
-
-export function StandardButton(props: ButtonProps): ButtonBlock {
-  return {
-    type: 'button',
-    containerStyle: {
-      paddingTop: 5,
-      paddingBottom: 5,
-      marginBottom: 5,
-    },
-    ...props,
-  }
-}
-
-export function ControlButton(title: string, onClick: ChatiumAction, props?: ButtonProps): ButtonBlock {
-  return {
-    type: 'button',
-    buttonType: 'flat',
-    fontSize: 'small',
-    containerStyle: {
-      paddingTop: 5,
-      paddingLeft: 10,
-      paddingBottom: 5,
-      paddingRight: 10,
-    },
-    title,
-    onClick: onClick,
     ...props,
   }
 }

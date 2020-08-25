@@ -1,16 +1,19 @@
 export {
   ChatiumActions,
+  attachMedia,
   apiCall,
+  copyToClipboard,
+  emptyAction,
   goBack,
   navigate,
   refresh,
   resetSearch,
-  showToast,
-  copyToClipboard,
   showContextMenu,
-  attachMedia,
-  emptyAction,
+  showTextDialog,
+  showToast,
 } from './actions'
+export { MediaType } from './actions/attachMedia'
+export { ContextMenuItem } from './actions/showContextMenu'
 export {
   Audio,
   BoxAsText,
@@ -25,9 +28,8 @@ export {
   Slot,
   Text,
   Video,
-  Field,
 } from './blocks'
-export { ChatiumJsonKey, ColorPallete, Icon, WithKey } from './blocks/commonTypes'
+export { Author, ChatiumJsonKey, ColorPallete, ContainerStyle, Icon, WithKey } from './commonTypes'
 export { injectSlots } from './blocks/Slot'
 export { ChatiumResponse } from './ChatiumResponse'
 export { ChatiumScreen, Screen } from './Screen'

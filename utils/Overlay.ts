@@ -1,5 +1,5 @@
 import { ChatiumBlock } from '../blocks'
-import { ContainerStyle } from '../blocks/commonTypes'
+import { ContainerStyle } from '../commonTypes'
 
 export interface OverlayProps {
   id?: string

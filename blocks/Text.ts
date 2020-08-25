@@ -1,6 +1,6 @@
 import { ChatiumActions } from '../actions'
+import { Color, CommonBlockProps, FontSize, FontStyle } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
-import { Color, CommonBlockProps, FontSize, FontStyle } from './commonTypes'
 import { ChatiumBlock } from './index'
 
 export type TextBlock = TextProps & {

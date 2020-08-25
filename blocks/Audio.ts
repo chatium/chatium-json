@@ -1,4 +1,4 @@
-import { CommonBlockProps } from './commonTypes'
+import { CommonBlockProps } from '../commonTypes'
 
 export interface AudioBlock extends CommonBlockProps {
   type: 'audio'

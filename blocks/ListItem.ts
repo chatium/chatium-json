@@ -1,5 +1,5 @@
 import { ChatiumActions } from '../actions'
-import { Color, CommonBlockProps, Icon, ImageSize, StatusIcon } from './commonTypes'
+import { Color, CommonBlockProps, Icon, ImageSize, StatusIcon } from '../commonTypes'
 
 export interface ListItemBlock extends CommonBlockProps {
   type: 'screen'

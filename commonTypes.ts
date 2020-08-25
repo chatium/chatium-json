@@ -1,5 +1,5 @@
-import { ChatiumActions } from '../actions'
-import { ChatiumBlock } from './index'
+import type { ChatiumActions } from './actions'
+import type { ChatiumBlock } from './blocks'
 
 export interface CommonBlockProps extends WithKey {
   containerStyle?: ContainerStyle | null
@@ -24,20 +24,6 @@ export const noMarginContainerStyle = {
   marginLeft: 0,
   marginRight: 0,
 }
-
-export type InputType =
-  | 'String'
-  | 'Integer'
-  | 'Text'
-  | 'Color'
-  | 'Money'
-  | 'Entity'
-  | 'Checkbox'
-  | 'Select'
-  | 'Image'
-  | 'ItemList'
-  | 'Config'
-  | 'Enum'
 
 export interface WithKey {
   key?: ChatiumJsonKey

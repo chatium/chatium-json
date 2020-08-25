@@ -1,4 +1,4 @@
-import { Color, CommonBlockProps, Icon } from './commonTypes'
+import { Color, CommonBlockProps, Icon } from '../commonTypes'
 
 export interface SearchProps extends CommonBlockProps {
   bgColor?: Color
