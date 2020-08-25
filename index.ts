@@ -23,13 +23,14 @@ export { MediaType } from './actions/attachMedia'
 export { ContextMenuItem } from './actions/showContextMenu'
 export {
   Audio,
-  BoxAsText,
   Button,
   ChatiumBlock,
   Footer,
   Gallery,
   Header,
+  HorizontalCards,
   Image,
+  InlineVideo,
   ListItem,
   Search,
   Text,

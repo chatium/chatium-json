@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-namespace */
+import { BoxAsText, BoxAsTextProps } from '../private-json/blocks/BoxAsText'
 import { Audio, AudioProps } from './blocks/Audio'
-import { Box, BoxProps } from './blocks/Box'
-import { BoxAsText, BoxAsTextProps } from './blocks/BoxAsText'
 import { Button, ButtonProps } from './blocks/Button'
 import { Footer, FooterProps } from './blocks/Footer'
 import { Gallery, GalleryProps } from './blocks/Gallery'
@@ -24,7 +23,6 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       audio: AudioProps
-      box: BoxProps
       'box-as-text': BoxAsTextProps
       button: ButtonProps
       f: {} // analog of React.Fragment, just container of children blocks
@@ -44,7 +42,6 @@ declare global {
 
 export const intrinsicBlocks = {
   audio: Audio,
-  box: Box,
   'box-as-text': BoxAsText,
   'horizontal-cards': HorizontalCards,
   button: Button,

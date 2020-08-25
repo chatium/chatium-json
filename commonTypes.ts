@@ -146,3 +146,10 @@ export function iconEq(a: Icon | null, b: Icon | null): boolean {
 
   return false
 }
+
+export interface OverlayProps {
+  id?: string
+  gradientColors?: string[]
+  blocks: ChatiumBlock[]
+  containerStyle?: ContainerStyle
+}

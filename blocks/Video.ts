@@ -1,6 +1,5 @@
 import { ChatiumAction, ChatiumActions } from '../actions'
-import { CommonBlockProps } from '../commonTypes'
-import { OverlayProps } from '../utils/Overlay'
+import { CommonBlockProps, OverlayProps } from '../commonTypes'
 
 interface CommonVideoProps extends CommonBlockProps {
   hlsUrl?: string // for desktop only
@@ -12,8 +11,8 @@ interface CommonVideoProps extends CommonBlockProps {
 export interface VideoBlock extends CommonVideoProps {
   type: 'video'
   url?: string
+  // for desktop only
   file?: {
-    // for desktop only
     hash: string
   }
   // deprecated props, supported by clients by shouldn't be used, left here for reference
@@ -40,11 +39,6 @@ export interface InlineVideoBlock extends CommonVideoProps {
   muted?: boolean
   onProgressChange?: ProgressChangeProps[]
   overlay?: OverlayProps
-  // overlay?: {
-  //   containerStyle?: ContainerStyle
-  //   gradientColors?: string[]
-  //   blocks?: ChatiumBlock[]
-  // }
   onVideoEnd?: ChatiumActions
   paused?: boolean
   playInBackground?: boolean
