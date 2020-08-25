@@ -1,5 +1,3 @@
-import { SlotBlock, SlotsProps } from 'lib/chatium-json/blocks/Slot'
-
 import type { ChatiumBlock } from './blocks'
 import type { ButtonProps } from './blocks/Button'
 import type { FooterBlock, FooterProps } from './blocks/Footer'
@@ -29,7 +27,6 @@ export interface ChatiumScreen {
   fullScreenGallery?: GalleryProps
   footer?: FooterProps
   search?: SearchProps
-  slots?: SlotsProps
   needEmailCheck?: boolean
   needPhoneCheck?: boolean
   scrollTo?: string
@@ -58,7 +55,6 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
   let header: HeaderBlock | undefined
   let search: SearchBlock | undefined
   let footer: FooterBlock | undefined
-  const slots: Record<string, SlotBlock> = {}
   const blocks: ChatiumBlock[] = []
   for (const b of flatBlocks) {
     if (isHeaderBlock(b)) {
@@ -67,8 +63,6 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
       search = b
     } else if (isFooterBlock(b)) {
       footer = b
-    } else if (isSlotBlock(b)) {
-      slots[b.target] = b
     } else {
       blocks.push(b)
     }
@@ -83,11 +77,9 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
     footer,
     header: header || props.header,
     search,
-    slots,
   }
 }
 
 const isSearchBlock = (b: ChatiumBlock): b is SearchBlock => b.type === 'search'
 const isHeaderBlock = (b: ChatiumBlock): b is HeaderBlock => b.type === 'header'
 const isFooterBlock = (b: ChatiumBlock): b is FooterBlock => b.type === 'footer'
-const isSlotBlock = (b: ChatiumBlock): b is SlotBlock => b.type === 'slot'

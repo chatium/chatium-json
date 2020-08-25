@@ -25,12 +25,10 @@ export {
   Image,
   ListItem,
   Search,
-  Slot,
   Text,
   Video,
 } from './blocks'
 export { Author, ChatiumJsonKey, ColorPallete, ContainerStyle, Icon, WithKey } from './commonTypes'
-export { injectSlots } from './blocks/Slot'
 export { ChatiumResponse } from './ChatiumResponse'
 export { ChatiumScreen, Screen } from './Screen'
 export { jsx } from './utils/jsx'

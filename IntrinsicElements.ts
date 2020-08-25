@@ -10,7 +10,6 @@ import { HorizontalCards, HorizontalCardsProps } from './blocks/HorizontalCards'
 import { Image, ImageProps } from './blocks/Image'
 import { ListItem, ListItemProps } from './blocks/ListItem'
 import { Search, SearchProps } from './blocks/Search'
-import { Slot, SlotProps } from './blocks/Slot'
 import { Text, TextProps } from './blocks/Text'
 import { Video, VideoProps } from './blocks/Video'
 import { Screen, ScreenProps } from './Screen'
@@ -37,7 +36,6 @@ declare global {
       'horizontal-cards': HorizontalCardsProps
       screen: ScreenProps
       search: SearchProps
-      slot: SlotProps
       text: TextProps
       video: VideoProps
     }
@@ -58,7 +56,6 @@ export const intrinsicBlocks = {
   'list-item': ListItem,
   screen: Screen,
   search: Search,
-  slot: Slot,
   text: Text,
   video: Video,
 }
