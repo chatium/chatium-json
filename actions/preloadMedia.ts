@@ -6,6 +6,6 @@ export interface PreloadMediaAction {
 export function preloadMedia(media: string[]): PreloadMediaAction {
   return {
     type: 'preloadMedia',
-    media: media,
+    media,
   }
 }

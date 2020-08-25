@@ -10,9 +10,24 @@ import { Image, ImageBlock } from './Image'
 import { ListItem, ListItemBlock } from './ListItem'
 import { Search, SearchBlock } from './Search'
 import { Text, TextBlock } from './Text'
-import { Video, VideoBlock } from './Video'
+import { InlineVideo, InlineVideoBlock, Video, VideoBlock } from './Video'
 
-export { Audio, BoxAsText, Box, Button, Footer, Gallery, Header, HorizontalCards, Image, ListItem, Search, Text, Video }
+export {
+  Audio,
+  BoxAsText,
+  Box,
+  Button,
+  Footer,
+  Gallery,
+  Header,
+  HorizontalCards,
+  InlineVideo,
+  Image,
+  ListItem,
+  Search,
+  Text,
+  Video,
+}
 
 export type ChatiumBlock =
   | AudioBlock
@@ -23,6 +38,7 @@ export type ChatiumBlock =
   | HeaderBlock
   | HorizontalCardsBlock
   | ImageBlock
+  | InlineVideoBlock
   | ListItemBlock
   | SearchBlock
   | TextBlock
