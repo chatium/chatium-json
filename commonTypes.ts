@@ -125,3 +125,24 @@ export interface ContainerStyle {
 }
 
 type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+
+export function iconEq(a: Icon | null, b: Icon | null): boolean {
+  if (a === b) {
+    return true
+  }
+
+  if (a !== null && b !== null) {
+    return (
+      a.appIcon === b.appIcon &&
+      a.iconCssClass === b.iconCssClass &&
+      a.bgColor === b.bgColor &&
+      a.color === b.color &&
+      a.image === b.image &&
+      a.imageSize === b.imageSize &&
+      a.shape === b.shape &&
+      a.text === b.text
+    )
+  }
+
+  return false
+}
