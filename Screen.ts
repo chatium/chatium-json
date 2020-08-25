@@ -1,3 +1,4 @@
+import type { ChatiumActions } from './actions'
 import type { ChatiumBlock } from './blocks'
 import type { ButtonProps } from './blocks/Button'
 import type { FooterBlock, FooterProps } from './blocks/Footer'
@@ -6,7 +7,6 @@ import type { HeaderBlock, HeaderProps } from './blocks/Header'
 import type { SearchBlock, SearchProps } from './blocks/Search'
 import type { ChatProps } from './Chat'
 import type { Icon } from './commonTypes'
-import type { ContextLink } from './ContextLink'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
 
 export interface ChatiumScreen {
@@ -36,6 +36,12 @@ export interface ChatiumScreen {
 }
 
 export type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
+
+export interface ContextLink {
+  title: string
+  icon?: Icon
+  action: ChatiumActions
+}
 
 export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'> & {
   headerButton?: HeaderButton | Promise<HeaderButton>
