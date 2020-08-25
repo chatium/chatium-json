@@ -1,16 +1,23 @@
 export {
   ChatiumActions,
-  attachMedia,
   apiCall,
+  attachMedia,
+  confirmEmail,
+  confirmPhone,
   copyToClipboard,
   emptyAction,
   goBack,
   navigate,
+  nextSlide,
+  preloadMedia,
   refresh,
+  requestPayment,
   resetSearch,
+  selectContacts,
   showContextMenu,
   showTextDialog,
   showToast,
+  updateCurrentScreenBlock,
 } from './actions'
 export { MediaType } from './actions/attachMedia'
 export { ContextMenuItem } from './actions/showContextMenu'
