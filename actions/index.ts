@@ -3,10 +3,10 @@ import { attachMedia, AttachMediaAction } from './attachMedia'
 import { confirmEmail, ConfirmEmailAction } from './confirmEmail'
 import { confirmPhone, ConfirmPhoneAction } from './confirmPhone'
 import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
-import { EmptyAction, emptyAction } from './emptyAction'
 import { goBack, GoBackAction } from './goBack'
 import { navigate, NavigateAction } from './navigate'
 import { nextSlide, NextSlideAction } from './nextSlide'
+import { noop, NoopAction } from './noop'
 import { preloadMedia, PreloadMediaAction } from './preloadMedia'
 import { refresh, RefreshAction } from './refresh'
 import { requestPayment, RequestPaymentAction } from './requestPayment'
@@ -23,10 +23,10 @@ export {
   confirmEmail,
   confirmPhone,
   copyToClipboard,
-  emptyAction,
   goBack,
   navigate,
   nextSlide,
+  noop,
   preloadMedia,
   refresh,
   requestPayment,
@@ -44,10 +44,10 @@ export type ChatiumAction =
   | ConfirmPhoneAction
   | ConfirmEmailAction
   | CopyToClipboardAction
-  | EmptyAction
   | GoBackAction
   | NavigateAction
   | NextSlideAction
+  | NoopAction
   | PreloadMediaAction
   | RefreshAction
   | RequestPaymentAction
