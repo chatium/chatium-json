@@ -1,4 +1,5 @@
 import { types } from 'util'
+
 import { ChatiumBlock } from '../blocks'
 
 export async function flattenChildren(children: ChatiumChildNode[]): Promise<ChatiumBlock[]> {

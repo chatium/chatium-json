@@ -1,6 +1,8 @@
+import type { ChatiumJsonId } from '../commonTypes'
+
 export interface UpdateCurrentScreenBlock<P = unknown> {
   type: 'updateCurrentScreenBlock'
-  blockId: string
+  blockId: ChatiumJsonId
   merge?: boolean
   data: P
 }

@@ -1,14 +1,13 @@
-import { ChatiumActions } from '../actions'
-import { CommonBlockProps, ContainerStyle, OverlayProps } from '../commonTypes'
+import type { ChatiumActions } from '../actions'
+import type { ChatiumJsonId, CommonBlockProps, ContainerStyle, OverlayProps } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
-import { ChatiumBlock } from './index'
+import type { ChatiumBlock } from './index'
 
 export type GalleryBlock = GalleryProps & {
   type: 'gallery'
 }
 
 export type GalleryProps = {
-  id: string
   onClick?: ChatiumActions
   initialSlideIndex?: number
   slides?: Array<{ content?: ChatiumBlock } | { blocks?: ChatiumBlock[] }>
@@ -31,7 +30,7 @@ export async function Gallery(props: GalleryProps, ...children: ChatiumChildNode
 }
 
 export interface GallerySlide {
-  id?: string
+  id?: ChatiumJsonId // for updateCurrentScreenBlock action support
   entityId?: string
   blocks?: ChatiumBlock[]
   content?: ChatiumBlock

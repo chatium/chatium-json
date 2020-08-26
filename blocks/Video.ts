@@ -34,7 +34,6 @@ export function Video(props: VideoProps): VideoBlock {
 
 export interface InlineVideoBlock extends CommonVideoProps {
   type: 'inlineVideo'
-  id?: string // should be key
   ignoreSilentSwitch?: 'ignore' | 'obey'
   muted?: boolean
   onProgressChange?: ProgressChangeProps[]

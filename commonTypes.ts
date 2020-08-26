@@ -26,9 +26,25 @@ export const noMarginContainerStyle = {
 }
 
 export interface WithKey {
+  /**
+   * Helps client-side rendering optimization
+   * Auto-generated using consistent compact algorithm, but can be provided by developer manually
+   * When provided by developer manually, should be unique only on local level
+   *  and is augmented/modified automatically to be unique on screen level
+   */
   key?: ChatiumJsonKey
+
+  /**
+   * The main meaning is block unique ID
+   * This is also translated to client-side key of component, but is slightly different than key itself:
+   *  1) It's not auto-generated
+   *  2) Is passed without any modifications, uniqueness must be provided by the developer
+   *  3) Due to (2) can be used for actions that require some manipulations pointing to the exact block
+   */
+  id?: ChatiumJsonId
 }
 
+export type ChatiumJsonId = string
 export type ChatiumJsonKey = string | number
 
 export interface TextStyleInterface {
@@ -148,7 +164,7 @@ export function iconEq(a: Icon | null, b: Icon | null): boolean {
 }
 
 export interface OverlayProps {
-  id?: string
+  id?: ChatiumJsonId // for updateCurrentScreenBlock action support
   gradientColors?: string[]
   blocks: ChatiumBlock[]
   containerStyle?: ContainerStyle
