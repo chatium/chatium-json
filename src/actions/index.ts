@@ -1,42 +1,21 @@
-import { apiCall, ApiCallAction } from './apiCall'
-import { attachMedia, AttachMediaAction } from './attachMedia'
-import { confirmEmail, ConfirmEmailAction } from './confirmEmail'
-import { confirmPhone, ConfirmPhoneAction } from './confirmPhone'
-import { copyToClipboard, CopyToClipboardAction } from './copyToClipboard'
-import { goBack, GoBackAction } from './goBack'
-import { navigate, NavigateAction } from './navigate'
-import { nextSlide, NextSlideAction } from './nextSlide'
-import { noop, NoopAction } from './noop'
-import { preloadMedia, PreloadMediaAction } from './preloadMedia'
-import { refresh, RefreshAction } from './refresh'
-import { requestPayment, RequestPaymentAction } from './requestPayment'
-import { resetSearch, ResetSearchAction } from './resetSearch'
-import { selectContacts, SelectContactsAction } from './selectContacts'
-import { showContextMenu, ShowContextMenuAction } from './showContextMenu'
-import { ShowDialogAction, showTextDialog } from './showDialog'
-import { showToast, ShowToastAction } from './showToast'
-import { UpdateCurrentScreenBlock, updateCurrentScreenBlock } from './updateCurrentScreenBlock'
-
-export {
-  apiCall,
-  attachMedia,
-  confirmEmail,
-  confirmPhone,
-  copyToClipboard,
-  goBack,
-  navigate,
-  nextSlide,
-  noop,
-  preloadMedia,
-  refresh,
-  requestPayment,
-  resetSearch,
-  selectContacts,
-  showContextMenu,
-  showTextDialog,
-  showToast,
-  updateCurrentScreenBlock,
-}
+import type { ApiCallAction } from './apiCall'
+import type { AttachMediaAction } from './attachMedia'
+import type { ConfirmEmailAction } from './confirmEmail'
+import type { ConfirmPhoneAction } from './confirmPhone'
+import type { CopyToClipboardAction } from './copyToClipboard'
+import type { GoBackAction } from './goBack'
+import type { NavigateAction } from './navigate'
+import type { NextSlideAction } from './nextSlide'
+import type { NoopAction } from './noop'
+import type { PreloadMediaAction } from './preloadMedia'
+import type { RefreshAction } from './refresh'
+import type { RequestPaymentAction } from './requestPayment'
+import type { ResetSearchAction } from './resetSearch'
+import type { SelectContactsAction } from './selectContacts'
+import type { ShowContextMenuAction } from './showContextMenu'
+import type { ShowTextDialogAction } from './showDialog'
+import type { ShowToastAction } from './showToast'
+import type { UpdateCurrentScreenBlock } from './updateCurrentScreenBlock'
 
 export type ChatiumAction =
   | ApiCallAction
@@ -54,7 +33,7 @@ export type ChatiumAction =
   | ResetSearchAction
   | SelectContactsAction
   | ShowContextMenuAction
-  | ShowDialogAction
+  | ShowTextDialogAction
   | ShowToastAction
   | UpdateCurrentScreenBlock
 

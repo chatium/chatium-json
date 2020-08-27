@@ -11,9 +11,7 @@ export interface FooterBlock extends FooterProps {
   type: 'footer'
 }
 
-type Props = FooterProps
-
-export async function Footer(props: Props, ...children: ChatiumChildNode[]): Promise<FooterBlock> {
+export async function Footer(props: FooterProps, ...children: ChatiumChildNode[]): Promise<FooterBlock> {
   return {
     type: 'footer',
     visibleAlways: false,

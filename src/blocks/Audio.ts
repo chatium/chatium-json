@@ -1,7 +1,6 @@
 import { CommonBlockProps } from '../commonTypes'
 
-export interface AudioBlock extends CommonBlockProps {
-  type: 'audio'
+export interface AudioProps extends CommonBlockProps {
   title?: string
   description?: string
   downloadUrl: string
@@ -9,7 +8,9 @@ export interface AudioBlock extends CommonBlockProps {
   durationSeconds?: number
 }
 
-export type AudioProps = Omit<AudioBlock, 'type'>
+export interface AudioBlock extends AudioProps {
+  type: 'audio'
+}
 
 export function Audio(props: AudioProps): AudioBlock {
   return {

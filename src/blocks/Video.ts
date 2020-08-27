@@ -1,4 +1,4 @@
-import { ChatiumAction, ChatiumActions } from '../actions'
+import { ChatiumActions } from '../actions'
 import { CommonBlockProps, OverlayProps } from '../commonTypes'
 
 interface CommonVideoProps extends CommonBlockProps {
@@ -52,7 +52,7 @@ export interface InlineVideoBlock extends CommonVideoProps {
 
 export interface ProgressChangeProps {
   cond: string
-  action: ChatiumAction
+  action: ChatiumActions
 }
 
 export interface VideoSize {

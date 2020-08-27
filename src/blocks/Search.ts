@@ -18,9 +18,7 @@ export interface SearchBlock extends SearchProps {
   type: 'search'
 }
 
-type Props = SearchProps
-
-export function Search(props: Props): SearchBlock {
+export function Search(props: SearchProps): SearchBlock {
   return {
     type: 'search',
     bgColor: '#ffffff',

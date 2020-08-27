@@ -5,7 +5,7 @@ export enum MediaType {
   None = 'none',
 }
 
-interface AttachMedia {
+export interface AttachMediaAction {
   type: 'attachMedia'
   menuTitle: string
   progressTitle: string
@@ -16,9 +16,10 @@ interface AttachMedia {
   file?: { type: string }
 }
 
-export type AttachMediaAction = AttachMedia
-
-export function attachMedia(filePutUrl: string, props: Omit<AttachMedia, 'type' | 'filePutUrl'>): AttachMediaAction {
+export function attachMedia(
+  filePutUrl: string,
+  props: Omit<AttachMediaAction, 'type' | 'filePutUrl'>,
+): AttachMediaAction {
   return {
     type: 'attachMedia',
     filePutUrl,

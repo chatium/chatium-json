@@ -7,16 +7,14 @@ interface ShowDialogCommon {
   cancelButtonTitle?: string
 }
 
-interface ShowDialogInputTypeText extends ShowDialogCommon {
+export interface ShowTextDialogAction extends ShowDialogCommon {
   inputType: 'text' | 'code'
   placeholder?: string
   multiline?: boolean
   value?: string
 }
 
-export type ShowDialogAction = ShowDialogInputTypeText
-
-export function showTextDialog(options: Omit<ShowDialogInputTypeText, 'type' | 'inputType'>): ShowDialogInputTypeText {
+export function showTextDialog(options: Omit<ShowTextDialogAction, 'type' | 'inputType'>): ShowTextDialogAction {
   return {
     type: 'showDialog',
     inputType: 'text',
