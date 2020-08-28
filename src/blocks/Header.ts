@@ -1,4 +1,4 @@
-import { ChatiumAction } from '../actions'
+import { ChatiumActions } from '../actions'
 import { Icon, WithKey } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { ChatiumBlock } from './index'
@@ -7,7 +7,7 @@ import { TextBlock } from './Text'
 export interface HeaderProps extends WithKey {
   blocks?: ChatiumBlock[]
   compact: boolean
-  logo?: { icon: Icon; onClick?: ChatiumAction; onContext?: ChatiumAction }
+  logo?: { icon: Icon; onClick?: ChatiumActions; onContext?: ChatiumActions }
   title?: TextBlock
   description?: TextBlock
   bottomGradientColors?: string[]
