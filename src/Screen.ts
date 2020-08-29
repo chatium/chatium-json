@@ -9,24 +9,24 @@ import type { ChatProps } from './Chat'
 import type { Icon } from './commonTypes'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
 
-export interface ChatiumScreen {
+export interface ChatiumScreen<ExtraActions> {
   title: string
   description?: string
   backUrl?: string
-  header?: HeaderProps
-  headerButton?: HeaderButton
-  headerLeftButton?: HeaderButton
-  contextLinks?: ContextLink[]
+  header?: HeaderProps<ExtraActions>
+  headerButton?: HeaderButton<ExtraActions>
+  headerLeftButton?: HeaderButton<ExtraActions>
+  contextLinks?: ContextLink<ExtraActions>[]
   socketId?: string
   socketIds?: string[]
-  blocks?: ChatiumBlock[]
-  dropdownMenuBlocks?: ChatiumBlock[]
+  blocks?: ChatiumBlock<ExtraActions>[]
+  dropdownMenuBlocks?: ChatiumBlock<ExtraActions>[]
   dropdownMenuInitiallyVisible?: boolean
-  pinnedBlocks?: ChatiumBlock[]
-  chat?: ChatProps
-  fullScreenGallery?: GalleryProps
-  footer?: FooterProps
-  search?: SearchProps
+  pinnedBlocks?: ChatiumBlock<ExtraActions>[]
+  chat?: ChatProps<ExtraActions>
+  fullScreenGallery?: GalleryProps<ExtraActions>
+  footer?: FooterProps<ExtraActions>
+  search?: SearchProps<ExtraActions>
   needEmailCheck?: boolean
   needPhoneCheck?: boolean
   scrollTo?: string
@@ -35,17 +35,20 @@ export interface ChatiumScreen {
   bgColor?: string
 }
 
-export type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>
+export type HeaderButton<ExtraActions> = Pick<ButtonProps<ExtraActions>, 'icon' | 'onClick'>
 
-export interface ContextLink {
+export interface ContextLink<ExtraActions> {
   title: string
   icon?: Icon
-  action: ChatiumActions
+  action: ChatiumActions<ExtraActions>
 }
 
-export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'> & {
-  headerButton?: HeaderButton | Promise<HeaderButton>
-  pinnedBlocks?: ChatiumBlock[] | Promise<ChatiumBlock[]>
+export type ScreenProps<ExtraActions> = Omit<
+  ChatiumScreen<ExtraActions>,
+  'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'
+> & {
+  headerButton?: HeaderButton<ExtraActions> | Promise<HeaderButton<ExtraActions>>
+  pinnedBlocks?: ChatiumBlock<ExtraActions>[] | Promise<ChatiumBlock<ExtraActions>[]>
   backUrl?: string | Promise<string>
 }
 
@@ -54,14 +57,17 @@ export type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButto
  * Supports Promises and arrays recursive flattening of the given children
  *  and special handling of search block
  */
-export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]): Promise<ChatiumScreen> {
+export async function Screen<ExtraActions>(
+  props: ScreenProps<ExtraActions>,
+  ...children: ChatiumChildNode<ExtraActions>[]
+): Promise<ChatiumScreen<ExtraActions>> {
   const flatBlocks = await flattenChildren(children)
 
   // extract search and footer blocks
-  let header: HeaderBlock | undefined
-  let search: SearchBlock | undefined
-  let footer: FooterBlock | undefined
-  const blocks: ChatiumBlock[] = []
+  let header: HeaderBlock<ExtraActions> | undefined
+  let search: SearchBlock<ExtraActions> | undefined
+  let footer: FooterBlock<ExtraActions> | undefined
+  const blocks: ChatiumBlock<ExtraActions>[] = []
   for (const b of flatBlocks) {
     if (isHeaderBlock(b)) {
       header = b
@@ -86,6 +92,9 @@ export async function Screen(props: ScreenProps, ...children: ChatiumChildNode[]
   }
 }
 
-const isSearchBlock = (b: ChatiumBlock): b is SearchBlock => b.type === 'search'
-const isHeaderBlock = (b: ChatiumBlock): b is HeaderBlock => b.type === 'header'
-const isFooterBlock = (b: ChatiumBlock): b is FooterBlock => b.type === 'footer'
+const isSearchBlock = <ExtraActions>(b: ChatiumBlock<ExtraActions>): b is SearchBlock<ExtraActions> =>
+  b.type === 'search'
+const isHeaderBlock = <ExtraActions>(b: ChatiumBlock<ExtraActions>): b is HeaderBlock<ExtraActions> =>
+  b.type === 'header'
+const isFooterBlock = <ExtraActions>(b: ChatiumBlock<ExtraActions>): b is FooterBlock<ExtraActions> =>
+  b.type === 'footer'

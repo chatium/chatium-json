@@ -17,7 +17,10 @@ import type { ShowTextDialogAction } from './showDialog'
 import type { ShowToastAction } from './showToast'
 import type { UpdateCurrentScreenBlock } from './updateCurrentScreenBlock'
 
-export type ChatiumAction =
+/**
+ * @tparam ExtraActions - allows to expand list of supported actions for the library users
+ */
+export type ChatiumAction<ExtraActions> =
   | ApiCallAction
   | AttachMediaAction
   | ConfirmPhoneAction
@@ -32,9 +35,10 @@ export type ChatiumAction =
   | RequestPaymentAction
   | ResetSearchAction
   | SelectContactsAction
-  | ShowContextMenuAction
+  | ShowContextMenuAction<ExtraActions>
   | ShowTextDialogAction
   | ShowToastAction
   | UpdateCurrentScreenBlock
+  | ExtraActions
 
-export type ChatiumActions = ChatiumAction | ChatiumAction[]
+export type ChatiumActions<ExtraActions> = ChatiumAction<ExtraActions> | ChatiumAction<ExtraActions>[]

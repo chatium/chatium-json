@@ -5,14 +5,14 @@ import { ChatiumChildNode } from './children'
 /**
  * Creates a jsx-factory function for the given intrinsic chatium blocks
  */
-export function jsxFactory<K extends keyof JSX.IntrinsicElements>(
-  intrinsicBlocks: Record<K, BlockFactory<JSX.IntrinsicElements[K]>>,
+export function jsxFactory<IE extends Record<string, object>, K extends keyof IE, ExtraActions>(
+  intrinsicBlocks: Record<K, BlockFactory<ExtraActions, IE[K]>>,
 ) {
   return function jsx<P>(
-    block: BlockFactory<P> | K,
-    props: P | JSX.IntrinsicElements[K],
-    ...children: ChatiumChildNode[]
-  ): JsxNode {
+    block: BlockFactory<ExtraActions, P> | K,
+    props: P | IE[K],
+    ...children: ChatiumChildNode<ExtraActions>[]
+  ): JsxNode<ExtraActions> {
     if (typeof block === 'string') {
       if (intrinsicBlocks[block]) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,7 +24,7 @@ export function jsxFactory<K extends keyof JSX.IntrinsicElements>(
         )
       }
     } else {
-      return block(props as P, ...children)
+      return (block as BlockFactory<ExtraActions, P>)(props as P, ...children)
     }
   }
 }
@@ -40,8 +40,11 @@ export function jsxFactory<K extends keyof JSX.IntrinsicElements>(
  */
 export const jsx = jsxFactory(intrinsicBlocks as any)
 
-interface BlockFactory<P = {}> {
-  (props: P, ...children: ChatiumChildNode[]): JsxNode
+interface BlockFactory<ExtraActions, P = {}> {
+  (props: P, ...children: ChatiumChildNode<ExtraActions>[]): JsxNode<ExtraActions>
 }
 
-type JsxNode = ChatiumChildNode | ChatiumChildNode[] | Promise<ChatiumScreen>
+type JsxNode<ExtraActions> =
+  | ChatiumChildNode<ExtraActions>
+  | ChatiumChildNode<ExtraActions>[]
+  | Promise<ChatiumScreen<ExtraActions>>

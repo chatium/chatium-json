@@ -2,16 +2,16 @@ import type { ChatiumActions } from '../actions';
 import type { CommonBlockProps } from '../commonTypes';
 import { ChatiumChildNode } from '../utils/children';
 import type { ChatiumBlock } from './index';
-export declare type GalleryBlock = GalleryProps & {
+export declare type GalleryBlock<ExtraActions> = GalleryProps<ExtraActions> & {
     type: 'gallery';
 };
-export declare type GalleryProps = {
-    onClick?: ChatiumActions;
+export declare type GalleryProps<ExtraActions> = {
+    onClick?: ChatiumActions<ExtraActions>;
     initialSlideIndex?: number;
     slides?: Array<{
-        content?: ChatiumBlock;
+        content?: ChatiumBlock<ExtraActions>;
     } | {
-        blocks?: ChatiumBlock[];
+        blocks?: ChatiumBlock<ExtraActions>[];
     }>;
-} & CommonBlockProps;
-export declare function Gallery(props: GalleryProps, ...children: ChatiumChildNode[]): Promise<GalleryBlock>;
+} & CommonBlockProps<ExtraActions>;
+export declare function Gallery<ExtraActions>(props: GalleryProps<ExtraActions>, ...children: ChatiumChildNode<ExtraActions>[]): Promise<GalleryBlock<ExtraActions>>;

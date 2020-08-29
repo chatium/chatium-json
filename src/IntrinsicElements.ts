@@ -14,38 +14,42 @@ import { Screen, ScreenProps } from './Screen'
 import { Fragment } from './utils/Fragment'
 
 /**
- * JSX Intrinsic elements support.
- * Only global namespace declaration works unlike documentation
- * @see https://www.typescriptlang.org/docs/handbook/jsx.html#factory-functions
+ * JSX Intrinsic elements support for chatium blocks.
+ * To enable jsx typings:
+ * ```
+ * declare global {
+ *   namespace JSX {
+ *     interface IntrinsicElements extends ChatiumIntrinsicElements<never> {
+ *       // here may be some additional elements declarations
+ *     }
+ *   }
+ * }
+ * ```
  */
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      audio: AudioProps
-      button: ButtonProps
-      f: {} // analog of React.Fragment, just container of children blocks
-      footer: FooterProps
-      gallery: GalleryProps
-      header: HeaderProps
-      image: ImageProps
-      'list-item': ListItemProps
-      'horizontal-cards': HorizontalCardsProps
-      screen: ScreenProps
-      search: SearchProps
-      text: TextProps
-      video: VideoProps
-    }
-  }
+export interface ChatiumIntrinsicElements<ExtraActions> {
+  audio: AudioProps<ExtraActions>
+  button: ButtonProps<ExtraActions>
+  f: {} // analog of React.Fragment, just container of children blocks
+  footer: FooterProps<ExtraActions>
+  gallery: GalleryProps<ExtraActions>
+  header: HeaderProps<ExtraActions>
+  image: ImageProps<ExtraActions>
+  'list-item': ListItemProps<ExtraActions>
+  'horizontal-cards': HorizontalCardsProps<ExtraActions>
+  screen: ScreenProps<ExtraActions>
+  search: SearchProps<ExtraActions>
+  text: TextProps<ExtraActions>
+  video: VideoProps<ExtraActions>
 }
 
 export const intrinsicBlocks = {
   audio: Audio,
-  'horizontal-cards': HorizontalCards,
   button: Button,
   f: Fragment,
   footer: Footer,
   gallery: Gallery,
   header: Header,
+  'horizontal-cards': HorizontalCards,
   image: Image,
   'list-item': ListItem,
   screen: Screen,

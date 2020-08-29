@@ -1,6 +1,6 @@
 import { Color, CommonBlockProps, Icon } from '../commonTypes'
 
-export interface SearchProps extends CommonBlockProps {
+export interface SearchProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
   bgColor?: Color
   borderColor?: Color
   defaultValue?: string
@@ -14,11 +14,11 @@ export interface SearchProps extends CommonBlockProps {
   spinnerColor?: Color
 }
 
-export interface SearchBlock extends SearchProps {
+export interface SearchBlock<ExtraActions> extends SearchProps<ExtraActions> {
   type: 'search'
 }
 
-export function Search(props: SearchProps): SearchBlock {
+export function Search<ExtraActions>(props: SearchProps<ExtraActions>): SearchBlock<ExtraActions> {
   return {
     type: 'search',
     bgColor: '#ffffff',

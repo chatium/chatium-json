@@ -1,12 +1,11 @@
 import { ChatiumActions } from '../actions';
 import { Color, CommonBlockProps, Icon, ImageSize, StatusIcon } from '../commonTypes';
-export interface ListItemBlock extends CommonBlockProps {
-    type: 'screen';
+export interface ListItemProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
     description?: string;
     image?: string;
     imageSize?: ImageSize;
     logo?: Icon;
-    onClick?: ChatiumActions;
+    onClick?: ChatiumActions<ExtraActions>;
     status?: StatusIcon;
     title: string;
     titleColor?: Color;
@@ -17,5 +16,7 @@ export interface ListItemBlock extends CommonBlockProps {
     upTitleColor?: Color;
     url?: string;
 }
-export declare type ListItemProps = Omit<ListItemBlock, 'type'>;
-export declare function ListItem(props: ListItemProps): ListItemBlock;
+export interface ListItemBlock<ExtraActions> extends ListItemProps<ExtraActions> {
+    type: 'screen';
+}
+export declare function ListItem<ExtraActions>(props: ListItemProps<ExtraActions>): ListItemBlock<ExtraActions>;

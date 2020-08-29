@@ -1,19 +1,21 @@
 import type { ChatiumActions } from './index'
 
-export interface ShowContextMenuAction {
+export interface ShowContextMenuAction<ExtraActions> {
   type: 'showContextMenu'
   title?: string
-  menu: ContextMenuItem[]
+  menu: ContextMenuItem<ExtraActions>[]
 }
 
-export interface ContextMenuItem {
+export interface ContextMenuItem<ExtraActions> {
   title: string
-  onClick: ChatiumActions
+  onClick: ChatiumActions<ExtraActions>
 }
 
-export function showContextMenu(menu: ContextMenuItem[]): ShowContextMenuAction {
+export function showContextMenu<ExtraActions>(
+  menu: ContextMenuItem<ExtraActions>[],
+): ShowContextMenuAction<ExtraActions> {
   return {
     type: 'showContextMenu',
-    menu: menu,
+    menu,
   }
 }

@@ -8,24 +8,24 @@ import type { SearchProps } from './blocks/Search';
 import type { ChatProps } from './Chat';
 import type { Icon } from './commonTypes';
 import { ChatiumChildNode } from './utils/children';
-export interface ChatiumScreen {
+export interface ChatiumScreen<ExtraActions> {
     title: string;
     description?: string;
     backUrl?: string;
-    header?: HeaderProps;
-    headerButton?: HeaderButton;
-    headerLeftButton?: HeaderButton;
-    contextLinks?: ContextLink[];
+    header?: HeaderProps<ExtraActions>;
+    headerButton?: HeaderButton<ExtraActions>;
+    headerLeftButton?: HeaderButton<ExtraActions>;
+    contextLinks?: ContextLink<ExtraActions>[];
     socketId?: string;
     socketIds?: string[];
-    blocks?: ChatiumBlock[];
-    dropdownMenuBlocks?: ChatiumBlock[];
+    blocks?: ChatiumBlock<ExtraActions>[];
+    dropdownMenuBlocks?: ChatiumBlock<ExtraActions>[];
     dropdownMenuInitiallyVisible?: boolean;
-    pinnedBlocks?: ChatiumBlock[];
-    chat?: ChatProps;
-    fullScreenGallery?: GalleryProps;
-    footer?: FooterProps;
-    search?: SearchProps;
+    pinnedBlocks?: ChatiumBlock<ExtraActions>[];
+    chat?: ChatProps<ExtraActions>;
+    fullScreenGallery?: GalleryProps<ExtraActions>;
+    footer?: FooterProps<ExtraActions>;
+    search?: SearchProps<ExtraActions>;
     needEmailCheck?: boolean;
     needPhoneCheck?: boolean;
     scrollTo?: string;
@@ -33,15 +33,15 @@ export interface ChatiumScreen {
     layout?: 'stack' | 'fixed';
     bgColor?: string;
 }
-export declare type HeaderButton = Pick<ButtonProps, 'icon' | 'onClick'>;
-export interface ContextLink {
+export declare type HeaderButton<ExtraActions> = Pick<ButtonProps<ExtraActions>, 'icon' | 'onClick'>;
+export interface ContextLink<ExtraActions> {
     title: string;
     icon?: Icon;
-    action: ChatiumActions;
+    action: ChatiumActions<ExtraActions>;
 }
-export declare type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'> & {
-    headerButton?: HeaderButton | Promise<HeaderButton>;
-    pinnedBlocks?: ChatiumBlock[] | Promise<ChatiumBlock[]>;
+export declare type ScreenProps<ExtraActions> = Omit<ChatiumScreen<ExtraActions>, 'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'> & {
+    headerButton?: HeaderButton<ExtraActions> | Promise<HeaderButton<ExtraActions>>;
+    pinnedBlocks?: ChatiumBlock<ExtraActions>[] | Promise<ChatiumBlock<ExtraActions>[]>;
     backUrl?: string | Promise<string>;
 };
 /**
@@ -49,4 +49,4 @@ export declare type ScreenProps = Omit<ChatiumScreen, 'blocks' | 'search' | 'hea
  * Supports Promises and arrays recursive flattening of the given children
  *  and special handling of search block
  */
-export declare function Screen(props: ScreenProps, ...children: ChatiumChildNode[]): Promise<ChatiumScreen>;
+export declare function Screen<ExtraActions>(props: ScreenProps<ExtraActions>, ...children: ChatiumChildNode<ExtraActions>[]): Promise<ChatiumScreen<ExtraActions>>;

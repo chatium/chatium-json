@@ -1,10 +1,9 @@
 import { ChatiumActions } from '../actions'
 import { CommonBlockProps } from '../commonTypes'
 
-export interface ImageBlock extends CommonBlockProps {
-  type: 'image'
+export interface ImageProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
   downloadUrl: string
-  onClick?: ChatiumActions
+  onClick?: ChatiumActions<ExtraActions>
   width?: number
   height?: number
   image?: any
@@ -15,9 +14,11 @@ export interface ImageBlock extends CommonBlockProps {
   }
 }
 
-export type ImageProps = Omit<ImageBlock, 'type'>
+export interface ImageBlock<ExtraActions> extends ImageProps<ExtraActions> {
+  type: 'image'
+}
 
-export function Image(props: ImageProps): ImageBlock {
+export function Image<ExtraActions>(props: ImageProps<ExtraActions>): ImageBlock<ExtraActions> {
   return {
     type: 'image',
     ...props,

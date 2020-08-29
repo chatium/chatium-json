@@ -2,9 +2,9 @@ import { ChatiumActions } from '../actions';
 import { Color, CommonBlockProps, FontSize, FontStyle } from '../commonTypes';
 import { ChatiumChildNode } from '../utils/children';
 import { ChatiumBlock } from './index';
-export declare type TextBlock = TextProps & {
+export declare type TextBlock<ExtraActions> = TextProps<ExtraActions> & {
     type: 'text';
-    blocks?: ChatiumBlock[];
+    blocks?: ChatiumBlock<ExtraActions>[];
 };
 export declare type TextStyle = {
     color?: Color;
@@ -13,23 +13,21 @@ export declare type TextStyle = {
     isBold?: boolean;
     lineHeight?: number;
 };
-export declare type TextProps = {
-    onClick?: ChatiumActions;
-} & TextContent & CommonBlockProps & TextStyle;
-export declare type TextContent = {
+export declare type TextProps<ExtraActions> = {
+    onClick?: ChatiumActions<ExtraActions>;
+} & TextContent<ExtraActions> & CommonBlockProps<ExtraActions> & TextStyle;
+export declare type TextContent<ExtraActions> = {
     text: string;
     tokens?: never;
 } | {
-    tokens: TextToken[];
+    tokens: TextToken<ExtraActions>[];
     text?: never;
 };
-export declare type TextToken = string | CustomToken;
-interface CustomToken {
+export declare type TextToken<ExtraActions> = string | CustomToken<ExtraActions>;
+interface CustomToken<ExtraActions> {
     v: string;
     s?: FontStyle[];
-    onClick?: ChatiumActions;
+    onClick?: ChatiumActions<ExtraActions>;
 }
-export declare function Text(props: TextProps, ...children: ChatiumChildNode[]): Promise<TextBlock>;
-export declare function EmptyTextBlock(): Promise<TextBlock>;
-export declare function ControlText(props: TextProps): Promise<TextBlock>;
+export declare function Text<ExtraActions>(props: TextProps<ExtraActions>, ...children: ChatiumChildNode<ExtraActions>[]): Promise<TextBlock<ExtraActions>>;
 export {};

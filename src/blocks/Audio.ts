@@ -1,6 +1,6 @@
 import { CommonBlockProps } from '../commonTypes'
 
-export interface AudioProps extends CommonBlockProps {
+export interface AudioProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
   title?: string
   description?: string
   downloadUrl: string
@@ -8,11 +8,11 @@ export interface AudioProps extends CommonBlockProps {
   durationSeconds?: number
 }
 
-export interface AudioBlock extends AudioProps {
+export interface AudioBlock<ExtraActions> extends AudioProps<ExtraActions> {
   type: 'audio'
 }
 
-export function Audio(props: AudioProps): AudioBlock {
+export function Audio<ExtraActions>(props: AudioProps<ExtraActions>): AudioBlock<ExtraActions> {
   return {
     type: 'audio',
     ...props,

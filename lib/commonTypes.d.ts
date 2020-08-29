@@ -1,9 +1,9 @@
 import type { ChatiumActions } from './actions';
 import type { ChatiumBlock } from './blocks';
-export interface CommonBlockProps extends WithKey {
+export interface CommonBlockProps<ExtraActions> extends WithKey {
     containerStyle?: ContainerStyle | null;
-    fallback?: ChatiumBlock;
-    onContext?: ChatiumActions;
+    fallback?: ChatiumBlock<ExtraActions>;
+    onContext?: ChatiumActions<ExtraActions>;
 }
 export interface WithKey {
     /**
@@ -45,11 +45,11 @@ export interface Icon {
 export interface StatusIcon extends Icon {
     isAvailable: boolean;
 }
-export interface Author {
+export interface Author<ExtraActions> {
     id: string;
     name: string;
     avatar: Icon;
-    onClick?: ChatiumActions;
+    onClick?: ChatiumActions<ExtraActions>;
 }
 export declare type ImageSize = ImageSizePreset | number;
 export declare type ImageSizePreset = 'xxlarge' | 'xlarge' | 'large' | 'medium' | 'small';
@@ -79,10 +79,10 @@ export interface ContainerStyle {
     borderWidth?: 'hairline' | number;
 }
 declare type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
-export interface OverlayProps {
+export interface OverlayProps<ExtraActions> {
     id?: ChatiumJsonId;
     gradientColors?: string[];
-    blocks: ChatiumBlock[];
+    blocks: ChatiumBlock<ExtraActions>[];
     containerStyle?: ContainerStyle;
 }
 export {};

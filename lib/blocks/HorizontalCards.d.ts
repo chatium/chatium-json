@@ -1,23 +1,24 @@
 import { ChatiumActions } from '../actions';
 import { CommonBlockProps } from '../commonTypes';
-export interface CardProps {
+export interface CardProps<ExtraActions> {
     id?: string;
     text?: string;
     imageUrl?: string;
-    onClick?: ChatiumActions;
-    onContext?: ChatiumActions;
+    onClick?: ChatiumActions<ExtraActions>;
+    onContext?: ChatiumActions<ExtraActions>;
     borderColor?: string;
     bgColor?: string;
     opacity?: number;
 }
-export interface HorizontalCardsBlock extends CommonBlockProps {
-    type: 'horizontalCards';
+export interface HorizontalCardsProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
     size: 'small' | 'medium' | 'large';
     shape: 'circle' | 'square' | 'rectangleHorizontal' | 'rectangleVertical';
     textPosition: 'none' | 'insideBottom' | 'outsideBottom';
     initialCardId?: string;
-    cards: Array<CardProps>;
+    cards: Array<CardProps<ExtraActions>>;
 }
-export declare type HorizontalCardsProps = Omit<HorizontalCardsBlock, 'type'>;
-export declare function HorizontalCards(props: HorizontalCardsProps): HorizontalCardsBlock;
-export declare function Card(props: CardProps): CardProps;
+export interface HorizontalCardsBlock<ExtraActions> extends HorizontalCardsProps<ExtraActions> {
+    type: 'horizontalCards';
+}
+export declare function HorizontalCards<ExtraActions>(props: HorizontalCardsProps<ExtraActions>): HorizontalCardsBlock<ExtraActions>;
+export declare function Card<ExtraActions>(props: CardProps<ExtraActions>): CardProps<ExtraActions>;

@@ -2,16 +2,18 @@ import { types } from 'util'
 
 import { ChatiumBlock } from '../blocks'
 
-export async function flattenChildren(children: ChatiumChildNode[]): Promise<ChatiumBlock[]> {
-  const result: ChatiumBlock[] = []
+export async function flattenChildren<ExtraActions>(
+  children: ChatiumChildNode<ExtraActions>[],
+): Promise<ChatiumBlock<ExtraActions>[]> {
+  const result: ChatiumBlock<ExtraActions>[] = []
   await flattenChildrenRec(children, '', result)
   return result
 }
 
-async function flattenChildrenRec(
-  children: ChatiumChildNode[],
+async function flattenChildrenRec<ExtraActions>(
+  children: ChatiumChildNode<ExtraActions>[],
   prevLevelKey: string,
-  result: ChatiumBlock[],
+  result: ChatiumBlock<ExtraActions>[],
 ): Promise<void> {
   let idx = 0
   for (const b of children) {
@@ -20,11 +22,11 @@ async function flattenChildrenRec(
   }
 }
 
-async function flattenChildRec(
-  child: ChatiumChildNode,
+async function flattenChildRec<ExtraActions>(
+  child: ChatiumChildNode<ExtraActions>,
   prevLevelKey: string,
   idx: number,
-  result: ChatiumBlock[],
+  result: ChatiumBlock<ExtraActions>[],
 ): Promise<void> {
   // skip falsy nodes
   if (child) {
@@ -48,13 +50,13 @@ async function flattenChildRec(
   }
 }
 
-function isPromise(b: ChatiumChildNode): b is Promise<SyncNode> {
+function isPromise<ExtraActions>(b: ChatiumChildNode<ExtraActions>): b is Promise<SyncNode<ExtraActions>> {
   return types.isPromise(b)
 }
 
-export type ChatiumChildNode = SyncNode | Promise<SyncNode>
-type SyncNode = SingleNode | SingleNode[]
-type SingleNode = ChatiumBlock | null | undefined | false | 0 | ''
+export type ChatiumChildNode<ExtraActions> = SyncNode<ExtraActions> | Promise<SyncNode<ExtraActions>>
+type SyncNode<ExtraActions> = SingleNode<ExtraActions> | SingleNode<ExtraActions>[]
+type SingleNode<ExtraActions> = ChatiumBlock<ExtraActions> | null | undefined | false | 0 | ''
 
 /**
  * Compact auto-generated key encoding.

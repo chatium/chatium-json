@@ -1,15 +1,14 @@
 import { ChatiumActions } from '../actions'
 import { CommonBlockProps, OverlayProps } from '../commonTypes'
 
-interface CommonVideoProps extends CommonBlockProps {
+interface CommonVideoProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
   hlsUrl?: string // for desktop only
   imageUrl?: string
   mp4Url?: string // for desktop only
   videoAspectRatio?: [number, number] // for desktop only
 }
 
-export interface VideoBlock extends CommonVideoProps {
-  type: 'video'
+export interface VideoProps<ExtraActions> extends CommonVideoProps<ExtraActions> {
   url?: string
   // for desktop only
   file?: {
@@ -23,22 +22,23 @@ export interface VideoBlock extends CommonVideoProps {
   // }
 }
 
-export type VideoProps = Omit<VideoBlock, 'type'>
+export interface VideoBlock<ExtraActions> extends VideoProps<ExtraActions> {
+  type: 'video'
+}
 
-export function Video(props: VideoProps): VideoBlock {
+export function Video<ExtraActions>(props: VideoProps<ExtraActions>): VideoBlock<ExtraActions> {
   return {
     type: 'video',
     ...props,
   }
 }
 
-export interface InlineVideoBlock extends CommonVideoProps {
-  type: 'inlineVideo'
+export interface InlineVideoProps<ExtraActions> extends CommonVideoProps<ExtraActions> {
   ignoreSilentSwitch?: 'ignore' | 'obey'
   muted?: boolean
-  onProgressChange?: ProgressChangeProps[]
-  overlay?: OverlayProps
-  onVideoEnd?: ChatiumActions
+  onProgressChange?: ProgressChangeProps<ExtraActions>[]
+  overlay?: OverlayProps<ExtraActions>
+  onVideoEnd?: ChatiumActions<ExtraActions>
   paused?: boolean
   playInBackground?: boolean
   playWhenInactive?: boolean
@@ -50,9 +50,9 @@ export interface InlineVideoBlock extends CommonVideoProps {
   videoSize?: VideoSize
 }
 
-export interface ProgressChangeProps {
+export interface ProgressChangeProps<ExtraActions> {
   cond: string
-  action: ChatiumActions
+  action: ChatiumActions<ExtraActions>
 }
 
 export interface VideoSize {
@@ -60,9 +60,11 @@ export interface VideoSize {
   height: number
 }
 
-export type InlineVideoProps = Omit<InlineVideoBlock, 'type'>
+export interface InlineVideoBlock<ExtraActions> extends InlineVideoProps<ExtraActions> {
+  type: 'inlineVideo'
+}
 
-export function InlineVideo(props: InlineVideoProps): InlineVideoBlock {
+export function InlineVideo<ExtraActions>(props: InlineVideoProps<ExtraActions>): InlineVideoBlock<ExtraActions> {
   if (props.videoSize && props.videoSize && props.videoSize.height > props.videoSize.width) {
     props.resizeMode = 'cover'
   }

@@ -1,10 +1,10 @@
 import type { ChatiumActions } from './actions'
 import type { ChatiumBlock } from './blocks'
 
-export interface CommonBlockProps extends WithKey {
+export interface CommonBlockProps<ExtraActions> extends WithKey {
   containerStyle?: ContainerStyle | null
-  fallback?: ChatiumBlock
-  onContext?: ChatiumActions
+  fallback?: ChatiumBlock<ExtraActions>
+  onContext?: ChatiumActions<ExtraActions>
 }
 
 export interface WithKey {
@@ -63,11 +63,11 @@ export interface StatusIcon extends Icon {
   isAvailable: boolean
 }
 
-export interface Author {
+export interface Author<ExtraActions> {
   id: string
   name: string
   avatar: Icon
-  onClick?: ChatiumActions
+  onClick?: ChatiumActions<ExtraActions>
 }
 
 export type ImageSize = ImageSizePreset | number
@@ -101,9 +101,9 @@ export interface ContainerStyle {
 
 type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
 
-export interface OverlayProps {
+export interface OverlayProps<ExtraActions> {
   id?: ChatiumJsonId // for updateCurrentScreenBlock action support
   gradientColors?: string[]
-  blocks: ChatiumBlock[]
+  blocks: ChatiumBlock<ExtraActions>[]
   containerStyle?: ContainerStyle
 }

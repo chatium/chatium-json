@@ -1,18 +1,18 @@
-import { ChatiumAction } from '../actions';
+import { ChatiumActions } from '../actions';
 import { Icon, WithKey } from '../commonTypes';
 import { ChatiumChildNode } from '../utils/children';
 import { ChatiumBlock } from './index';
 import { TextBlock } from './Text';
-export interface HeaderProps extends WithKey {
-    blocks?: ChatiumBlock[];
+export interface HeaderProps<ExtraActions> extends WithKey {
+    blocks?: ChatiumBlock<ExtraActions>[];
     compact: boolean;
     logo?: {
         icon: Icon;
-        onClick?: ChatiumAction;
-        onContext?: ChatiumAction;
+        onClick?: ChatiumActions<ExtraActions>;
+        onContext?: ChatiumActions<ExtraActions>;
     };
-    title?: TextBlock;
-    description?: TextBlock;
+    title?: TextBlock<ExtraActions>;
+    description?: TextBlock<ExtraActions>;
     bottomGradientColors?: string[];
     topGradientColors?: string[];
     image?: {
@@ -23,12 +23,11 @@ export interface HeaderProps extends WithKey {
         };
     };
 }
-export interface HeaderBlock extends HeaderProps {
+export interface HeaderBlock<ExtraActions> extends HeaderProps<ExtraActions> {
     type: 'header';
 }
-declare type Props = Omit<HeaderProps, 'title' | 'description'> & {
-    title?: TextBlock | Promise<TextBlock>;
-    description?: TextBlock | Promise<TextBlock>;
+export declare type HeaderFnProps<ExtraActions> = Omit<HeaderProps<ExtraActions>, 'title' | 'description'> & {
+    title?: TextBlock<ExtraActions> | Promise<TextBlock<ExtraActions>>;
+    description?: TextBlock<ExtraActions> | Promise<TextBlock<ExtraActions>>;
 };
-export declare function Header(props: Props, ...children: ChatiumChildNode[]): Promise<HeaderBlock>;
-export {};
+export declare function Header<ExtraActions>(props: HeaderFnProps<ExtraActions>, ...children: ChatiumChildNode<ExtraActions>[]): Promise<HeaderBlock<ExtraActions>>;

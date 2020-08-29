@@ -1,5 +1,5 @@
 import type { Author } from './commonTypes';
-export interface ChatProps {
+export interface ChatProps<ExtraActions> {
     messages_get_url: string;
     messages_add_url?: string;
     messages_edit_url: string;
@@ -13,8 +13,8 @@ export interface ChatProps {
     support_paging: boolean;
     files_put_url: string;
     reply_quotes_enabled: boolean;
-    current_author: Author | null;
-    group_author: Author | null;
+    current_author: Author<ExtraActions> | null;
+    group_author: Author<ExtraActions> | null;
     messages_socket_id: string;
     reactions_socket_id: string;
     last_read_at: number | null;
@@ -25,26 +25,26 @@ export interface ChatProps {
         uid: string;
     };
     pinned?: {
-        message?: ChatMessage;
+        message?: ChatMessage<ExtraActions>;
         update_url?: string;
     };
     render_inverted?: boolean;
     on_context_api_call_url?: string;
 }
-export interface ChatMessage {
+export interface ChatMessage<ExtraActions> {
     id: string;
     text: string | null;
     canEdit: boolean;
     bgColor: string | null;
-    author: Author;
+    author: Author<ExtraActions>;
     isOutgoing: boolean;
     files: Array<ChatiumFileInfo>;
-    replyTo: ChatReplyMessage | null;
+    replyTo: ChatReplyMessage<ExtraActions> | null;
     createdAt: number;
     updatedAt: number;
     createdAtTimestamp: number;
 }
-export declare type ChatReplyMessage = Pick<ChatMessage, 'id' | 'text' | 'files' | 'author'>;
+export declare type ChatReplyMessage<ExtraActions> = Pick<ChatMessage<ExtraActions>, 'id' | 'text' | 'files' | 'author'>;
 export interface ChatiumFileInfo {
     url: string;
     hash: string;

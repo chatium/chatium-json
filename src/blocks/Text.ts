@@ -3,9 +3,9 @@ import { Color, CommonBlockProps, FontSize, FontStyle } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { ChatiumBlock } from './index'
 
-export type TextBlock = TextProps & {
+export type TextBlock<ExtraActions> = TextProps<ExtraActions> & {
   type: 'text'
-  blocks?: ChatiumBlock[]
+  blocks?: ChatiumBlock<ExtraActions>[]
 }
 
 export type TextStyle = {
@@ -16,59 +16,31 @@ export type TextStyle = {
   lineHeight?: number
 }
 
-export type TextProps = {
-  onClick?: ChatiumActions
-} & TextContent &
-  CommonBlockProps &
+export type TextProps<ExtraActions> = {
+  onClick?: ChatiumActions<ExtraActions>
+} & TextContent<ExtraActions> &
+  CommonBlockProps<ExtraActions> &
   TextStyle
 
 // if tokens is defined text is ignored, so they shouldn't be defined together
-export type TextContent = { text: string; tokens?: never } | { tokens: TextToken[]; text?: never }
+export type TextContent<ExtraActions> =
+  | { text: string; tokens?: never }
+  | { tokens: TextToken<ExtraActions>[]; text?: never }
 
-export type TextToken = string | CustomToken
-interface CustomToken {
+export type TextToken<ExtraActions> = string | CustomToken<ExtraActions>
+interface CustomToken<ExtraActions> {
   v: string
   s?: FontStyle[]
-  onClick?: ChatiumActions
+  onClick?: ChatiumActions<ExtraActions>
 }
 
-export async function Text(props: TextProps, ...children: ChatiumChildNode[]): Promise<TextBlock> {
+export async function Text<ExtraActions>(
+  props: TextProps<ExtraActions>,
+  ...children: ChatiumChildNode<ExtraActions>[]
+): Promise<TextBlock<ExtraActions>> {
   return {
     type: 'text',
     ...props,
     blocks: await flattenChildren(children),
-  }
-}
-
-export async function EmptyTextBlock(): Promise<TextBlock> {
-  return {
-    type: 'text',
-    lineHeight: 1.2,
-    text: '',
-    containerStyle: {
-      paddingLeft: 0,
-      paddingBottom: 0,
-      paddingTop: 0,
-      paddingRight: 0,
-      marginBottom: 0,
-      marginTop: 0,
-      marginLeft: 0,
-      marginRight: 0,
-    },
-  }
-}
-
-export async function ControlText(props: TextProps): Promise<TextBlock> {
-  return {
-    type: 'text',
-    fontSize: 'small',
-    color: '#999999',
-    containerStyle: {
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingTop: 10,
-      paddingBottom: 10,
-    },
-    ...props,
   }
 }

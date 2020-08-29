@@ -12,16 +12,16 @@ import { InlineVideo, InlineVideoBlock, Video, VideoBlock } from './Video'
 
 export { Audio, Button, Footer, Gallery, Header, HorizontalCards, InlineVideo, Image, ListItem, Search, Text, Video }
 
-export type ChatiumBlock =
-  | AudioBlock
-  | ButtonBlock
-  | FooterBlock
-  | GalleryBlock
-  | HeaderBlock
-  | HorizontalCardsBlock
-  | ImageBlock
-  | InlineVideoBlock
-  | ListItemBlock
-  | SearchBlock
-  | TextBlock
-  | VideoBlock
+export type ChatiumBlock<ExtraActions> =
+  | AudioBlock<ExtraActions>
+  | ButtonBlock<ExtraActions>
+  | FooterBlock<ExtraActions>
+  | GalleryBlock<ExtraActions>
+  | HeaderBlock<ExtraActions>
+  | HorizontalCardsBlock<ExtraActions>
+  | ImageBlock<ExtraActions>
+  | InlineVideoBlock<ExtraActions>
+  | ListItemBlock<ExtraActions>
+  | SearchBlock<ExtraActions>
+  | TextBlock<ExtraActions>
+  | VideoBlock<ExtraActions>

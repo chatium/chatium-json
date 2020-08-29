@@ -1,27 +1,27 @@
 import { ChatiumActions } from '../actions';
 import { CommonBlockProps, OverlayProps } from '../commonTypes';
-interface CommonVideoProps extends CommonBlockProps {
+interface CommonVideoProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
     hlsUrl?: string;
     imageUrl?: string;
     mp4Url?: string;
     videoAspectRatio?: [number, number];
 }
-export interface VideoBlock extends CommonVideoProps {
-    type: 'video';
+export interface VideoProps<ExtraActions> extends CommonVideoProps<ExtraActions> {
     url?: string;
     file?: {
         hash: string;
     };
 }
-export declare type VideoProps = Omit<VideoBlock, 'type'>;
-export declare function Video(props: VideoProps): VideoBlock;
-export interface InlineVideoBlock extends CommonVideoProps {
-    type: 'inlineVideo';
+export interface VideoBlock<ExtraActions> extends VideoProps<ExtraActions> {
+    type: 'video';
+}
+export declare function Video<ExtraActions>(props: VideoProps<ExtraActions>): VideoBlock<ExtraActions>;
+export interface InlineVideoProps<ExtraActions> extends CommonVideoProps<ExtraActions> {
     ignoreSilentSwitch?: 'ignore' | 'obey';
     muted?: boolean;
-    onProgressChange?: ProgressChangeProps[];
-    overlay?: OverlayProps;
-    onVideoEnd?: ChatiumActions;
+    onProgressChange?: ProgressChangeProps<ExtraActions>[];
+    overlay?: OverlayProps<ExtraActions>;
+    onVideoEnd?: ChatiumActions<ExtraActions>;
     paused?: boolean;
     playInBackground?: boolean;
     playWhenInactive?: boolean;
@@ -32,14 +32,16 @@ export interface InlineVideoBlock extends CommonVideoProps {
     url: string;
     videoSize?: VideoSize;
 }
-export interface ProgressChangeProps {
+export interface ProgressChangeProps<ExtraActions> {
     cond: string;
-    action: ChatiumActions;
+    action: ChatiumActions<ExtraActions>;
 }
 export interface VideoSize {
     width: number;
     height: number;
 }
-export declare type InlineVideoProps = Omit<InlineVideoBlock, 'type'>;
-export declare function InlineVideo(props: InlineVideoProps): InlineVideoBlock;
+export interface InlineVideoBlock<ExtraActions> extends InlineVideoProps<ExtraActions> {
+    type: 'inlineVideo';
+}
+export declare function InlineVideo<ExtraActions>(props: InlineVideoProps<ExtraActions>): InlineVideoBlock<ExtraActions>;
 export {};

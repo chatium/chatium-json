@@ -4,17 +4,24 @@ import { ChatiumScreen } from './Screen'
 /**
  * Standard response type for standard chatium calls including screen, apiCall action and simple data requests
  */
-export type ChatiumResponse = ChatiumSuccessResponse | ErrorResponse
+export type ChatiumResponse<ExtraActions> = ChatiumSuccessResponse<ExtraActions> | ErrorResponse<ExtraActions>
 
-type ChatiumSuccessResponse = { success: true } & (ScreenResponse | ApiCallResponse | DataResponse)
-type ErrorResponse = ScreenErrorResponse | ApiCallErrorResponse | DataErrorResponse
+type ChatiumSuccessResponse<ExtraActions> = { success: true } & (
+  | ScreenResponse<ExtraActions>
+  | ApiCallResponse<ExtraActions>
+  | DataResponse
+)
+type ErrorResponse<ExtraActions> =
+  | ScreenErrorResponse<ExtraActions>
+  | ApiCallErrorResponse<ExtraActions>
+  | DataErrorResponse
 
 /**
  * Standard response for apiCall client action
  */
-export interface ApiCallResponse {
-  appAction?: ChatiumActions
-  appScreens?: Record<string, ChatiumScreen>
+export interface ApiCallResponse<ExtraActions> {
+  appAction?: ChatiumActions<ExtraActions>
+  appScreens?: Record<string, ChatiumScreen<ExtraActions>>
 }
 
 /**
@@ -27,11 +34,11 @@ interface DataResponse {
 /**
  * Standard get-screen response
  */
-export interface ScreenResponse {
+export interface ScreenResponse<ExtraActions> {
   // screen to display must be in `data` field
-  data: ChatiumScreen
+  data: ChatiumScreen<ExtraActions>
   // screens to be cached by their url, can be used to quick navigation prediction user behaviour
-  appScreens?: Record<string, ChatiumScreen>
+  appScreens?: Record<string, ChatiumScreen<ExtraActions>>
   preloadMedia?: string[]
 }
 
@@ -53,8 +60,10 @@ export interface ChatiumErrorFields {
   [key: string]: unknown
 }
 
-export interface ScreenErrorResponse extends ChatiumErrorResponse, Partial<ScreenResponse> {}
-export interface ApiCallErrorResponse extends ChatiumErrorResponse, ApiCallResponse {}
+export interface ScreenErrorResponse<ExtraActions>
+  extends ChatiumErrorResponse,
+    Partial<ScreenResponse<ExtraActions>> {}
+export interface ApiCallErrorResponse<ExtraActions> extends ChatiumErrorResponse, ApiCallResponse<ExtraActions> {}
 export interface DataErrorResponse extends ChatiumErrorResponse, Partial<DataResponse> {}
 
 export function isChatiumErrorResponse(val: any): val is ChatiumErrorResponse {

@@ -34,7 +34,7 @@
     ]
   },
   "scripts": {
-    "build:publish": "tsc --sourceMap false --declaration",
+    "build:publish": "tsc --sourceMap false",
     "build:watch": "tsc -w",
     "clean": "rimraf lib",
     "lint:all": "eslint --ext .ts ."
