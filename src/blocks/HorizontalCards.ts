@@ -12,7 +12,7 @@ export interface CardProps<ExtraActions> {
   opacity?: number
 }
 
-export interface HorizontalCardsProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
+export interface HorizontalCardsProps<ExtraBlocks, ExtraActions> extends CommonBlockProps<ExtraBlocks, ExtraActions> {
   size: 'small' | 'medium' | 'large'
   shape: 'circle' | 'square' | 'rectangleHorizontal' | 'rectangleVertical'
   textPosition: 'none' | 'insideBottom' | 'outsideBottom'
@@ -20,13 +20,14 @@ export interface HorizontalCardsProps<ExtraActions> extends CommonBlockProps<Ext
   cards: Array<CardProps<ExtraActions>>
 }
 
-export interface HorizontalCardsBlock<ExtraActions> extends HorizontalCardsProps<ExtraActions> {
+export interface HorizontalCardsBlock<ExtraBlocks, ExtraActions>
+  extends HorizontalCardsProps<ExtraBlocks, ExtraActions> {
   type: 'horizontalCards'
 }
 
-export function HorizontalCards<ExtraActions>(
-  props: HorizontalCardsProps<ExtraActions>,
-): HorizontalCardsBlock<ExtraActions> {
+export function HorizontalCards<ExtraBlocks, ExtraActions>(
+  props: HorizontalCardsProps<ExtraBlocks, ExtraActions>,
+): HorizontalCardsBlock<ExtraBlocks, ExtraActions> {
   return {
     type: 'horizontalCards',
     ...props,

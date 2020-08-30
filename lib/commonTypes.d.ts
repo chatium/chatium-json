@@ -1,8 +1,8 @@
 import type { ChatiumActions } from './actions';
 import type { ChatiumBlock } from './blocks';
-export interface CommonBlockProps<ExtraActions> extends WithKey {
+export interface CommonBlockProps<ExtraBlocks, ExtraActions> extends WithKey {
     containerStyle?: ContainerStyle | null;
-    fallback?: ChatiumBlock<ExtraActions>;
+    fallback?: ChatiumBlock<ExtraBlocks, ExtraActions>;
     onContext?: ChatiumActions<ExtraActions>;
 }
 export interface WithKey {
@@ -79,10 +79,10 @@ export interface ContainerStyle {
     borderWidth?: 'hairline' | number;
 }
 declare type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
-export interface OverlayProps<ExtraActions> {
+export interface OverlayProps<ExtraBlocks, ExtraActions> {
     id?: ChatiumJsonId;
     gradientColors?: string[];
-    blocks: ChatiumBlock<ExtraActions>[];
+    blocks: ChatiumBlock<ExtraBlocks, ExtraActions>[];
     containerStyle?: ContainerStyle;
 }
 export {};

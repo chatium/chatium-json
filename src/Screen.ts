@@ -9,24 +9,24 @@ import type { ChatProps } from './Chat'
 import type { Icon } from './commonTypes'
 import { ChatiumChildNode, flattenChildren } from './utils/children'
 
-export interface ChatiumScreen<ExtraActions> {
+export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
   title: string
   description?: string
   backUrl?: string
-  header?: HeaderProps<ExtraActions>
-  headerButton?: HeaderButton<ExtraActions>
-  headerLeftButton?: HeaderButton<ExtraActions>
+  header?: HeaderProps<ExtraBlocks, ExtraActions>
+  headerButton?: HeaderButton<ExtraBlocks, ExtraActions>
+  headerLeftButton?: HeaderButton<ExtraBlocks, ExtraActions>
   contextLinks?: ContextLink<ExtraActions>[]
   socketId?: string
   socketIds?: string[]
-  blocks?: ChatiumBlock<ExtraActions>[]
-  dropdownMenuBlocks?: ChatiumBlock<ExtraActions>[]
+  blocks?: ChatiumBlock<ExtraBlocks, ExtraActions>[]
+  dropdownMenuBlocks?: ChatiumBlock<ExtraBlocks, ExtraActions>[]
   dropdownMenuInitiallyVisible?: boolean
-  pinnedBlocks?: ChatiumBlock<ExtraActions>[]
+  pinnedBlocks?: ChatiumBlock<ExtraBlocks, ExtraActions>[]
   chat?: ChatProps<ExtraActions>
-  fullScreenGallery?: GalleryProps<ExtraActions>
-  footer?: FooterProps<ExtraActions>
-  search?: SearchProps<ExtraActions>
+  fullScreenGallery?: GalleryProps<ExtraBlocks, ExtraActions>
+  footer?: FooterProps<ExtraBlocks, ExtraActions>
+  search?: SearchProps<ExtraBlocks, ExtraActions>
   needEmailCheck?: boolean
   needPhoneCheck?: boolean
   scrollTo?: string
@@ -35,7 +35,7 @@ export interface ChatiumScreen<ExtraActions> {
   bgColor?: string
 }
 
-export type HeaderButton<ExtraActions> = Pick<ButtonProps<ExtraActions>, 'icon' | 'onClick'>
+export type HeaderButton<ExtraBlocks, ExtraActions> = Pick<ButtonProps<ExtraBlocks, ExtraActions>, 'icon' | 'onClick'>
 
 export interface ContextLink<ExtraActions> {
   title: string
@@ -43,12 +43,12 @@ export interface ContextLink<ExtraActions> {
   action: ChatiumActions<ExtraActions>
 }
 
-export type ScreenProps<ExtraActions> = Omit<
-  ChatiumScreen<ExtraActions>,
+export type ScreenProps<ExtraBlocks, ExtraActions> = Omit<
+  ChatiumScreen<ExtraBlocks, ExtraActions>,
   'blocks' | 'search' | 'headerButton' | 'pinnedBlocks' | 'backUrl'
 > & {
-  headerButton?: HeaderButton<ExtraActions> | Promise<HeaderButton<ExtraActions>>
-  pinnedBlocks?: ChatiumBlock<ExtraActions>[] | Promise<ChatiumBlock<ExtraActions>[]>
+  headerButton?: HeaderButton<ExtraBlocks, ExtraActions> | Promise<HeaderButton<ExtraBlocks, ExtraActions>>
+  pinnedBlocks?: ChatiumBlock<ExtraBlocks, ExtraActions>[] | Promise<ChatiumBlock<ExtraBlocks, ExtraActions>[]>
   backUrl?: string | Promise<string>
 }
 
@@ -57,17 +57,17 @@ export type ScreenProps<ExtraActions> = Omit<
  * Supports Promises and arrays recursive flattening of the given children
  *  and special handling of search block
  */
-export async function Screen<ExtraActions>(
-  props: ScreenProps<ExtraActions>,
-  ...children: ChatiumChildNode<ExtraActions>[]
-): Promise<ChatiumScreen<ExtraActions>> {
+export async function Screen<ExtraBlocks, ExtraActions>(
+  props: ScreenProps<ExtraBlocks, ExtraActions>,
+  ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]
+): Promise<ChatiumScreen<ExtraBlocks, ExtraActions>> {
   const flatBlocks = await flattenChildren(children)
 
   // extract search and footer blocks
-  let header: HeaderBlock<ExtraActions> | undefined
-  let search: SearchBlock<ExtraActions> | undefined
-  let footer: FooterBlock<ExtraActions> | undefined
-  const blocks: ChatiumBlock<ExtraActions>[] = []
+  let header: HeaderBlock<ExtraBlocks, ExtraActions> | undefined
+  let search: SearchBlock<ExtraBlocks, ExtraActions> | undefined
+  let footer: FooterBlock<ExtraBlocks, ExtraActions> | undefined
+  const blocks: ChatiumBlock<ExtraBlocks, ExtraActions>[] = []
   for (const b of flatBlocks) {
     if (isHeaderBlock(b)) {
       header = b
@@ -92,9 +92,14 @@ export async function Screen<ExtraActions>(
   }
 }
 
-const isSearchBlock = <ExtraActions>(b: ChatiumBlock<ExtraActions>): b is SearchBlock<ExtraActions> =>
-  b.type === 'search'
-const isHeaderBlock = <ExtraActions>(b: ChatiumBlock<ExtraActions>): b is HeaderBlock<ExtraActions> =>
-  b.type === 'header'
-const isFooterBlock = <ExtraActions>(b: ChatiumBlock<ExtraActions>): b is FooterBlock<ExtraActions> =>
-  b.type === 'footer'
+const isSearchBlock = <ExtraBlocks, ExtraActions>(
+  b: ChatiumBlock<ExtraBlocks, ExtraActions>,
+): b is SearchBlock<ExtraBlocks, ExtraActions> => (b as any).type === 'search'
+
+const isHeaderBlock = <ExtraBlocks, ExtraActions>(
+  b: ChatiumBlock<ExtraBlocks, ExtraActions>,
+): b is HeaderBlock<ExtraBlocks, ExtraActions> => (b as any).type === 'header'
+
+const isFooterBlock = <ExtraBlocks, ExtraActions>(
+  b: ChatiumBlock<ExtraBlocks, ExtraActions>,
+): b is FooterBlock<ExtraBlocks, ExtraActions> => (b as any).type === 'footer'

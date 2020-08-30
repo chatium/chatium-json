@@ -1,7 +1,7 @@
 import { ChatiumActions } from '../actions'
 import { Color, CommonBlockProps, FontSize, Icon } from '../commonTypes'
 
-export interface ButtonProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
+export interface ButtonProps<ExtraBlocks, ExtraActions> extends CommonBlockProps<ExtraBlocks, ExtraActions> {
   bgColor?: Color
   fontColor?: Color
   fontSize?: FontSize
@@ -12,11 +12,13 @@ export interface ButtonProps<ExtraActions> extends CommonBlockProps<ExtraActions
   buttonType?: 'primary' | 'transparent' | 'headerRight' | 'headerLeft' | 'warning' | 'warningTransparent' | 'flat'
 }
 
-export interface ButtonBlock<ExtraActions> extends ButtonProps<ExtraActions> {
+export interface ButtonBlock<ExtraBlocks, ExtraActions> extends ButtonProps<ExtraBlocks, ExtraActions> {
   type: 'button'
 }
 
-export function Button<ExtraActions>(props: ButtonProps<ExtraActions>): ButtonBlock<ExtraActions> {
+export function Button<ExtraBlocks, ExtraActions>(
+  props: ButtonProps<ExtraBlocks, ExtraActions>,
+): ButtonBlock<ExtraBlocks, ExtraActions> {
   return {
     type: 'button',
     ...props,

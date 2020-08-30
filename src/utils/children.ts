@@ -1,19 +1,20 @@
 import { types } from 'util'
 
 import { ChatiumBlock } from '../blocks'
+import { WithKey } from '../commonTypes'
 
-export async function flattenChildren<ExtraActions>(
-  children: ChatiumChildNode<ExtraActions>[],
-): Promise<ChatiumBlock<ExtraActions>[]> {
-  const result: ChatiumBlock<ExtraActions>[] = []
+export async function flattenChildren<ExtraBlocks, ExtraActions>(
+  children: ChatiumChildNode<ExtraBlocks, ExtraActions>[],
+): Promise<ChatiumBlock<ExtraBlocks, ExtraActions>[]> {
+  const result: ChatiumBlock<ExtraBlocks, ExtraActions>[] = []
   await flattenChildrenRec(children, '', result)
   return result
 }
 
-async function flattenChildrenRec<ExtraActions>(
-  children: ChatiumChildNode<ExtraActions>[],
+async function flattenChildrenRec<ExtraBlocks, ExtraActions>(
+  children: ChatiumChildNode<ExtraBlocks, ExtraActions>[],
   prevLevelKey: string,
-  result: ChatiumBlock<ExtraActions>[],
+  result: ChatiumBlock<ExtraBlocks, ExtraActions>[],
 ): Promise<void> {
   let idx = 0
   for (const b of children) {
@@ -22,11 +23,11 @@ async function flattenChildrenRec<ExtraActions>(
   }
 }
 
-async function flattenChildRec<ExtraActions>(
-  child: ChatiumChildNode<ExtraActions>,
+async function flattenChildRec<ExtraBlocks extends WithKey, ExtraActions>(
+  child: ChatiumChildNode<ExtraBlocks, ExtraActions>,
   prevLevelKey: string,
   idx: number,
-  result: ChatiumBlock<ExtraActions>[],
+  result: ChatiumBlock<ExtraBlocks, ExtraActions>[],
 ): Promise<void> {
   // skip falsy nodes
   if (child) {
@@ -50,13 +51,19 @@ async function flattenChildRec<ExtraActions>(
   }
 }
 
-function isPromise<ExtraActions>(b: ChatiumChildNode<ExtraActions>): b is Promise<SyncNode<ExtraActions>> {
+function isPromise<ExtraBlocks, ExtraActions>(
+  b: ChatiumChildNode<ExtraBlocks, ExtraActions>,
+): b is Promise<SyncNode<ExtraBlocks, ExtraActions>> {
   return types.isPromise(b)
 }
 
-export type ChatiumChildNode<ExtraActions> = SyncNode<ExtraActions> | Promise<SyncNode<ExtraActions>>
-type SyncNode<ExtraActions> = SingleNode<ExtraActions> | SingleNode<ExtraActions>[]
-type SingleNode<ExtraActions> = ChatiumBlock<ExtraActions> | null | undefined | false | 0 | ''
+export type ChatiumChildNode<ExtraBlocks, ExtraActions> =
+  | SyncNode<ExtraBlocks, ExtraActions>
+  | Promise<SyncNode<ExtraBlocks, ExtraActions>>
+type SyncNode<ExtraBlocks, ExtraActions> =
+  | SingleNode<ExtraBlocks, ExtraActions>
+  | SingleNode<ExtraBlocks, ExtraActions>[]
+type SingleNode<ExtraBlocks, ExtraActions> = ChatiumBlock<ExtraBlocks, ExtraActions> | null | undefined | false | 0 | ''
 
 /**
  * Compact auto-generated key encoding.

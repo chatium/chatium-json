@@ -1,7 +1,7 @@
 import { ChatiumActions } from '../actions'
 import { Color, CommonBlockProps, Icon, ImageSize, StatusIcon } from '../commonTypes'
 
-export interface ListItemProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
+export interface ListItemProps<ExtraBlocks, ExtraActions> extends CommonBlockProps<ExtraBlocks, ExtraActions> {
   description?: string
   image?: string
   imageSize?: ImageSize
@@ -18,11 +18,13 @@ export interface ListItemProps<ExtraActions> extends CommonBlockProps<ExtraActio
   url?: string
 }
 
-export interface ListItemBlock<ExtraActions> extends ListItemProps<ExtraActions> {
+export interface ListItemBlock<ExtraBlocks, ExtraActions> extends ListItemProps<ExtraBlocks, ExtraActions> {
   type: 'screen'
 }
 
-export function ListItem<ExtraActions>(props: ListItemProps<ExtraActions>): ListItemBlock<ExtraActions> {
+export function ListItem<ExtraBlocks, ExtraActions>(
+  props: ListItemProps<ExtraBlocks, ExtraActions>,
+): ListItemBlock<ExtraBlocks, ExtraActions> {
   // Приложение Артура отображает даты в секундах. На бекенде они передаются в миллисекундах.
   // Тут я нормализую их.
   if (props.updatedAtTimestamp && props.updatedAtTimestamp > 1000000000000) {

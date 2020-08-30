@@ -1,5 +1,5 @@
 import { Color, CommonBlockProps, Icon } from '../commonTypes';
-export interface SearchProps<ExtraActions> extends CommonBlockProps<ExtraActions> {
+export interface SearchProps<ExtraBlocks, ExtraActions> extends CommonBlockProps<ExtraBlocks, ExtraActions> {
     bgColor?: Color;
     borderColor?: Color;
     defaultValue?: string;
@@ -12,7 +12,7 @@ export interface SearchProps<ExtraActions> extends CommonBlockProps<ExtraActions
     queryParamKey: string;
     spinnerColor?: Color;
 }
-export interface SearchBlock<ExtraActions> extends SearchProps<ExtraActions> {
+export interface SearchBlock<ExtraBlocks, ExtraActions> extends SearchProps<ExtraBlocks, ExtraActions> {
     type: 'search';
 }
-export declare function Search<ExtraActions>(props: SearchProps<ExtraActions>): SearchBlock<ExtraActions>;
+export declare function Search<ExtraBlocks, ExtraActions>(props: SearchProps<ExtraBlocks, ExtraActions>): SearchBlock<ExtraBlocks, ExtraActions>;

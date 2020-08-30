@@ -1,6 +1,6 @@
 import { ChatiumBlock } from '../blocks';
-export declare function flattenChildren<ExtraActions>(children: ChatiumChildNode<ExtraActions>[]): Promise<ChatiumBlock<ExtraActions>[]>;
-export declare type ChatiumChildNode<ExtraActions> = SyncNode<ExtraActions> | Promise<SyncNode<ExtraActions>>;
-declare type SyncNode<ExtraActions> = SingleNode<ExtraActions> | SingleNode<ExtraActions>[];
-declare type SingleNode<ExtraActions> = ChatiumBlock<ExtraActions> | null | undefined | false | 0 | '';
+export declare function flattenChildren<ExtraBlocks, ExtraActions>(children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]): Promise<ChatiumBlock<ExtraBlocks, ExtraActions>[]>;
+export declare type ChatiumChildNode<ExtraBlocks, ExtraActions> = SyncNode<ExtraBlocks, ExtraActions> | Promise<SyncNode<ExtraBlocks, ExtraActions>>;
+declare type SyncNode<ExtraBlocks, ExtraActions> = SingleNode<ExtraBlocks, ExtraActions> | SingleNode<ExtraBlocks, ExtraActions>[];
+declare type SingleNode<ExtraBlocks, ExtraActions> = ChatiumBlock<ExtraBlocks, ExtraActions> | null | undefined | false | 0 | '';
 export {};

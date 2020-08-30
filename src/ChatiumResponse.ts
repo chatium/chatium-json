@@ -4,24 +4,26 @@ import { ChatiumScreen } from './Screen'
 /**
  * Standard response type for standard chatium calls including screen, apiCall action and simple data requests
  */
-export type ChatiumResponse<ExtraActions> = ChatiumSuccessResponse<ExtraActions> | ErrorResponse<ExtraActions>
+export type ChatiumResponse<ExtraBlocks, ExtraActions> =
+  | ChatiumSuccessResponse<ExtraBlocks, ExtraActions>
+  | ErrorResponse<ExtraBlocks, ExtraActions>
 
-type ChatiumSuccessResponse<ExtraActions> = { success: true } & (
-  | ScreenResponse<ExtraActions>
-  | ApiCallResponse<ExtraActions>
+type ChatiumSuccessResponse<ExtraBlocks, ExtraActions> = { success: true } & (
+  | ScreenResponse<ExtraBlocks, ExtraActions>
+  | ApiCallResponse<ExtraBlocks, ExtraActions>
   | DataResponse
 )
-type ErrorResponse<ExtraActions> =
-  | ScreenErrorResponse<ExtraActions>
-  | ApiCallErrorResponse<ExtraActions>
+type ErrorResponse<ExtraBlocks, ExtraActions> =
+  | ScreenErrorResponse<ExtraBlocks, ExtraActions>
+  | ApiCallErrorResponse<ExtraBlocks, ExtraActions>
   | DataErrorResponse
 
 /**
  * Standard response for apiCall client action
  */
-export interface ApiCallResponse<ExtraActions> {
+export interface ApiCallResponse<ExtraBlocks, ExtraActions> {
   appAction?: ChatiumActions<ExtraActions>
-  appScreens?: Record<string, ChatiumScreen<ExtraActions>>
+  appScreens?: Record<string, ChatiumScreen<ExtraBlocks, ExtraActions>>
 }
 
 /**
@@ -34,11 +36,11 @@ interface DataResponse {
 /**
  * Standard get-screen response
  */
-export interface ScreenResponse<ExtraActions> {
+export interface ScreenResponse<ExtraBlocks, ExtraActions> {
   // screen to display must be in `data` field
-  data: ChatiumScreen<ExtraActions>
+  data: ChatiumScreen<ExtraBlocks, ExtraActions>
   // screens to be cached by their url, can be used to quick navigation prediction user behaviour
-  appScreens?: Record<string, ChatiumScreen<ExtraActions>>
+  appScreens?: Record<string, ChatiumScreen<ExtraBlocks, ExtraActions>>
   preloadMedia?: string[]
 }
 
@@ -60,10 +62,12 @@ export interface ChatiumErrorFields {
   [key: string]: unknown
 }
 
-export interface ScreenErrorResponse<ExtraActions>
+export interface ScreenErrorResponse<ExtraBlocks, ExtraActions>
   extends ChatiumErrorResponse,
-    Partial<ScreenResponse<ExtraActions>> {}
-export interface ApiCallErrorResponse<ExtraActions> extends ChatiumErrorResponse, ApiCallResponse<ExtraActions> {}
+    Partial<ScreenResponse<ExtraBlocks, ExtraActions>> {}
+export interface ApiCallErrorResponse<ExtraBlocks, ExtraActions>
+  extends ChatiumErrorResponse,
+    ApiCallResponse<ExtraBlocks, ExtraActions> {}
 export interface DataErrorResponse extends ChatiumErrorResponse, Partial<DataResponse> {}
 
 export function isChatiumErrorResponse(val: any): val is ChatiumErrorResponse {

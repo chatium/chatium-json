@@ -3,9 +3,9 @@ import { Color, CommonBlockProps, FontSize, FontStyle } from '../commonTypes'
 import { ChatiumChildNode, flattenChildren } from '../utils/children'
 import { ChatiumBlock } from './index'
 
-export type TextBlock<ExtraActions> = TextProps<ExtraActions> & {
+export type TextBlock<ExtraBlocks, ExtraActions> = TextProps<ExtraBlocks, ExtraActions> & {
   type: 'text'
-  blocks?: ChatiumBlock<ExtraActions>[]
+  blocks?: ChatiumBlock<ExtraBlocks, ExtraActions>[]
 }
 
 export type TextStyle = {
@@ -16,10 +16,10 @@ export type TextStyle = {
   lineHeight?: number
 }
 
-export type TextProps<ExtraActions> = {
+export type TextProps<ExtraBlocks, ExtraActions> = {
   onClick?: ChatiumActions<ExtraActions>
 } & TextContent<ExtraActions> &
-  CommonBlockProps<ExtraActions> &
+  CommonBlockProps<ExtraBlocks, ExtraActions> &
   TextStyle
 
 // if tokens is defined text is ignored, so they shouldn't be defined together
@@ -34,10 +34,10 @@ interface CustomToken<ExtraActions> {
   onClick?: ChatiumActions<ExtraActions>
 }
 
-export async function Text<ExtraActions>(
-  props: TextProps<ExtraActions>,
-  ...children: ChatiumChildNode<ExtraActions>[]
-): Promise<TextBlock<ExtraActions>> {
+export async function Text<ExtraBlocks, ExtraActions>(
+  props: TextProps<ExtraBlocks, ExtraActions>,
+  ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]
+): Promise<TextBlock<ExtraBlocks, ExtraActions>> {
   return {
     type: 'text',
     ...props,

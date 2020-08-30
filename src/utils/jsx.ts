@@ -5,14 +5,14 @@ import { ChatiumChildNode } from './children'
 /**
  * Creates a jsx-factory function for the given intrinsic chatium blocks
  */
-export function jsxFactory<IE extends Record<string, object>, K extends keyof IE, ExtraActions>(
-  intrinsicBlocks: Record<K, BlockFactory<ExtraActions, IE[K]>>,
+export function jsxFactory<IE extends Record<string, object>, K extends keyof IE, ExtraBlocks, ExtraActions>(
+  intrinsicBlocks: Record<K, BlockFactory<ExtraBlocks, ExtraActions, IE[K]>>,
 ) {
   return function jsx<P>(
-    block: BlockFactory<ExtraActions, P> | K,
+    block: BlockFactory<ExtraBlocks, ExtraActions, P> | K,
     props: P | IE[K],
-    ...children: ChatiumChildNode<ExtraActions>[]
-  ): JsxNode<ExtraActions> {
+    ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]
+  ): JsxNode<ExtraBlocks, ExtraActions> {
     if (typeof block === 'string') {
       if (intrinsicBlocks[block]) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,7 +24,7 @@ export function jsxFactory<IE extends Record<string, object>, K extends keyof IE
         )
       }
     } else {
-      return (block as BlockFactory<ExtraActions, P>)(props as P, ...children)
+      return (block as BlockFactory<ExtraBlocks, ExtraActions, P>)(props as P, ...children)
     }
   }
 }
@@ -40,11 +40,11 @@ export function jsxFactory<IE extends Record<string, object>, K extends keyof IE
  */
 export const jsx = jsxFactory(intrinsicBlocks as any)
 
-interface BlockFactory<ExtraActions, P = {}> {
-  (props: P, ...children: ChatiumChildNode<ExtraActions>[]): JsxNode<ExtraActions>
+interface BlockFactory<ExtraBlocks, ExtraActions, P = {}> {
+  (props: P, ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]): JsxNode<ExtraBlocks, ExtraActions>
 }
 
-type JsxNode<ExtraActions> =
-  | ChatiumChildNode<ExtraActions>
-  | ChatiumChildNode<ExtraActions>[]
-  | Promise<ChatiumScreen<ExtraActions>>
+type JsxNode<ExtraBlocks, ExtraActions> =
+  | ChatiumChildNode<ExtraBlocks, ExtraActions>
+  | ChatiumChildNode<ExtraBlocks, ExtraActions>[]
+  | Promise<ChatiumScreen<ExtraBlocks, ExtraActions>>

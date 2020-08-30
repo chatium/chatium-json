@@ -26,20 +26,20 @@ import { Fragment } from './utils/Fragment'
  * }
  * ```
  */
-export interface ChatiumIntrinsicElements<ExtraActions> {
-  audio: AudioProps<ExtraActions>
-  button: ButtonProps<ExtraActions>
+export interface ChatiumIntrinsicElements<ExtraBlocks, ExtraActions> {
+  audio: AudioProps<ExtraBlocks, ExtraActions>
+  button: ButtonProps<ExtraBlocks, ExtraActions>
   f: {} // analog of React.Fragment, just container of children blocks
-  footer: FooterProps<ExtraActions>
-  gallery: GalleryProps<ExtraActions>
-  header: HeaderProps<ExtraActions>
-  image: ImageProps<ExtraActions>
-  'list-item': ListItemProps<ExtraActions>
-  'horizontal-cards': HorizontalCardsProps<ExtraActions>
-  screen: ScreenProps<ExtraActions>
-  search: SearchProps<ExtraActions>
-  text: TextProps<ExtraActions>
-  video: VideoProps<ExtraActions>
+  footer: FooterProps<ExtraBlocks, ExtraActions>
+  gallery: GalleryProps<ExtraBlocks, ExtraActions>
+  header: HeaderProps<ExtraBlocks, ExtraActions>
+  image: ImageProps<ExtraBlocks, ExtraActions>
+  'list-item': ListItemProps<ExtraBlocks, ExtraActions>
+  'horizontal-cards': HorizontalCardsProps<ExtraBlocks, ExtraActions>
+  screen: ScreenProps<ExtraBlocks, ExtraActions>
+  search: SearchProps<ExtraBlocks, ExtraActions>
+  text: TextProps<ExtraBlocks, ExtraActions>
+  video: VideoProps<ExtraBlocks, ExtraActions>
 }
 
 export const intrinsicBlocks = {
