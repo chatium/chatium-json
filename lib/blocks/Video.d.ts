@@ -27,7 +27,7 @@ export interface InlineVideoProps<ExtraBlocks, ExtraActions> extends CommonVideo
     playWhenInactive?: boolean;
     repeat?: boolean;
     resizeMode?: 'contain' | 'cover' | 'stretch';
-    showControls?: 'full' | 'compact';
+    showControls?: 'full' | 'compact' | 'mini' | 'none';
     showTimer?: boolean;
     url: string;
     videoSize?: VideoSize;
