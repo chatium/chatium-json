@@ -73,3 +73,17 @@ export interface DataErrorResponse extends ChatiumErrorResponse, Partial<DataRes
 export function isChatiumErrorResponse(val: any): val is ChatiumErrorResponse {
   return val && val.success === false && 'statusCode' in val && 'reason' in val
 }
+
+export function screenResponse<ExtraBlocks, ExtraActions>(props: ScreenResponse<ExtraBlocks, ExtraActions>) {
+  return {
+    success: true,
+    ...props,
+  }
+}
+
+export function apiCallResponse<ExtraBlocks, ExtraActions>(props: ApiCallResponse<ExtraBlocks, ExtraActions>) {
+  return {
+    success: true,
+    ...props,
+  }
+}

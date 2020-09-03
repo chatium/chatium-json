@@ -30,7 +30,7 @@ export { Search, SearchBlock, SearchProps } from './blocks/Search';
 export { Text, TextBlock, TextContent, TextProps } from './blocks/Text';
 export { InlineVideo, InlineVideoBlock, InlineVideoProps, ProgressChangeProps, Video, VideoBlock, VideoProps, VideoSize, } from './blocks/Video';
 export { Author, ChatiumJsonId, ChatiumJsonKey, ContainerStyle, CommonBlockProps, Color, FontSize, Icon, ImageSize, ImageSizePreset, OverlayProps, StatusIcon, WithKey, } from './commonTypes';
-export { ApiCallErrorResponse, ApiCallResponse, ChatiumErrorFields, ChatiumErrorResponse, ChatiumResponse, DataErrorResponse, isChatiumErrorResponse, ScreenErrorResponse, ScreenResponse, } from './ChatiumResponse';
+export { ApiCallErrorResponse, ApiCallResponse, apiCallResponse, ChatiumErrorFields, ChatiumErrorResponse, ChatiumResponse, DataErrorResponse, isChatiumErrorResponse, ScreenErrorResponse, ScreenResponse, screenResponse, } from './ChatiumResponse';
 export { ChatiumFileInfo, ChatMessage, ChatProps, ChatReplyMessage } from './Chat';
 export { ChatiumScreen, HeaderButton, Screen } from './Screen';
 export { jsx, jsxFactory } from './utils/jsx';

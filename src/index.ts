@@ -64,6 +64,7 @@ export {
 export {
   ApiCallErrorResponse,
   ApiCallResponse,
+  apiCallResponse,
   ChatiumErrorFields,
   ChatiumErrorResponse,
   ChatiumResponse,
@@ -71,6 +72,7 @@ export {
   isChatiumErrorResponse,
   ScreenErrorResponse,
   ScreenResponse,
+  screenResponse,
 } from './ChatiumResponse'
 
 export { ChatiumFileInfo, ChatMessage, ChatProps, ChatReplyMessage } from './Chat'

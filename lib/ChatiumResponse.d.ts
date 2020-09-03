@@ -49,4 +49,15 @@ export interface ApiCallErrorResponse<ExtraBlocks, ExtraActions> extends Chatium
 export interface DataErrorResponse extends ChatiumErrorResponse, Partial<DataResponse> {
 }
 export declare function isChatiumErrorResponse(val: any): val is ChatiumErrorResponse;
+export declare function screenResponse<ExtraBlocks, ExtraActions>(props: ScreenResponse<ExtraBlocks, ExtraActions>): {
+    data: ChatiumScreen<ExtraBlocks, ExtraActions>;
+    appScreens?: Record<string, ChatiumScreen<ExtraBlocks, ExtraActions>> | undefined;
+    preloadMedia?: string[] | undefined;
+    success: boolean;
+};
+export declare function apiCallResponse<ExtraBlocks, ExtraActions>(props: ApiCallResponse<ExtraBlocks, ExtraActions>): {
+    appAction?: import(".").AttachMediaAction | import(".").ConfirmEmailAction | import(".").ConfirmPhoneAction | import(".").CopyToClipboardAction | import(".").GoBackAction | import(".").NavigateAction | import(".").NextSlideAction | import(".").NoopAction | import(".").PreloadMediaAction | import(".").RefreshAction | import(".").RequestPaymentAction | import(".").ResetSearchAction | import(".").SelectContactsAction | import(".").ApiCallAction<unknown> | import(".").ShowTextDialogAction | import(".").ShowToastAction | import(".").UpdateCurrentScreenBlock<unknown> | ExtraActions | import(".").ShowContextMenuAction<ExtraActions> | import("./actions").ChatiumAction<ExtraActions>[] | undefined;
+    appScreens?: Record<string, ChatiumScreen<ExtraBlocks, ExtraActions>> | undefined;
+    success: boolean;
+};
 export {};
