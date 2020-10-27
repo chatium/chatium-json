@@ -7,14 +7,20 @@ export enum MediaType {
 
 export interface AttachMediaAction {
   type: 'attachMedia'
-  menuTitle: string
-  progressTitle: string
-  multiple: boolean
+  // mobile only, title for pop-up with "take photo or select from gallery"
+  menuTitle?: string
+  progressTitle?: string
+  multiple?: boolean
   mediaType?: MediaType
   filePutUrl: string
   submitUrl: string
-  file?: { type: string }
+  file?: {
+    type: MobileFileTypeGroup | MobileFileTypeGroup[]
+  }
 }
+
+// see react-native-document-picker + mobile/src/components/AttachBehaviorProvider.js in mobile project
+type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip'
 
 export function attachMedia(
   filePutUrl: string,

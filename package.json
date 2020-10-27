@@ -1,6 +1,6 @@
 {
   "name": "@chatium/json",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Chatium-JSON UI browser format specification and reference implementation for JS/TS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,7 +22,7 @@
       "post-checkout": "yarnhook",
       "post-merge": "yarnhook",
       "post-rewrite": "yarnhook",
-      "pre-commit": "npm run build:publish && lint-staged",
+      "pre-commit": "npm run prepublishOnly && lint-staged",
       "post-commit": "git update-index --again"
     }
   },
@@ -34,10 +34,10 @@
     ]
   },
   "scripts": {
-    "build:publish": "tsc --sourceMap false",
     "build:watch": "tsc -w",
     "clean": "rimraf lib",
-    "lint:all": "eslint --ext .ts ."
+    "lint:all": "eslint --ext .ts .",
+    "prepublishOnly": "tsc --sourceMap false"
   },
   "dependencies": {
     "tslib": "~2.0.1"

@@ -3,7 +3,6 @@ import { Color, CommonBlockProps, Icon, ImageSize, StatusIcon } from '../commonT
 
 export interface ListItemProps<ExtraBlocks, ExtraActions> extends CommonBlockProps<ExtraBlocks, ExtraActions> {
   description?: string
-  image?: string
   imageSize?: ImageSize
   logo?: Icon
   onClick?: ChatiumActions<ExtraActions>
