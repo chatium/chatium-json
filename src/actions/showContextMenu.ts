@@ -6,7 +6,7 @@ export interface ShowContextMenuAction<ExtraActions> {
   menu: ContextMenuItem<ExtraActions>[]
 }
 
-export interface ContextMenuItem<ExtraActions> {
+export interface ContextMenuItem<ExtraActions = {}> {
   title: string
   onClick: ChatiumActions<ExtraActions>
 }

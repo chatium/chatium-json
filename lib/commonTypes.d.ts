@@ -68,15 +68,35 @@ export interface ContainerStyle {
     marginLeft?: number | string;
     marginRight?: number | string;
     marginTop?: number | string;
+    padding?: number | string;
     paddingBottom?: number | string;
     paddingLeft?: number | string;
     paddingRight?: number | string;
     paddingTop?: number | string;
     opacity?: number | string;
-    bottom?: number | string;
     borderRadius?: number;
+    borderBottomLeftRadius?: number;
+    borderBottomRightRadius?: number;
+    borderTopLeftRadius?: number;
+    borderTopRightRadius?: number;
     borderColor?: Color;
+    borderBottomColor?: Color;
+    borderLeftColor?: Color;
+    borderRightColor?: Color;
+    borderTopColor?: Color;
     borderWidth?: 'hairline' | number;
+    borderBottomWidth?: 'hairline' | number;
+    borderLeftWidth?: 'hairline' | number;
+    borderRightWidth?: 'hairline' | number;
+    borderTopWidth?: 'hairline' | number;
+    borderStyle?: 'solid' | 'dotted' | 'dashed';
+    position?: 'absolute' | 'relative';
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+    top?: number | string;
+    height?: number | string;
+    width?: number | string;
 }
 declare type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
 export interface OverlayProps<ExtraBlocks, ExtraActions> {
