@@ -20,7 +20,7 @@ export interface AttachMediaAction {
 }
 
 // see react-native-document-picker + mobile/src/components/AttachBehaviorProvider.js in mobile project
-type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip'
+export type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip'
 
 export function attachMedia(
   filePutUrl: string,

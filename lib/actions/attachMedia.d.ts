@@ -16,6 +16,5 @@ export interface AttachMediaAction {
         type: MobileFileTypeGroup | MobileFileTypeGroup[];
     };
 }
-declare type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip';
+export declare type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip';
 export declare function attachMedia(filePutUrl: string, props: Omit<AttachMediaAction, 'type' | 'filePutUrl'>): AttachMediaAction;
-export {};

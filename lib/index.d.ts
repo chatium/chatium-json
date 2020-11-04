@@ -1,6 +1,6 @@
 export { ChatiumAction, ChatiumActions } from './actions';
 export { apiCall, ApiCallAction } from './actions/apiCall';
-export { attachMedia, AttachMediaAction, MediaType } from './actions/attachMedia';
+export { attachMedia, AttachMediaAction, MediaType, MobileFileTypeGroup } from './actions/attachMedia';
 export { confirmEmail, ConfirmEmailAction } from './actions/confirmEmail';
 export { confirmPhone, ConfirmPhoneAction } from './actions/confirmPhone';
 export { copyToClipboard, CopyToClipboardAction } from './actions/copyToClipboard';
