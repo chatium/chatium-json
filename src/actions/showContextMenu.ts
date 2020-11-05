@@ -11,11 +11,13 @@ export interface ContextMenuItem<ExtraActions = {}> {
   onClick: ChatiumActions<ExtraActions>
 }
 
+export type ContextMenuValidArg<ExtraActions = {}> = ContextMenuItem<ExtraActions> | null | undefined | false
+
 export function showContextMenu<ExtraActions>(
-  menu: ContextMenuItem<ExtraActions>[],
+  menu: ContextMenuValidArg<ExtraActions>[],
 ): ShowContextMenuAction<ExtraActions> {
   return {
     type: 'showContextMenu',
-    menu,
+    menu: menu.filter(Boolean) as ContextMenuItem<ExtraActions>[],
   }
 }

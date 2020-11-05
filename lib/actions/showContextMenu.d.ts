@@ -8,4 +8,5 @@ export interface ContextMenuItem<ExtraActions = {}> {
     title: string;
     onClick: ChatiumActions<ExtraActions>;
 }
-export declare function showContextMenu<ExtraActions>(menu: ContextMenuItem<ExtraActions>[]): ShowContextMenuAction<ExtraActions>;
+export declare type ContextMenuValidArg<ExtraActions = {}> = ContextMenuItem<ExtraActions> | null | undefined | false;
+export declare function showContextMenu<ExtraActions>(menu: ContextMenuValidArg<ExtraActions>[]): ShowContextMenuAction<ExtraActions>;

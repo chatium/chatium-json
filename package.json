@@ -1,6 +1,6 @@
 {
   "name": "@chatium/json",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Chatium-JSON UI browser format specification and reference implementation for JS/TS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -20,7 +20,7 @@ import type { UpdateCurrentScreenBlock } from './updateCurrentScreenBlock'
 /**
  * @tparam ExtraActions - allows to expand list of supported actions for the library users
  */
-export type ChatiumAction<ExtraActions> =
+export type ChatiumAction<ExtraActions = {}> =
   | ApiCallAction
   | AttachMediaAction
   | ConfirmPhoneAction
@@ -41,4 +41,4 @@ export type ChatiumAction<ExtraActions> =
   | UpdateCurrentScreenBlock
   | ExtraActions
 
-export type ChatiumActions<ExtraActions> = ChatiumAction<ExtraActions> | ChatiumAction<ExtraActions>[]
+export type ChatiumActions<ExtraActions = {}> = ChatiumAction<ExtraActions> | ChatiumAction<ExtraActions>[]

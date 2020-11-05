@@ -19,5 +19,5 @@ import type { UpdateCurrentScreenBlock } from './updateCurrentScreenBlock';
 /**
  * @tparam ExtraActions - allows to expand list of supported actions for the library users
  */
-export declare type ChatiumAction<ExtraActions> = ApiCallAction | AttachMediaAction | ConfirmPhoneAction | ConfirmEmailAction | CopyToClipboardAction | GoBackAction | NavigateAction | NextSlideAction | NoopAction | PreloadMediaAction | RefreshAction | RequestPaymentAction | ResetSearchAction | SelectContactsAction | ShowContextMenuAction<ExtraActions> | ShowTextDialogAction | ShowToastAction | UpdateCurrentScreenBlock | ExtraActions;
-export declare type ChatiumActions<ExtraActions> = ChatiumAction<ExtraActions> | ChatiumAction<ExtraActions>[];
+export declare type ChatiumAction<ExtraActions = {}> = ApiCallAction | AttachMediaAction | ConfirmPhoneAction | ConfirmEmailAction | CopyToClipboardAction | GoBackAction | NavigateAction | NextSlideAction | NoopAction | PreloadMediaAction | RefreshAction | RequestPaymentAction | ResetSearchAction | SelectContactsAction | ShowContextMenuAction<ExtraActions> | ShowTextDialogAction | ShowToastAction | UpdateCurrentScreenBlock | ExtraActions;
+export declare type ChatiumActions<ExtraActions = {}> = ChatiumAction<ExtraActions> | ChatiumAction<ExtraActions>[];

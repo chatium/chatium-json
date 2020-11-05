@@ -18,7 +18,7 @@ export {
 } from './actions/requestPayment'
 export { resetSearch, ResetSearchAction } from './actions/resetSearch'
 export { selectContacts, SelectContactsAction, SelectContactsContact } from './actions/selectContacts'
-export { showContextMenu, ShowContextMenuAction, ContextMenuItem } from './actions/showContextMenu'
+export { showContextMenu, ShowContextMenuAction, ContextMenuItem, ContextMenuValidArg } from './actions/showContextMenu'
 export { ShowTextDialogAction, showTextDialog } from './actions/showDialog'
 export { showToast, ShowToastAction } from './actions/showToast'
 export { UpdateCurrentScreenBlock, updateCurrentScreenBlock } from './actions/updateCurrentScreenBlock'
