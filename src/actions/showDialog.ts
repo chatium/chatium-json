@@ -3,6 +3,7 @@ interface ShowDialogCommon {
   title?: string
   description?: string
   submitUrl: string
+  submitData?: Record<string, unknown>
   submitButtonTitle?: string
   cancelButtonTitle?: string
 }
