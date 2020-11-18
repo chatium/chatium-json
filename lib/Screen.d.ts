@@ -30,7 +30,7 @@ export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
     needPhoneCheck?: boolean;
     scrollTo?: string;
     logo?: Icon;
-    layout?: 'stack' | 'fixed';
+    layout?: 'mobile' | 'desktop';
     bgColor?: string;
 }
 export declare type HeaderButton<ExtraBlocks, ExtraActions> = Pick<ButtonProps<ExtraBlocks, ExtraActions>, 'icon' | 'onClick'>;

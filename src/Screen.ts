@@ -31,7 +31,7 @@ export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
   needPhoneCheck?: boolean
   scrollTo?: string
   logo?: Icon
-  layout?: 'stack' | 'fixed'
+  layout?: 'mobile' | 'desktop'
   bgColor?: string
 }
 
