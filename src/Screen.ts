@@ -34,8 +34,8 @@ export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
   layout?: 'mobile' | 'desktop'
   bgColor?: string
   // internal field for experiments
-  meta: unknown
-  v: 1 | 2
+  meta?: unknown
+  v?: 1 | 2
 }
 
 export type HeaderButton<ExtraBlocks, ExtraActions> = Pick<ButtonProps<ExtraBlocks, ExtraActions>, 'icon' | 'onClick'>
