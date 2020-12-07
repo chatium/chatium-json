@@ -119,6 +119,7 @@ export interface ContainerStyle {
   top?: number | string
   height?: number | string
   width?: number | string
+  default?: boolean
 }
 
 type FlexAlignType = 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
