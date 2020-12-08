@@ -34,7 +34,7 @@ export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
   layout?: 'mobile' | 'desktop'
   bgColor?: string
   // internal field for experiments
-  meta?: unknown
+  meta?: Record<string, unknown>
   v?: 1 | 2
 }
 

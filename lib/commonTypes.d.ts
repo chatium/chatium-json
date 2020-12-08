@@ -4,7 +4,7 @@ export interface CommonBlockProps<ExtraBlocks, ExtraActions> extends WithKey {
     containerStyle?: ContainerStyle | null;
     fallback?: ChatiumBlock<ExtraBlocks, ExtraActions>;
     onContext?: ChatiumActions<ExtraActions>;
-    meta?: unknown;
+    meta?: Record<string, unknown>;
 }
 export interface WithKey {
     /**

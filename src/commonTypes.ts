@@ -6,7 +6,7 @@ export interface CommonBlockProps<ExtraBlocks, ExtraActions> extends WithKey {
   fallback?: ChatiumBlock<ExtraBlocks, ExtraActions>
   onContext?: ChatiumActions<ExtraActions>
   // internal field for experiments
-  meta?: unknown
+  meta?: Record<string, unknown>
 }
 
 export interface WithKey {
