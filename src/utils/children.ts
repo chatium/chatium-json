@@ -33,12 +33,12 @@ async function flattenChildRec<ExtraBlocks extends WithKey, ExtraActions>(
   if (child) {
     if (isPromise(child)) {
       const sync = await child
-      if (sync instanceof Array) {
+      if (Array.isArray(sync)) {
         await flattenChildrenRec(sync, prevLevelKey + encodeIndex(idx), result)
       } else {
         await flattenChildRec(sync, prevLevelKey, idx, result)
       }
-    } else if (child instanceof Array) {
+    } else if (Array.isArray(child)) {
       await flattenChildrenRec(child, prevLevelKey + encodeIndex(idx), result)
     } else {
       result.push({
