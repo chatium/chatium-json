@@ -32,7 +32,7 @@ export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
     logo?: Icon;
     layout?: 'mobile' | 'desktop';
     bgColor?: string;
-    meta?: unknown;
+    meta?: Record<string, unknown>;
     v?: 1 | 2;
 }
 export declare type HeaderButton<ExtraBlocks, ExtraActions> = Pick<ButtonProps<ExtraBlocks, ExtraActions>, 'icon' | 'onClick'>;
