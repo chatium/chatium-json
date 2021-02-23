@@ -1,5 +1,3 @@
-import { types } from 'util'
-
 import { ChatiumBlock } from '../blocks'
 import { WithKey } from '../commonTypes'
 
@@ -54,7 +52,7 @@ async function flattenChildRec<ExtraBlocks extends WithKey, ExtraActions>(
 function isPromise<ExtraBlocks, ExtraActions>(
   b: ChatiumChildNode<ExtraBlocks, ExtraActions>,
 ): b is Promise<SyncNode<ExtraBlocks, ExtraActions>> {
-  return types.isPromise(b)
+  return !!b && typeof (b as any).then === 'function'
 }
 
 export type ChatiumChildNode<ExtraBlocks, ExtraActions> =
