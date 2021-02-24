@@ -1,6 +1,7 @@
 import { intrinsicBlocks } from '../IntrinsicElements'
 import { ChatiumScreen } from '../Screen'
 import { ChatiumChildNode } from './children'
+import {Fragment} from './Fragment'
 
 /**
  * Creates a jsx-factory function for the given intrinsic chatium blocks
@@ -8,7 +9,7 @@ import { ChatiumChildNode } from './children'
 export function jsxFactory<IE extends Record<string, object>, K extends keyof IE, ExtraBlocks, ExtraActions>(
   intrinsicBlocks: Record<K, BlockFactory<ExtraBlocks, ExtraActions, IE[K]>>,
 ) {
-  return function jsx<P>(
+  const result = function jsx<P>(
     block: BlockFactory<ExtraBlocks, ExtraActions, P> | K,
     props: P | IE[K],
     ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]
@@ -27,6 +28,8 @@ export function jsxFactory<IE extends Record<string, object>, K extends keyof IE
       return (block as BlockFactory<ExtraBlocks, ExtraActions, P>)(props as P, ...children)
     }
   }
+  result.Fragment = Fragment
+  return result
 }
 
 /**

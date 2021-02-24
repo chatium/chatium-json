@@ -1,9 +1,13 @@
 import { ChatiumScreen } from '../Screen';
 import { ChatiumChildNode } from './children';
+import { Fragment } from './Fragment';
 /**
  * Creates a jsx-factory function for the given intrinsic chatium blocks
  */
-export declare function jsxFactory<IE extends Record<string, object>, K extends keyof IE, ExtraBlocks, ExtraActions>(intrinsicBlocks: Record<K, BlockFactory<ExtraBlocks, ExtraActions, IE[K]>>): <P>(block: K | BlockFactory<ExtraBlocks, ExtraActions, P>, props: IE[K] | P, ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]) => JsxNode<ExtraBlocks, ExtraActions>;
+export declare function jsxFactory<IE extends Record<string, object>, K extends keyof IE, ExtraBlocks, ExtraActions>(intrinsicBlocks: Record<K, BlockFactory<ExtraBlocks, ExtraActions, IE[K]>>): {
+    <P>(block: K | BlockFactory<ExtraBlocks, ExtraActions, P>, props: IE[K] | P, ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]): JsxNode<ExtraBlocks, ExtraActions>;
+    Fragment: typeof Fragment;
+};
 /**
  * Custom JSX factory for the chatium-json blocks.
  * In tsconfig.json
@@ -13,7 +17,10 @@ export declare function jsxFactory<IE extends Record<string, object>, K extends 
  * Usage in screen-source:
  *  import { jsx } from '@chatium/json'
  */
-export declare const jsx: <P>(block: string | BlockFactory<unknown, unknown, P>, props: object | P, ...children: unknown[]) => unknown;
+export declare const jsx: {
+    <P>(block: string | BlockFactory<unknown, unknown, P>, props: object | P, ...children: unknown[]): unknown;
+    Fragment: typeof Fragment;
+};
 interface BlockFactory<ExtraBlocks, ExtraActions, P = {}> {
     (props: P, ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]): JsxNode<ExtraBlocks, ExtraActions>;
 }
