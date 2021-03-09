@@ -28,7 +28,7 @@ async function flattenChildRec<ExtraBlocks extends WithKey, ExtraActions>(
   result: ChatiumBlock<ExtraBlocks, ExtraActions>[],
 ): Promise<void> {
   // skip falsy nodes
-  if (child) {
+  if (child != null && child !== false && child !== '') {
     if (isPromise(child)) {
       const sync = await child
       if (Array.isArray(sync)) {
@@ -38,13 +38,16 @@ async function flattenChildRec<ExtraBlocks extends WithKey, ExtraActions>(
       }
     } else if (Array.isArray(child)) {
       await flattenChildrenRec(child, prevLevelKey + encodeIndex(idx), result)
-    } else {
+    } else if (typeof child === 'object') {
       result.push({
         ...child,
         // if the block has explicitly defined key then don't auto-generate and
         // append it to previous level key separated by space (space is not included in encodeIndex dictionary)
         key: prevLevelKey + (child.key ? ' ' + child.key : encodeIndex(idx)),
       })
+    } else {
+      // string, number, date, true pass as is
+      result.push(child as unknown as ChatiumBlock<ExtraBlocks, ExtraActions>)
     }
   }
 }
