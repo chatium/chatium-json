@@ -64,14 +64,18 @@ export {
 export {
   ApiCallErrorResponse,
   ApiCallResponse,
+  ApiCallResponseFields,
   apiCallResponse,
   ChatiumErrorFields,
   ChatiumErrorResponse,
   ChatiumResponse,
-  DataErrorResponse,
+  CustomResponse,
+  CustomErrorResponse,
   isChatiumErrorResponse,
-  ScreenErrorResponse,
+  isTuneHttpHeadersResponse,
   ScreenResponse,
+  ScreenErrorResponse,
+  ScreenSuccessResponse,
   screenResponse,
 } from './ChatiumResponse'
 

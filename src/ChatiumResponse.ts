@@ -2,46 +2,77 @@ import { ChatiumActions } from './actions'
 import { ChatiumScreen } from './Screen'
 
 /**
- * Standard response type for standard chatium calls including screen, apiCall action and simple data requests
+ * Union of all kinds of responses supported by the chatium router
  */
 export type ChatiumResponse<ExtraBlocks, ExtraActions> =
-  | ChatiumSuccessResponse<ExtraBlocks, ExtraActions>
-  | ErrorResponse<ExtraBlocks, ExtraActions>
-
-type ChatiumSuccessResponse<ExtraBlocks, ExtraActions> = { success: true } & (
-  | ScreenResponse<ExtraBlocks, ExtraActions>
   | ApiCallResponse<ExtraBlocks, ExtraActions>
-  | DataResponse
-)
-type ErrorResponse<ExtraBlocks, ExtraActions> =
-  | ScreenErrorResponse<ExtraBlocks, ExtraActions>
-  | ApiCallErrorResponse<ExtraBlocks, ExtraActions>
-  | DataErrorResponse
+  | ScreenResponse<ExtraBlocks, ExtraActions>
+  | CustomResponse
 
 /**
  * Standard response for apiCall client action
  */
-export interface ApiCallResponse<ExtraBlocks, ExtraActions> {
+export type ApiCallResponse<ExtraBlocks, ExtraActions> =
+  | ApiCallSuccessResponse<ExtraBlocks, ExtraActions>
+  | ApiCallErrorResponse<ExtraBlocks, ExtraActions>
+
+export interface ApiCallErrorResponse<ExtraBlocks, ExtraActions>
+  extends ChatiumErrorResponse,
+    ApiCallResponseFields<ExtraBlocks, ExtraActions> {}
+
+export interface ApiCallSuccessResponse<ExtraBlocks, ExtraActions> extends ApiCallResponseFields<ExtraBlocks, ExtraActions> {
+  success: true
+}
+
+export interface ApiCallResponseFields<ExtraBlocks, ExtraActions> {
   appAction?: ChatiumActions<ExtraActions>
   appScreens?: Record<string, ChatiumScreen<ExtraBlocks, ExtraActions>>
 }
 
 /**
- * Standard plain data response (whole payload should be put in `data` field)
- */
-interface DataResponse {
-  data: unknown
-}
-
-/**
  * Standard get-screen response
  */
-export interface ScreenResponse<ExtraBlocks, ExtraActions> {
+export type ScreenResponse<ExtraBlocks, ExtraActions> =
+  | ScreenSuccessResponse<ExtraBlocks, ExtraActions>
+  | ScreenErrorResponse<ExtraBlocks, ExtraActions>
+
+export interface ScreenSuccessResponse<ExtraBlocks, ExtraActions>
+  extends ScreenResponseFields<ExtraBlocks, ExtraActions> {
+  success: true
+}
+
+export interface ScreenErrorResponse<ExtraBlocks, ExtraActions>
+  extends ChatiumErrorResponse,
+    Partial<ScreenResponseFields<ExtraBlocks, ExtraActions>> {}
+
+export interface ScreenResponseFields<ExtraBlocks, ExtraActions> {
   // screen to display must be in `data` field
   data: ChatiumScreen<ExtraBlocks, ExtraActions>
   // screens to be cached by their url, can be used to quick navigation prediction user behaviour
   appScreens?: Record<string, ChatiumScreen<ExtraBlocks, ExtraActions>>
   preloadMedia?: string[]
+}
+
+/**
+ * Untyped direct data response
+ */
+export type CustomResponse = CustomSuccessResponse | CustomErrorResponse
+
+export type CustomSuccessResponse = unknown | TuneHttpHeadersResponse
+
+export type CustomErrorResponse = ChatiumErrorResponse
+
+/**
+ * Special format recognized by the router to allow tuning of headers and status code
+ */
+export interface TuneHttpHeadersResponse {
+  rawHttpBody: unknown
+  headers?: Record<string, string>
+  statusCode?: number
+}
+
+export function isTuneHttpHeadersResponse(resp: any): resp is TuneHttpHeadersResponse {
+  return !!resp && 'rawHttpBody' in resp
 }
 
 /**
@@ -62,26 +93,18 @@ export interface ChatiumErrorFields {
   [key: string]: unknown
 }
 
-export interface ScreenErrorResponse<ExtraBlocks, ExtraActions>
-  extends ChatiumErrorResponse,
-    Partial<ScreenResponse<ExtraBlocks, ExtraActions>> {}
-export interface ApiCallErrorResponse<ExtraBlocks, ExtraActions>
-  extends ChatiumErrorResponse,
-    ApiCallResponse<ExtraBlocks, ExtraActions> {}
-export interface DataErrorResponse extends ChatiumErrorResponse, Partial<DataResponse> {}
-
 export function isChatiumErrorResponse(val: any): val is ChatiumErrorResponse {
   return val && val.success === false && 'statusCode' in val && 'reason' in val
 }
 
-export function screenResponse<ExtraBlocks, ExtraActions>(props: ScreenResponse<ExtraBlocks, ExtraActions>) {
+export function screenResponse<ExtraBlocks, ExtraActions>(props: ScreenResponseFields<ExtraBlocks, ExtraActions>) {
   return {
     success: true,
     ...props,
   }
 }
 
-export function apiCallResponse<ExtraBlocks, ExtraActions>(props: ApiCallResponse<ExtraBlocks, ExtraActions>) {
+export function apiCallResponse<ExtraBlocks, ExtraActions>(props: ApiCallResponseFields<ExtraBlocks, ExtraActions>) {
   return {
     success: true,
     ...props,
