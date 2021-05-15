@@ -25,7 +25,7 @@ export function jsxFactory<IE extends Record<string, object>, K extends keyof IE
         )
       }
     } else {
-      return (block as BlockFactory<ExtraBlocks, ExtraActions, P>)(props as P, ...children)
+      return (block as BlockFactory<ExtraBlocks, ExtraActions, P>)((props || {}) as P, ...children)
     }
   }
   result.Fragment = Fragment
