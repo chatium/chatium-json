@@ -21,7 +21,7 @@ export declare const jsx: {
     <P>(block: string | BlockFactory<unknown, unknown, P>, props: object | P, ...children: unknown[]): unknown;
     Fragment: typeof Fragment;
 };
-interface BlockFactory<ExtraBlocks, ExtraActions, P = {}> {
+export interface BlockFactory<ExtraBlocks, ExtraActions, P = {}> {
     (props: P, ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]): JsxNode<ExtraBlocks, ExtraActions>;
 }
 declare type JsxNode<ExtraBlocks, ExtraActions> = ChatiumChildNode<ExtraBlocks, ExtraActions> | ChatiumChildNode<ExtraBlocks, ExtraActions>[] | Promise<ChatiumScreen<ExtraBlocks, ExtraActions>>;

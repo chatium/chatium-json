@@ -49,7 +49,7 @@ async function flattenChildRec<ExtraBlocks extends WithKey, ExtraActions>(
   }
 }
 
-function isPromise<ExtraBlocks, ExtraActions>(
+export function isPromise<ExtraBlocks, ExtraActions>(
   b: ChatiumChildNode<ExtraBlocks, ExtraActions>,
 ): b is Promise<SyncNode<ExtraBlocks, ExtraActions>> {
   return !!b && typeof (b as any).then === 'function'
@@ -71,7 +71,7 @@ type SingleNode<ExtraBlocks, ExtraActions> = ChatiumBlock<ExtraBlocks, ExtraActi
  * Highrer numbers are not supported and return empty string
  * @param idx - must be natural int
  */
-function encodeIndex(idx: number): string {
+export function encodeIndex(idx: number): string {
   if (idx < singleCapacity) {
     return keyDictionary[idx]
   } else if (idx < doubleCapacity) {

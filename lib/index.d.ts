@@ -10,7 +10,6 @@ export { nextSlide, NextSlideAction } from './actions/nextSlide';
 export { noop, NoopAction } from './actions/noop';
 export { preloadMedia, PreloadMediaAction } from './actions/preloadMedia';
 export { refresh, RefreshAction } from './actions/refresh';
-export { requestPayment, RequestPaymentAction, RequestPaymentIntegration, humanizePaymentIntegration, } from './actions/requestPayment';
 export { resetSearch, ResetSearchAction } from './actions/resetSearch';
 export { selectContacts, SelectContactsAction, SelectContactsContact } from './actions/selectContacts';
 export { showContextMenu, ShowContextMenuAction, ContextMenuItem, ContextMenuValidArg } from './actions/showContextMenu';

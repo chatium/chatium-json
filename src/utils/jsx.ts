@@ -43,7 +43,7 @@ export function jsxFactory<IE extends Record<string, object>, K extends keyof IE
  */
 export const jsx = jsxFactory(intrinsicBlocks as any)
 
-interface BlockFactory<ExtraBlocks, ExtraActions, P = {}> {
+export interface BlockFactory<ExtraBlocks, ExtraActions, P = {}> {
   (props: P, ...children: ChatiumChildNode<ExtraBlocks, ExtraActions>[]): JsxNode<ExtraBlocks, ExtraActions>
 }
 

@@ -9,7 +9,6 @@ import type { NextSlideAction } from './nextSlide'
 import type { NoopAction } from './noop'
 import type { PreloadMediaAction } from './preloadMedia'
 import type { RefreshAction } from './refresh'
-import type { RequestPaymentAction } from './requestPayment'
 import type { ResetSearchAction } from './resetSearch'
 import type { SelectContactsAction } from './selectContacts'
 import type { ShowContextMenuAction } from './showContextMenu'
@@ -32,7 +31,6 @@ export type ChatiumAction<ExtraActions = {}> =
   | NoopAction
   | PreloadMediaAction
   | RefreshAction
-  | RequestPaymentAction
   | ResetSearchAction
   | SelectContactsAction
   | ShowContextMenuAction<ExtraActions>
