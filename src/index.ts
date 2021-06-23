@@ -76,6 +76,6 @@ export {
 export { ChatiumFileInfo, ChatMessage, ChatProps, ChatReplyMessage } from './Chat'
 export { ChatiumScreen, HeaderButton, Screen } from './Screen'
 export { jsx, jsxFactory } from './utils/jsx'
-export { ChatiumChildNode, flattenChildren } from './utils/children'
+export { ChatiumChildNode, flattenChildren, encodeIndex } from './utils/children'
 
 export { intrinsicBlocks, ChatiumIntrinsicElements } from './IntrinsicElements'
