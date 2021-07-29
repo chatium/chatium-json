@@ -12,7 +12,7 @@ import type { RefreshAction } from './refresh'
 import type { ResetSearchAction } from './resetSearch'
 import type { SelectContactsAction } from './selectContacts'
 import type { ShowContextMenuAction } from './showContextMenu'
-import type { ShowTextDialogAction } from './showDialog'
+import type { ShowDateTimeDialogAction, ShowTextDialogAction } from './showDialog'
 import type { ShowToastAction } from './showToast'
 import type { UpdateCurrentScreenBlock } from './updateCurrentScreenBlock'
 
@@ -34,6 +34,7 @@ export type ChatiumAction<ExtraActions = {}> =
   | ResetSearchAction
   | SelectContactsAction
   | ShowContextMenuAction<ExtraActions>
+  | ShowDateTimeDialogAction
   | ShowTextDialogAction
   | ShowToastAction
   | UpdateCurrentScreenBlock
