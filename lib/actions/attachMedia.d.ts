@@ -10,11 +10,12 @@ export interface AttachMediaAction {
     progressTitle?: string;
     multiple?: boolean;
     mediaType?: MediaType;
-    filePutUrl: string;
+    filePutUrl?: string;
+    getPutUrl?: string;
     submitUrl: string;
     file?: {
         type: MobileFileTypeGroup | MobileFileTypeGroup[];
     };
 }
 export declare type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip';
-export declare function attachMedia(filePutUrl: string, props: Omit<AttachMediaAction, 'type' | 'filePutUrl'>): AttachMediaAction;
+export declare function attachMedia(props: Omit<AttachMediaAction, 'type'>): AttachMediaAction;

@@ -12,7 +12,10 @@ export interface AttachMediaAction {
   progressTitle?: string
   multiple?: boolean
   mediaType?: MediaType
-  filePutUrl: string
+  // endpoint to upload file
+  filePutUrl?: string
+  // POST-endpoint to dynamically get filePutUrl
+  getPutUrl?: string
   submitUrl: string
   file?: {
     type: MobileFileTypeGroup | MobileFileTypeGroup[]
@@ -22,13 +25,9 @@ export interface AttachMediaAction {
 // see react-native-document-picker + mobile/src/components/AttachBehaviorProvider.js in mobile project
 export type MobileFileTypeGroup = 'allFiles' | 'audio' | 'csv' | 'images' | 'plainText' | 'pdf' | 'video' | 'zip'
 
-export function attachMedia(
-  filePutUrl: string,
-  props: Omit<AttachMediaAction, 'type' | 'filePutUrl'>,
-): AttachMediaAction {
+export function attachMedia(props: Omit<AttachMediaAction, 'type'>): AttachMediaAction {
   return {
-    type: 'attachMedia',
-    filePutUrl,
     ...props,
+    type: 'attachMedia',
   }
 }
