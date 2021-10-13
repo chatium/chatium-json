@@ -8,5 +8,6 @@ export interface NavigateAction {
     openInCurrentScreen?: boolean;
     openInBrowser?: boolean;
     resetStack?: true;
+    reload?: boolean;
 }
 export declare function navigate(url: string, options?: Omit<NavigateAction, 'type' | 'url'>): NavigateAction;

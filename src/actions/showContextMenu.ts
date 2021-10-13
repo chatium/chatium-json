@@ -14,10 +14,18 @@ export interface ContextMenuItem<ExtraActions = {}> {
 export type ContextMenuValidArg<ExtraActions = {}> = ContextMenuItem<ExtraActions> | null | undefined | false
 
 export function showContextMenu<ExtraActions>(
-  menu: ContextMenuValidArg<ExtraActions>[],
+  menuOrProps: ContextMenuValidArg<ExtraActions>[] | Omit<ShowContextMenuAction<ExtraActions>, 'type'>,
 ): ShowContextMenuAction<ExtraActions> {
-  return {
-    type: 'showContextMenu',
-    menu: menu.filter(Boolean) as ContextMenuItem<ExtraActions>[],
+  if (Array.isArray(menuOrProps)) {
+    return {
+      type: 'showContextMenu',
+      menu: menuOrProps.filter(Boolean) as ContextMenuItem<ExtraActions>[],
+    }
+  } else {
+    return {
+      type: 'showContextMenu',
+      ...menuOrProps,
+      menu: menuOrProps.menu.filter(Boolean) as ContextMenuItem<ExtraActions>[],
+    }
   }
 }

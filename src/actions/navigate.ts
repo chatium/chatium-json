@@ -8,6 +8,8 @@ export interface NavigateAction {
   openInCurrentScreen?: boolean
   openInBrowser?: boolean
   resetStack?: true
+  // web-only, force full browser page reload
+  reload?: boolean
 }
 
 export function navigate(url: string, options?: Omit<NavigateAction, 'type' | 'url'>): NavigateAction {
