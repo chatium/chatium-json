@@ -30,7 +30,8 @@ export interface ChatiumScreen<ExtraBlocks, ExtraActions> {
     needPhoneCheck?: boolean;
     scrollTo?: string;
     logo?: Icon;
-    layout?: 'column' | 'empty' | 'mobile' | 'desktop';
+    desktopLayout?: 'column' | 'empty' | 'mobile';
+    layout?: 'column' | 'empty' | 'mobile';
     columnLayoutStyle?: Record<string, unknown>;
     bgColor?: string;
     style?: Record<string, unknown>;
