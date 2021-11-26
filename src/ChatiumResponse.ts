@@ -72,7 +72,7 @@ export interface TuneHttpHeadersResponse {
 }
 
 export function isTuneHttpHeadersResponse(resp: any): resp is TuneHttpHeadersResponse {
-  return !!resp && 'rawHttpBody' in resp
+  return !!resp && typeof resp === 'object' && 'rawHttpBody' in resp
 }
 
 /**
